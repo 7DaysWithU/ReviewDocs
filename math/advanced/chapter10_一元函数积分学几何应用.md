@@ -1,0 +1,148 @@
+# 一元函数积分学几何应用
+
+## 1 知识点
+
+* 平面图形面积
+  * 平面直角坐标系
+
+    曲线 $y=f_1(x)$ 与 $y=f_2(x)$ 及 $x=a,x=b(a<b)$ 所围平面图形的面积为
+
+    $$
+    S=\int^b_a{\Big\lvert f_1(x)-f_2(x)\Big\rvert\mathrm{d}x}
+    $$
+  * 极坐标系
+
+    曲线 $r=r_1(\theta)$ 与 $r=r_2(\theta)$ 与两射线 $\theta=\alpha,\theta=\beta(0<\beta-\alpha\leq2\pi)$ 所围平面图形的面积为
+
+    $$
+    S=\dfrac{1}{2}\int^{\beta}_{\alpha}{\Big\lvert r_1^2(\theta)-r_2^2(\theta)\Big\rvert\mathrm{d}\theta}
+    $$
+* 旋转体体积
+  * 绕 $x$ 轴旋转
+
+    曲线 $y=f(x)$ 与 $x=a,x=b(a<b)$ 及 $x$ 轴所围成的曲边梯形绕 $x$ 轴旋转一周得到的旋转体体积为
+
+    $$
+    V=\int^b_a{\pi\left[f(x)^2\right]\mathrm{d}x}
+    $$
+  * 绕 $y$ 轴旋转
+
+    曲线 $y=f(x)$ 与 $x=a,x=b(0\leq a<b)$ 及 $x$ 轴所围成的曲边梯形绕 $y$ 轴旋转一周得到的旋转体体积为
+
+    $$
+    V=\int^b_a{2\pi x\lvert f(x)\rvert\mathrm{d}x}
+    $$
+  * 平面曲线绕定直线旋转
+
+    平面曲线 $L$：$y=f(x),x\in[a,b]$，且 $f(x)$ 可导 </br>
+    定直线 $L_0$：$A x+B y+C=0$，且过 $L_0$ 的任意一条垂线与 $L$ 至多一个交点 </br>
+    则 $L$ 绕 $L_0$ 选择一周所得旋转体的体积为
+
+    $$
+    V=\dfrac{\pi}{\left(A^2+B^2\right)^\frac{3}{2}}\int^b_a{\left[Ax+Bf(x)+C\right]^2\lvert Af^{'}(x)-B\rvert\mathrm{d}x}
+    $$
+* 函数平均值
+
+  设 $x\in[a,b]$，由定积分中值定理可得，函数 $f(x)$ 在 $[a,b]$ 上的平均值为
+
+  $$
+  \begin{align*}
+    \overline{f}&=\dfrac{1}{b-a}\int^b_a{f(x)}\\\\
+    \Rightarrow\overline{f}&=f(\xi),\xi\in[a,b]
+  \end{align*}
+  $$
+
+* 平面图形形心
+  
+  设平面区域 $D=\{(x,y)|0\leq y\leq f(x),a\leq x\leq b\}$，$y=f(x)$ 在 $[a,b]$ 上连续，则 $D$ 的形心坐标为
+
+  $$
+  \begin{align*}
+    \overline{x}&=\dfrac{\int^b_a{xf(x)\mathrm{d}x}}{\int^b_a{f(x)\mathrm{d}x}}\\\\
+    \overline{y}&=\dfrac{\dfrac{1}{2}\int^b_a{f^2(x)\mathrm{d}x}}{\int^b_a{f(x)\mathrm{d}x}}
+  \end{align*}
+  $$
+
+* 平面曲线弧长
+  * 平面光滑曲线由直角坐标方程 $y=f(x),x\in[a,b]$ 给出，则弧长
+
+    $$
+    s=\int^b_a{\sqrt{1+\left[f^{'}\left(x\right)\right]^2}\mathrel{d}x}
+    $$
+
+  * 平面光滑曲线由参数方程 $\begin{cases}
+    x=x(t)\\
+    y=y(t)
+  \end{cases},t\in[\alpha, \beta]$ 给出，则弧长
+  
+    $$
+    s=\int^{\beta}_{\alpha}{\sqrt{\left[x^{'}\left(t\right)\right]^2+\left[y^{'}\left(t\right)\right]^2}\mathrel{d}t}
+    $$
+
+  * 平面光滑曲线由极坐标方程 $r=r(\theta),\theta\in[\alpha,\beta]$ 给出，则弧长
+
+    $$
+    s=\int^{\beta}_{\alpha}{\sqrt{\left[r\left(\theta\right)\right]^2+\left[r^{'}\left(\theta\right)\right]^2}\mathrel{d}\theta}
+    $$
+
+* 旋转体侧面积
+  * 曲线 $L$：$y=f(x),x\in[a,b]$ 绕 $x$ 轴旋转一周所得旋转体侧面积为
+
+    $$
+    S=2\pi\int^b_a{\left\lvert f\left(x\right)\right\rvert\sqrt{1+\left[f^{'}\left(x\right)\right]^2}\mathrel{d}x}
+    $$
+
+  * 曲线 $L$：$\begin{cases}
+    x=x(t)\\
+    y=y(t)
+  \end{cases},t\in[\alpha, \beta]$ 绕 $x$ 轴旋转一周所得旋转体侧面积为
+  
+    $$
+    S=2\pi\int^{\beta}_{\alpha}{\left\lvert y\left(t\right)\right\rvert\sqrt{\left[x^{'}\left(t\right)\right]^2+\left[y^{'}\left(t\right)\right]^2}\mathrel{d}t}
+    $$
+
+  * 曲线 $L$：$r=r(\theta),\theta\in[\alpha,\beta]$ 绕 $x$ 轴旋转一周所得旋转体侧面积为
+
+    $$
+    S=2\pi\int^{\beta}_{\alpha}{\left\lvert r\left(\theta\right)\sin{\theta}\right\rvert\sqrt{\left[r\left(\theta\right)\right]^2+\left[r^{'}\left(\theta\right)\right]^2}\mathrel{d}\theta}
+    $$
+
+* 平行截面面积已知的立体体积
+
+  在区间 $[a,b]$ 上，垂直于 $x$ 轴的平面截立体 $\Omega$ 所得到的截面面积为 $x$ 的 **连续** 函数 $A(x)$，取体积微元 $\mathrm{d}V=A(x)\mathrm{d}x$，则 $\Omega$ 体积为
+
+  $$
+  V=\int^b_a{A(x)\mathrm{d}x}
+  $$
+
+  ***常用微元划分思想***
+
+## 2 题目
+
+* 基础30讲
+  * 例10.1(递推式、未定式)
+  * ***例10.2(参数方程求平面面积、换元法)***
+  * 例10.3(伯努利爽纽线、极坐标平面面积)
+  * ***例10.4(分段求平面面积、$e^{ax}\cdot bx$ 求积分)***
+  * 例10.5(绕 $x$ 轴、定义域)
+  * 例10.6(绕 $y$ 轴、坐标轴变换)
+  * ***例10.7(平面图形面积、平面曲线绕定直线旋转、坐标轴变换)***
+  * ***例10.8(函数平均值、构造变限积分)***
+  * 例10.9(形心)
+  * 例10.10(平面直角方程弧长)
+  * 例10.11(极坐标方程弧长)
+  * 例10.12(表面积、换元法)
+  * 例10.13(星形线、表面积、对称性)
+  * ***例10.14(旋转体体积、微元法)***
+* 基础30讲课后题
+  * 10.2(取体积微元)
+  * 10.8(参数方程、换元法)
+  * ***10.9(分段函数取微元、不能用公式)***
+* 1000题
+  * 05(未知f(x)直接分部积分法)
+  * ***08(变化率)***
+  * ***11(反函数切换积分视角)***
+  * 15($\sec^3{x}$ 积分)
+  * ***16(绕非坐标轴直线旋转)***
+  * 17(反函数切换积分视角)
+  * 19(变化率、参数方程)

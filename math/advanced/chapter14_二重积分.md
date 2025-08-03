@@ -1,0 +1,269 @@
+# 二重积分
+
+## 1 知识点
+
+### 1.1 概念、性质、对称性
+
+* 概念
+
+  设 $f(x,y)$ 是有界闭区域 $D$ 上的有界函数，将闭区间 $D$ 任意分割成 $n$ 个小闭区间 $\Delta\sigma_1,\Delta\sigma_2,\cdots,\Delta\sigma_n$，其中 $\Delta\sigma_i$ 表示第 $i$ 个小闭区域，也表示它的面积。在每个 $\Delta\sigma_i$ 上任取一点 $f(\xi_i,\eta_i)$，作乘积 $f(\xi_i,\eta_i)\Delta\sigma_i\,(i=1,2,\cdots,n)$，再作和 $\sum^n_{i=1}{f(\xi_i,\eta_i)\Delta\sigma_i}$。当 $\lambda=\max{\left\{\Delta\sigma_i\right\}}\to0$ 时，和的极限总是存在，且与 $\Delta\sigma_i$ 的分割方法与点 $f(\xi_i,\eta_i)$ 的取法无关，则称此极限值为函数 $f(x,y)$ 在闭区域 $D$ 上的二重积分，记作 $\iint_D{f(x,y)\mathrm{d}\sigma}$，即
+  
+  $$
+  \iint_D{f(x,y)\mathrm{d}\sigma}=\lim\limits_{\lambda\to0}{\sum^n_{i=1}{f(\xi_i,\eta_i)\Delta\sigma_i}}
+  $$
+  
+  **若 $f(x,y)$ 在有界闭区域 $D$ 上连续，则二重积分 $\iint_D{f(x,y)\mathrm{d}\sigma}$ 一定存在**
+
+* 性质
+  * 区域面积
+
+    $\iint_D{1\cdot\mathrm{d}\sigma}=A$，其中 $A$ 为 $D$ 的面积
+
+  * 可积函数必有界
+
+    当 $f(x,y)$ 在有界闭区域 $D$ 上可积时，$f(x,y)$ 在 $D$ 上必有界
+
+  * 积分的线性性质
+
+    $\iint_D{\left[k_1f\left(x,y\right)\pm k_2f\left(x,y\right)\right]\mathrm{d}\sigma}=k_1\iint_D{f\left(x,y\right)\mathrm{d}\sigma}\pm k_2\iint_D{f\left(x,y\right)\mathrm{d}\sigma}$，其中 $k_1,k_2$ 为常数
+
+  * 积分的可加性
+
+    $\iint_D{f(x,y)\mathrm{d}\sigma}=\iint_{D_1}{f(x,y)\mathrm{d}\sigma}+\iint_{D_2}{f(x,y)\mathrm{d}\sigma}$，其中 $D_1\cup D_2=D$，且 $D_1\cap D_2=\varnothing$
+
+  * 积分的保号性
+
+    当 $f(x,y),g(x,y)$ 在有界闭区域 $D$ 上可积时，若在 $D$ 上有 $f(x,y)\leq g(x,y)$，则
+
+    $$
+    \iint_D{f(x,y)\mathrm{d}\sigma}\leq\iint_D{g(x,y)\mathrm{d}\sigma}
+    $$
+
+    特别地，有
+
+    $$
+    \left\lvert\iint_D{f(x,y)\mathrm{d}\sigma}\right\rvert\leq\iint_D{\left\lvert f(x,y)\right\rvert\mathrm{d}\sigma}
+    $$
+
+  * ⚠️二重积分估值定理
+
+    设 $M=\max\limits_D{\left\{f(x,y)\right\}}\,,m=\min\limits_D{\left\{f(x,y)\right\}}$，$A$ 为 $D$ 的面积，则有
+
+    $$
+    mA\leq\iint_D{f(x,y)\mathrm{d}\sigma}\leq MA
+    $$
+
+    **可配合拉格朗日乘数法求二元函数区域最值，再确定区域内二重积分的范围**
+
+  * ⚠️二重积分中值定理
+
+    设 $f(x,y)$ 在有界闭区域 $D$ 上连续，$A$ 为 $D$ 的面积，则在 $D$ 上至少存在一点 $(\xi,\eta)$，使得
+
+    $$
+    \iint_D{f(x,y)\mathrm{d}\sigma}=f(\xi,\eta)A
+    $$
+
+    **当被积函数是抽象函数或非常难算时，可以考虑中值定理处理(基础30讲例14.2)**
+
+  * 累次积分计算
+
+    **若确定先积部分相当于后积部分为常数时，可以直接计算后积部分**。常用于带变限积分的情况
+
+* 对称性
+  * 普通对称性
+
+    * 若 $D$ 关于 $x=a$ 对称，$(x,y)$ 关于 $x=a$ 的对称点为 $(2a-x,y)$，则
+
+      $$
+      \iint_D{f(x,y)\mathrm{d}\sigma}=
+      \begin{cases}
+          2\iint_{D_1}{f(x,y)\mathrm{d}\sigma},&f(x,y)=f(2a-x,y)\\
+          0,&f(x,y)=-f(2a-x,y)
+      \end{cases}
+      $$
+
+      其中 $D_1$ 为 $x=a$ 一侧的部分
+
+      **当 $a=0$ 时为 $f(x,y)$ 关于 $y$ 轴对称**
+
+    * 若 $D$ 关于 $y=a$ 对称，$(x,y)$ 关于 $x=a$ 的对称点为 $(x,2a-y)$，则
+
+      $$
+      \iint_D{f(x,y)\mathrm{d}\sigma}=
+      \begin{cases}
+          2\iint_{D_1}{f(x,y)\mathrm{d}\sigma},&f(x,y)=f(x,2a-y)\\
+          0,&f(x,y)=-f(x,2a-y)
+      \end{cases}
+      $$
+
+      其中 $D_1$ 为 $y=a$ 一侧的部分
+
+      **当 $a=0$ 时为 $f(x,y)$ 关于 $x$ 轴对称**
+
+    * 若 $D$ 关于原点对称，$(x,y)$ 关于原点的对称点为 $(-x,-y)$，则
+
+      $$
+      \iint_D{f(x,y)\mathrm{d}\sigma}=
+      \begin{cases}
+          2\iint_{D_1}{f(x,y)\mathrm{d}\sigma},&f(x,y)=f(-x,-y)\\
+          0,&f(x,y)=-f(-x,-y)
+      \end{cases}
+      $$
+
+      其中 $D_1$ 为关于原点对称的半个部分
+
+    * 若 $D$ 关于 $y=x$ 对称，$(x,y)$ 关于 $y=x$ 的对称点为 $(y,x)$，则
+
+      $$
+      \iint_D{f(x,y)\mathrm{d}\sigma}=
+      \begin{cases}
+          2\iint_{D_1}{f(x,y)\mathrm{d}\sigma},&f(x,y)=f(y,x)\\
+          0,&f(x,y)=-f(y,x)
+      \end{cases}
+      $$
+
+      其中 $D_1$ 为关于 $y=x$ 对称的半个部分
+
+  * 轮换对称性
+
+    **在直角坐标系下**，若把 $x,y$ 对调，区域 $D$ 不变(或区域 $D$ 关于 $y=x$ 对称)，则有
+
+    $$
+    \iint\limits_{D(x,y)}{f(x,y)\,\mathrm{d}x\,\mathrm{d}y}=\iint\limits_{D(y,x)}{f(y,x)\,\mathrm{d}y\,\mathrm{d}x}
+    $$
+
+    由于 $f(x,y),f(y,x)$ 都不好算，但
+
+    $$
+    I=\dfrac{1}{2}\left[\iint\limits_{D(x,y)}{f(x,y)\,\mathrm{d}x\,\mathrm{d}y}+\iint\limits_{D(y,x)}{f(y,x)\,\mathrm{d}y\,\mathrm{d}x}\right]
+    $$
+
+    两个积分值根据可加性相加后被积函数可能就好算了
+
+### 1.2 计算
+
+* 直角坐标系
+  * $X$ 型区域
+
+    上下是曲边 $y=\phi_1(x),y=\phi_2(x)$，左右是直线 $x=a,x=b$
+
+    $$
+    \iint_D{f(x,y)\mathrm{d}\sigma}=\int^b_a{\mathrm{d}x}\int^{\phi_2(x)}_{\phi_1(x)}{f(x,y)\mathrm{d}y}
+    $$
+
+  * $Y$ 型区域
+
+    左右是曲边 $x=\psi_1(x),x=\psi_2(x)$，上下是直线 $y=a,y=b$
+
+    $$
+    \iint_D{f(x,y)\mathrm{d}\sigma}=\int^b_a{\mathrm{d}y}\int^{\psi_2(y)}_{\psi_1(y)}{f(x,y)\mathrm{d}x}
+    $$
+
+  **二重积分严格要求 $\begin{cases}a<b \\ \phi_1(x)<\phi_2(x)或\psi_1(x)<\psi_2(x)\end{cases}$，即保证积分上下界为从小到大，否则必须换上下界**
+
+  **对于不可积函数或难积分函数可以考虑交换积分顺序**
+
+  $$
+  \text{后积先定限，限内画条线}\\
+  \text{先交写下限，后交写上限}
+  $$
+
+* 极坐标系
+
+  与中心对称图像有关，**区域微元 $\mathrm{d}\sigma=\mathrm{d}r\cdot r\mathrm{d}\theta$**
+
+  * 极点在区域外
+
+    $$
+    \iint_D{f(x,y)\mathrm{d}\sigma}=\int^{\beta}_{\alpha}{\mathrm{d}\theta}\int^{r_2(\theta)}_{r_1(\theta)}{f(r\cos{\theta},r\sin{\theta})r\mathrm{d}r}
+    $$
+
+  * 极点在区域边界上
+
+    $$
+    \iint_D{f(x,y)\mathrm{d}\sigma}=\int^{\beta}_{\alpha}{\mathrm{d}\theta}\int^{r(\theta)}_{0}{f(r\cos{\theta},r\sin{\theta})r\mathrm{d}r}
+    $$
+
+  * 极点在区域内
+
+    $$
+    \iint_D{f(x,y)\mathrm{d}\sigma}=\int^{2\pi}_{0}{\mathrm{d}\theta}\int^{r(\theta)}_{0}{f(r\cos{\theta},r\sin{\theta})r\mathrm{d}r}
+    $$
+
+  **若被积函数为 $f(x^2+y^2),f(\dfrac{x}{y}),f(\dfrac{y}{x})$ 等形式，或积分区域为圆或圆的一部分，则有限考虑使用极坐标系处理；否则优先考虑直角坐标系处理**
+
+* 换元法
+
+  若存在 $\begin{cases}x=x(u,v) \\ y=y(u,v)\end{cases}$ 是 $(x,y)$ 面到 $(u,v)$ 面的一对一映射，且 $x=x(u,v)\,,y=y(u,v)$ 存在一阶连续偏导，$\dfrac{\partial(x,y)}{\partial(u,v)}\pm0$ 时，有
+  
+  $$
+  \iint_{D_{xy}}{f(x,y)\mathrm{d}x\mathrm{d}y}
+  \xlongequal[y=y(u,v)]{x=x(u,v)}
+  \iint_{D_{uv}}{f\left[x\left(u,v\right),y\left(u,v\right)\right]\cdot\left\lvert\dfrac{\partial(x,y)}{\partial(u,v)}\right\rvert\cdot\mathrm{d}u\mathrm{d}v}
+  $$
+
+  其中
+  
+  $$
+  \dfrac{\partial(x,y)}{\partial(u,v)}=
+  \left|
+  \begin{matrix}
+    \dfrac{\partial x}{\partial u} & \dfrac{\partial x}{\partial v}\\\\
+    \dfrac{\partial y}{\partial u} & \dfrac{\partial y}{\partial v}
+  \end{matrix}
+  \right|
+  $$
+
+* **⚠️广义极坐标系**
+
+  若积分区域 $D$ 为椭圆 $\dfrac{x^2}{a^2}+\dfrac{y^2}{b^2}=1$，则可令 $\begin{cases}x=a\cdot r\cos{\theta} \\ y=b\cdot r\sin{\theta}\end{cases}$，则积分可写作
+  
+  $$
+  \int^{\theta_2}_{\theta_1}{\mathrm{d}\theta}\int^{r_2}_{r_1}f(r,\theta)\cdot abr\cdot\mathrm{d}r
+  $$
+
+  ***特别注意，由于原区域 $D$ 为椭圆，新区域 $D^{'}$ 为圆，因此 $\theta,r$ 新的上下限均需带回原式重新计算 !!!；$abr$ 项为换元需要额外乘的雅可比行列式的快捷结果***
+  
+  **广义极坐标系由狭义极坐标结合换元法得到，极其适合在椭圆区域 $D$ 上使用。对于其他类型的区域可根据区域性质进行类似的换元操作**
+
+## 2 题目
+
+* 基础30讲
+  * 例14.1(二重积分正负、保号性)
+  * ***例14.2(二元函数连续、二重积分导数、椭圆、中值定理)***
+  * 例14.3(普通对称性)
+  * 例14.4(轮换对称性)
+  * 例14.5(交换上下限、超区间求 $\arcsin$)
+  * ***例14.6(交换积分顺序、不可积函数)***
+  * ***例14.7(交换积分顺序、基本积分法)***
+  * 例14.8(轮换对称性、极坐标系)
+  * ***例14.9(描点绘图、极坐标系、计算)***
+  * ***例14.10(累次积分计算)***
+  * ***例14.11($\Gamma$ 函数、积分与变量无关性)***
+  * 例14.12($\Gamma$ 函数)
+  * ***例14.13(同阶无穷小、$\Gamma$ 函数、洛必达法则)***
+  * 例14.14(极坐标系)
+  * ***例14.15(换元法)***
+* 基础30讲课后习题
+  * 14.3(极坐标系转直角坐标系)
+  * 14.4(直角坐标系转极坐标系、凑微分)
+  * 14.7(普通对称性)
+  * 例14.8(计算、普通对称性)
+  * ***例14.10($\sec$ 区域、极坐标系转直角坐标系、点火公式)***
+  * ***例14.11($\Gamma$ 函数、反常积分)***
+  * ***例14.12(二重积分最大值(被积函数 $\geq0$)、广义极坐标系)***
+* 1000题
+  * 01(区域围法)
+  * ***02(二重积分中值定理、极限趋于点)***
+  * 03(换元法、普通对称性)
+  * 05(轮换对称性)
+  * 10(极坐标定上下限、点火公式换元)
+  * 11(极坐标定上下限、计算)
+  * ***13(广义极坐标系)***
+  * 14(轮换对称性)
+  * ***15(拆项用普通对称性)***
+  * 16(普通对称性、点火公式、$\sqrt{x^2}=\lvert x\rvert$)
+  * 20(计算)
+  * 21(计算)
+  * ***22(圆平移换元)***
+  * ***24(根式换元)***

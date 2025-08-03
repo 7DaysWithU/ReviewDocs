@@ -1,0 +1,7 @@
+.obsidian
+.venv
+.vscode
+.idea
+
+main.py
+test.md
