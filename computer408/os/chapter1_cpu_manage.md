@@ -355,9 +355,50 @@
 
     ![SWAP(XCHG)](../../resource/image/os/chapter1/synchronization_mutex_achieve_hardware_SWAP.png "SWAP(XCHG)")
 
+    ![锁](../../resource/image/os/chapter1/synchronization_mutex_achieve_hardware_lock.png "锁")
+
 * 信号量
+  * 分类
+
+    ![信号量](../../resource/image/os/chapter1/semaphore.png "信号量")
+
+    ![信号量定义](../../resource/image/os/chapter1/semaphore_definition.png "信号量定义")
+
+    ![整型信号量](../../resource/image/os/chapter1/semaphore_integer.png "整型信号量")
+
+    * 整型信号量利用原语解决了双标志的被打断问题，但仍然不满足让权等待
+
+    ![记录型信号量](../../resource/image/os/chapter1/semaphore_recrod.png "记录型信号量")
+
+    * 记录型信号量当 $\text{value} < 0$ 时，共有 $\lvert\text{value}\rvert$ 个进程在等待该资源
+
+  * 信号量实现互斥、同步、前驱(多级同步)
+
+    ![信号量用法](../../resource/image/os/chapter1/semaphore_usage.png "信号量用法")
+
+    ![信号量实现互斥](../../resource/image/os/chapter1/semaphore_usage_mutex.png "信号量实现互斥")
+
+    ![信号量实现同步](../../resource/image/os/chapter1/semaphore_usage_synchronization.png "信号量实现同步")
+
+    ![信号量实现多级同步(前驱)](../../resource/image/os/chapter1/semaphore_usage_multi_synchronization.png "信号量实现多级同步(前驱)")
 
 * 经典问题
+  * 生产者消费者问题
+
+    ![单生产者消费者问题](../../resource/image/os/chapter1/semaphore_classic_producer_consumer_signle.png "单生产者消费者问题")
+
+    * 互斥与同步的 $\text{P}$ 操作不能交换顺序，会导致死锁问题；互斥与同步的 $\text{V}$ 操作可以交换顺序
+    * 生产产品和消费产品虽然可以放入临界区，但这些操作与临界区逻辑无关，因为临界区应该尽可能的小，所有不将它们放入临界区
+
+    ![多生产者多消费者问题](../../resource/image/os/chapter1/semaphore_classic_producer_consumer_multi.png "多生产者多消费者问题")
+
+    * 多生产者多消费者问题若临界资源`mutex=1`，则进出临界区可以不使用互斥操作，因为所有进程同一时刻只会有一个不会被 $\text{P}$ 阻塞(本例即为`plate`、`apple`、`orange`这三个信号量在同一时刻只会有一个满足进入条件不会被 $\text{P}$ 阻塞)。**但`mutex > 1`时进出临界区必须使用互斥操作，否则会出现对同一个地址的资源二次操作的情况。因此最稳妥的操作是无论如何进出临界区都使用互斥操作**
+    * 分析同步关系时以"事件"为角度，考虑事件 $A,B$ 之间 $\text{A}\to\text{B}$ 的关系，据此确定 $\text{PV}$ 操作
+
+  * 读写者问题
+  * 哲学家进餐问题
+
+* 管程
 
 ### 1.4 死锁
 
