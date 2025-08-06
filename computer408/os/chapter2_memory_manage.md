@@ -6,6 +6,20 @@
 
 * 概念
 
+  ![内存基础](../../resource/image/os/chapter2/memory_basis.png "内存基础")
+
+  ![内存管理](../../resource/image/os/chapter2/memory_manage.png "内存管理")
+
+  * 内存保护方法一：在CPU中设置一对上、下限寄存器，存放进程的上、下限地址。进程的指令要访问某个地址时，CPU检查是否越界
+  * 内存保护方法二：采用重定位寄存器(又称基址寄存器 $\text{BR}$ )和界地址寄存器(又称限长寄存器)进行越界检查。重定位寄存器中存放的是进程的起始物理地址。界地址寄存器中存放的是进程的最大逻辑地址
+
+  ![进程映像](../../resource/image/os/chapter2/memory_manage_process_image.png "进程映像")
+
+  * 低地址的 $1\text{G}$ 空间包含堆区、读写数据区、只读区，其中高地址部分为堆区的扩展预留空间
+  * 中间的 $1\text{G}$ 空间保护栈区、共享库，其中中部区域为二者的扩展预留空间
+  * 宏定义数在编译时会变成立即数包含在只读区中
+  * 进程线程资源分配详见[资源分配](./chapter1_cpu_manage.md#resource-allocation)
+
 * 连续分配管理
 
 * 基本分页存储管理
