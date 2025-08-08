@@ -8,12 +8,16 @@
 
 ![内存基础](../../resource/image/os/chapter2/memory_basis.png "内存基础")
 
+![地址类型](../../resource/image/os/chapter2/addressing.png "地址类型")
+
 ![内存管理](../../resource/image/os/chapter2/memory_manage.png "内存管理")
 
-* 内存保护方法一：在CPU中设置一对上、下限寄存器，存放进程的上、下限地址。进程的指令要访问某个地址时，CPU检查是否越界
-* 内存保护方法二：采用重定位寄存器(又称基址寄存器 $\text{BR}$ )和界地址寄存器(又称限长寄存器)进行越界检查。重定位寄存器中存放的是进程的起始物理地址。界地址寄存器中存放的是进程的最大逻辑地址
+* 内存保护
+  * 方法一：在CPU中设置一对上、下限寄存器，存放进程的上、下限地址。进程的指令要访问某个地址时，CPU检查是否越界
+  * 方法二：采用重定位寄存器(又称基址寄存器 $\text{BR}$ )和界地址寄存器(又称限长寄存器)进行越界检查。重定位寄存器中存放的是进程的起始物理地址。界地址寄存器中存放的是进程的最大逻辑地址
+  * 内存保护需要操作系统和硬件(各种寄存器)一同完成
 
-  ![进程映像](../../resource/image/os/chapter2/memory_manage_process_image.png "进程映像")
+![进程映像](../../resource/image/os/chapter2/memory_manage_process_image.png "进程映像")
 
 * 低地址的 $1\text{G}$ 空间包含堆区、读写数据区、只读区，其中高地址部分为堆区的扩展预留空间
 * 中间的 $1\text{G}$ 空间保护栈区、共享库，其中中部区域为二者的扩展预留空间
@@ -30,9 +34,13 @@
 
   ![单一连续分配](../../resource/image/os/chapter2/memory_successive_allocation_single.png "单一连续分配")
 
+  * 属于静态重定位，不需要硬件地址变换机构
+
 * 固定分区分配
 
   ![固定分区分配](../../resource/image/os/chapter2/memory_successive_allocation_constant.png "固定分区分配")
+
+  * 属于静态重定位，不需要硬件地址变换机构
 
 * 动态分区分配
   * 定义
@@ -44,6 +52,9 @@
       * 内部碎片，分配给某进程的内存区域中，如果有些部分没有用上
       * 外部碎片，是指内存中的某些空闲分区由于太小而难以利用
       * 紧凑：如果内存中空闲空间的总和本来可以满足某进程的要求，但由于进程需要的是一整块连续的内存空间，因此这些碎片不能满足进程的需求，可以通过紧凑技术将已有的进程映像排列好(挪动内存中的进程映像，修改空闲区表)，将外部碎片规整为一块连续的大空闲区
+      * 动态分区只有外部碎片
+    * 属于动态重定位，需要硬件地址变化机构
+  
   * 动态分配算法
     * 基于顺序搜索
 
@@ -76,6 +87,7 @@
     ![页表](../../resource/image/os/chapter2/memory_unsuccessive_allocation_page_basis_page_table.png "页表")
 
     * 页表实际上只存储进程页面在内存中的页框号，即`page_table: list[int]`存储逻辑为`page_table[page_id]=page_frame_id`。因此，页表项的实际大小由内存中的页框数决定
+    * 何时分页是装入作业时决定的
 
     ![逻辑地址结构](../../resource/image/os/chapter2/memory_unsuccessive_allocation_page_basis_logical_address.png "逻辑地址结构")
 
@@ -91,6 +103,7 @@
     ![基本地址变换算法示例](../../resource/image/os/chapter2/memory_unsuccessive_allocation_page_basis_address_translation_algorithm_eg.png "基本地址变换算法示例")
 
     * 页表长度`M = len(page_table)`，表示页表项的数量。仅当要访问的页号`P`小于`M`时才不会溢出，即`page_id in range(len(page_table))`
+    * 根据逻辑地址查找页表的过程由硬件(页表寄存器、内存管理单元)实现
 
   * 具有快表的地址变换机构
 
@@ -117,11 +130,24 @@
 
   ![段表](../../resource/image/os/chapter2/memory_unsuccessive_allocation_segment_table.png "段表")
 
+  * 在段式存储管理中，若有些段可被多个进程共享，则可用一个单独的共享段表来描述这些段，而不需要在每个进程的段表中都保存一份。共享段表的作用是实现多个进程共享同一段代码或数据，这样既能节省内存空间，又能便于实现对共享段的更新和维护
+  * 多个进程共享同一段物理内存空间并不需要用到共享段表，只需在各自的段表中指向相同的物理地址即可
+  * 多个进程共享同一段逻辑地址空间是不可能的，因为每个进程的逻辑地址空间都是相互独立的
+  * 何时分段是在编程时决定的
+
   ![基本地址变换机构](../../resource/image/os/chapter2/memory_unsuccessive_allocation_segment_address_translation.png "基本地址变换机构")
 
   ![分段分页对比](../../resource/image/os/chapter2/memory_unsuccessive_allocation_segment_page_compare.png "分段分页对比")
 
 * 段页式存储管理
+
+  ![段页式存储管理](../../resource/image/os/chapter2/memory_unsuccessive_allocation_segment_page.png "段页式存储管理")
+
+  ![段页结构](../../resource/image/os/chapter2/memory_unsuccessive_allocation_segment_page_structure.png "段页结构")
+
+  ![段页表](../../resource/image/os/chapter2/memory_unsuccessive_allocation_segment_page_table.png "段页表")
+
+  ![基本地址变换机构](../../resource/image/os/chapter2/memory_unsuccessive_allocation_segment_page_address_translation.png "基本地址变换机构")
 
 ### 1.2 虚拟内存管理
 
@@ -144,4 +170,19 @@
 ## 2 题目
 
 * 3.1习题
+  * ***05(硬件地址变换机构)***
+  * 12(动态重定位不依赖目标程序)
+  * 16(拼接技术是回收进程空间后合并空闲区，区别于紧凑技术)
+  * 26(页表是程序装入时由操作系统建立的)
+  * ***27(共享段表)***
+  * 29(分段和分页提供的物理地址空间大小关系不确定)
+  * ***30(页面只被操作系统感知)***
+  * 33(分段是编程序时决定的)
+  * 34(分段利于动态链接)
+  * ***36(可重入代码)***
+  * 42(主存访问以字/字节为单位)
+  * ***58(多级页表)***
+  * ***62(最佳适应要排序)***
+  * ***70(动态分配算法碎片)***
+  * ***71(页表基址寄存器存的是页表的物理始址)***
 * 3.2习题

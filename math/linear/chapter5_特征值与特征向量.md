@@ -47,7 +47,7 @@
     \begin{vmatrix}\lambda E-A\end{vmatrix}=\sum^n_{k=0}{(-1)^k S_k \lambda^{n-k}}
     $$
 
-    其中 $S_k$ 为 $A$ 的 $k$ 阶主子式，约定 $S_0=1$。且有
+    其中 $S_k$ 为 $A$ 的 $k$ 阶主子式之和，约定 $S_0=1$。且有
 
     $$
     \begin{align*}
@@ -74,9 +74,65 @@
 
 * 常用矩阵的特征值与特征向量
 
+  设 $\xi$ 为矩阵 $A$ 属于特征值 $\lambda$ 的特征向量，则
+
+  | **矩阵** | $kA$ | $A^k$ | $f(A)$ | $A^{-1}$ | $A^{*}$ | $P^{-1}AP$ |
+  |:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+  | **特征值** | $k\lambda$ | $\lambda^k$ | $f(\lambda)$ | $\lambda^{-1}$ | $\dfrac{\begin{vmatrix}A\end{vmatrix}}{\lambda}$ | $\lambda$ |
+  | **特征向量** | $\xi$ | $\xi$ | $\xi$ | $\xi$ | $\xi$ | $P^{-1}\xi$ |
+
+  * $f(x)$ 为多项式，若 $f(A)=O$，则 $f(\lambda)=0$
+
 ### 1.2 相似
 
 * 矩阵相似
+  * 定义
+
+    设 $A,B$ 为 $n$ 阶方阵，若存在 $n$ 阶可逆矩阵 $P$，使得 $P^{-1}AP=B$，则称 $A$ 相似于 $B$，记作 $A\sim B$
+
+  * 性质
+
+    若 $A\sim B$，则有
+    * $r(A)=r(B)$
+    * $\lambda_A=\lambda_B$，即 $\begin{vmatrix}\lambda E-A\end{vmatrix}=\begin{vmatrix}\lambda E-B\end{vmatrix}$，矩阵 $A,B$ 的特征值相同
+    * $r(\lambda E-A)=r(\lambda E-B)$，且 $(\lambda E-A)\sim(\lambda E-B)$
+    * $S_{A_k}=S_{B_K}$，即 $A,B$ 的各阶主子式之和相等
+
+    **$A\sim B$ 是上述性质的必要不充分条件。相似一定满足性质；不满足性质则一定不相似，满足性质未必相似**
+
+  * 定理
+    * 若 $A\sim B$，则
+
+      $$
+      \begin{cases}
+        A^{k}\sim B^{k} \\
+        f(A)\sim f(B) \\
+        A^{-1}\sim B^{-1},&A可逆 \\
+        f\left(A^{-1}\right)\sim f\left(B^{-1}\right),&A可逆 \\
+        A^{*}\sim B^{*}
+      \end{cases}
+      $$
+
+      且变换手段均相同，为 $P^{-1}AP=B$
+
+    * 若 $A\sim B$，则 $A^T\sim B^T$，但变换手段为 $P^T A^T (P^T)^{-1}=B^T$
+    * 若 $A\sim C\,,B\sim D$，则
+
+      $$
+      \begin{bmatrix}
+        A & O \\
+        O & B
+      \end{bmatrix}\sim
+      \begin{bmatrix}
+        C & O \\
+        O & D
+      \end{bmatrix}
+      $$
+
+  * 证明相似
+    * 定义法：证明存在可逆矩阵 $P$，使得 $P^{-1}AP=B$
+    * 传递性：若 $A\sim B,B\sim C$，则 $A\sim C$
+    * 性质法：相似一定满足性质；不满足性质则一定不相似，满足性质未必相似
 
 * 矩阵的相似对角化
 
@@ -86,5 +142,12 @@
 
 * 基础30讲
   * ⭐***例5.1(求特征值特征向量)***
+  * ⭐***例5.2(秩1矩阵)***
+  * 例5.3(幂等矩阵)
+  * 例5.4(二阶主子式之和)
+  * ***例5.5(列1向量、 $A^{*}$ 的特征值特征向量、特征值定义)***
+  * 例5.6(相似证明性质法)
+  * 例5.7(相似则主子式之和相等)
+  * ***例5.8(相似变换手段、秩1矩阵)***
 * 基础30讲课后题
 * 1000题
