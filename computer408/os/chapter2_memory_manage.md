@@ -153,11 +153,65 @@
 
 * 概念
 
+  ![虚拟内存概念](../../resource/image/os/chapter2/virtual_memory.png "虚拟内存概念")
+
 * 请求分页管理方式
 
+  ![请求分页管理方式](../../resource/image/os/chapter2/virtual_memory_page_request.png "请求分页管理方式")
+
+  ![页表](../../resource/image/os/chapter2/virtual_memory_page_request_table.png "页表")
+
+  ![缺页中断机构](../../resource/image/os/chapter2/virtual_memory_page_request_interrupt.png "缺页中断机构")
+
+  * 中断类型属于内中断—故障，可被修复
+
+  ![地址变换机构](../../resource/image/os/chapter2/virtual_memory_page_request_address_translation.png "地址变换机构")
+
 * 页面置换算法
+  * 最佳置换算法 $\text{OPT}$
+
+    ![OPT](../../resource/image/os/chapter2/virtual_memory_page_request_algorithm_OPT.png "OPT")
+
+    * 性能理论上最好，但不能预知未来的页面访问序列，因此无法实现
+
+  * 先进先出 $\text{FIFO}$
+  
+    ![FIFO](../../resource/image/os/chapter2/virtual_memory_page_request_algorithm_FIFO.png "FIFO")
+
+  * 最近最久未使用 $\text{LRU}$
+  
+    ![LRU](../../resource/image/os/chapter2/virtual_memory_page_request_algorithm_LRU.png "LRU")
+
+    * 性能最接近 $\text{OPT}$，但开销大
+
+  * 时钟置换算法 $\text{CLOCK}\,/$ 最近未使用算法 $\text{NRU}$
+
+    ![CLOCK](../../resource/image/os/chapter2/virtual_memory_page_request_algorithm_CLOCK.png "CLOCK")
+
+    * 初始访问位为`1`
+    * 需要淘淘时，从队首开始扫描，访问位为`1`的变成`0`，访问位为`0`的淘汰
+
+    ![改进型CLOCK](../../resource/image/os/chapter2/virtual_memory_page_request_algorithm_CLOCK_enhanced.png "改进型CLOCK")
+
+  * 总结
+
+    ![对比](../../resource/image/os/chapter2/virtual_memory_page_request_algorithm_compare.png "对比")
+
+    * 需要页面置换时，淘汰的是当前内存中接下来在访问序列最后出现的页面
+    * 缺页中断是要调入的页不在内存中；页面置换则是在内存满的情况下需要换页。因此刚开始内存未满时的缺页中断不算页面置换
+    * 缺页率 = 缺页中断次数 / 访问序列长度
 
 * 页框分配策略
+
+  ![页框分配策略](../../resource/image/os/chapter2/virtual_memory_allocation.png "页框分配策略")
+
+  ![分配置换策略](../../resource/image/os/chapter2/virtual_memory_allocation_replacement.png "分配置换策略")
+  
+  ![调入时机](../../resource/image/os/chapter2/virtual_memory_allocation_time.png "调入时机")
+
+  ![调入路径](../../resource/image/os/chapter2/virtual_memory_allocation_route.png "调入路径")
+
+  ![工作集](../../resource/image/os/chapter2/virtual_memory_allocation_work_set.png "工作集")
 
 * 页框回收策略
 

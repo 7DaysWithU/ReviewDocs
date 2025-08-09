@@ -82,6 +82,8 @@
   | **特征向量** | $\xi$ | $\xi$ | $\xi$ | $\xi$ | $\xi$ | $P^{-1}\xi$ |
 
   * $f(x)$ 为多项式，若 $f(A)=O$，则 $f(\lambda)=0$
+  * 三角矩阵主对角线上的元素就是特征值。求行列式易证
+  * 秩 $1$ 矩阵 $A$ 的特征值为 $\begin{cases}\lambda_1=\lambda_2=\cdots=\lambda_{n-1}=0 \\ \lambda_n=\text{tr}(A)\end{cases}$
 
 ### 1.2 相似
 
@@ -135,6 +137,73 @@
     * 性质法：相似一定满足性质；不满足性质则一定不相似，满足性质未必相似
 
 * 矩阵的相似对角化
+  * 定义
+  
+    设 $A$ 为 $n$ 阶矩阵，若存在 $n$ 阶可逆矩阵 $P$，使得 $P^{-1}AP=\Lambda$，则称 $A$ 可相似对角化，记作 $A\sim\Lambda$，并称 $\Lambda$ 为 $A$ 的**相似标准形**。有
+
+    $$
+    \begin{align*}
+      P=\begin{bmatrix}
+        \xi_1 & \xi_2 & \cdots & \xi_n
+      \end{bmatrix},\quad&
+      \Lambda=\begin{bmatrix}
+        \lambda_1 & & & \\
+        & \lambda_2 & & \\
+        & & \ddots & \\
+        & & & \lambda_n
+      \end{bmatrix}\\
+
+      P^{-1}AP=&\Lambda\\
+
+      AP=&P\Lambda\\
+
+      A\begin{bmatrix}
+        \xi_1 & \xi_2 & \cdots & \xi_n
+      \end{bmatrix}=&
+      \begin{bmatrix}
+        \xi_1 & \xi_2 & \cdots & \xi_n
+      \end{bmatrix}
+      \begin{bmatrix}
+        \lambda_1 & & & \\
+        & \lambda_2 & & \\
+        & & \ddots & \\
+        & & & \lambda_n
+      \end{bmatrix}\\
+
+      A\xi_i=&\lambda_i\xi_i\,,i=(1,2,\cdots,n)
+    \end{align*}
+    $$
+
+    因此 $\xi_i$ 即为 $A$ 关于特征值 $\lambda_i$ 的特征向量。由于 $P$ 可逆，因此 $A$ 的特征向量线性无关，即
+    * $A\sim\Lambda\Leftrightarrow A$ 有 $n$ 个线性无关的特征向量
+    * $A\sim\Lambda\Leftrightarrow A$ 对应的每个 $k_i$ 重特征值都有 $k_i$ 个线性无关的特征向量，即 $k_i=n-r(\lambda_i E-A)$
+    * $A$ 有 $n$ 个不同的特征值 $\Rightarrow A\sim\Lambda$
+    * $A$ 是实对称矩阵 $\Rightarrow A\sim\Lambda$
+
+  * 求解
+
+    **正解**：若求得 $A$ 的特征值 $\lambda_1,\lambda_2,\cdots,\lambda_n$，特征向量 $\xi_1,\xi_2,\cdots,\xi_n$，即可令
+
+    $$
+    P=\begin{bmatrix}
+        \xi_1 & \xi_2 & \cdots & \xi_n
+    \end{bmatrix}\qquad
+    \Lambda=\begin{bmatrix}
+      \lambda_1 & & & \\
+      & \lambda_2 & & \\
+      & & \ddots & \\
+      & & & \lambda_n
+    \end{bmatrix}
+    $$
+
+    **反解**：若存在可逆矩阵 $P$，使得 $P^{-1}AP=\Lambda$，则 $A=P\Lambda P^{-1}$，且有
+
+    $$
+    \begin{align*}
+      P^{-1}A^{k}P=\Lambda^{k},\quad&A^{k}=P\Lambda^{k}P^{-1} \\
+      P^{-1}f(A)P=f(\Lambda),\quad&f(A)=Pf(\Lambda)P^{-1}
+    \end{align*}
+    $$
 
 * 实对称矩阵的相似对角化
 
@@ -149,5 +218,13 @@
   * 例5.6(相似证明性质法)
   * 例5.7(相似则主子式之和相等)
   * ***例5.8(相似变换手段、秩1矩阵)***
+  * ***例5.9(相似对角化判断)***
+  * ***例5.10(性质得特征值、不可逆时的行列式性质)***
+  * 例5.11, 13(特征值与特征向量性质)
+  * 例5.12(求 $P^{-1}AP$ )
+  * ***例5.14( $AP=PB$ 形式综合)***
+  * 例5.15(反解A)
+  * 例5.16( $f(A)=Pf(\Lambda)P^{-1}$ )
+  * ***例5.17(反解A、高次幂 $A^{k}=P\Lambda^{k}P^{-1}$ )***
 * 基础30讲课后题
 * 1000题
