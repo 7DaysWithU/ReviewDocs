@@ -23,7 +23,7 @@
 
   * 正交
   
-    当内积 $\alpha^T\beta=0$ 时，称向量 $\alpha,\beta$ 是正交向量。设矩阵 $A=[\alpha,\beta]$，若满足 $A^T A=E$，则称矩阵 $A$ 为正交矩阵。若列向量组 $a_1,a_2,\cdots,a_n$ 满足
+    当内积 $\alpha^T\beta=0$ 时，称向量 $\alpha,\beta$ 是正交向量。设矩阵 $A=[\alpha,\beta]$，若满足 $A^T A=E$，则称矩阵 $A$ 为**正交矩阵**。若列向量组 $a_1,a_2,\cdots,a_n$ 满足
 
     $$
     a^T_i a_j=
