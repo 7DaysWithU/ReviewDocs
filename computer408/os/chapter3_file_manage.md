@@ -38,6 +38,39 @@
 
 * 物理结构
 
+  物理结构说明的是文件在 **外存** 中的存储形式
+
+  ![物理结构](../../resource/image/os/chapter3/physical_structure.png "物理结构")
+
+  ![磁盘块](../../resource/image/os/chapter3/physical_structure_block.png "磁盘块")
+
+  * 连续分配
+
+    ![连续分配](../../resource/image/os/chapter3/physical_structure_sequence.png "连续分配")
+
+  * 链式分配
+
+    ![链式分配隐式链接](../../resource/image/os/chapter3/physical_structure_list_implicit.png "链式分配隐式链接")
+
+    * 读入`i`号块需要访存 $i+1$ 次，找到`i`号块需要访存 $i$ 次
+    * 链接分配未说明具体链接形式时，默认为隐式链接
+
+    ![链式分配显式链接](../../resource/image/os/chapter3/physical_structure_list_explicit.png "链式分配显式链接")
+
+    * 想访问`i`号逻辑块时不需要访问(访存)之前的块，逻辑地址转物理地址时不需要访存
+
+  * 索引分配
+
+    ![索引分配](../../resource/image/os/chapter3/physical_structure_index.png "索引分配")
+
+    ![索引分配链接方案](../../resource/image/os/chapter3/physical_structure_index_link.png "索引分配链接方案")
+
+    ![索引分配多级索引方案](../../resource/image/os/chapter3/physical_structure_index_index.png "索引分配多级索引方案")
+
+    ![索引分配混合索引方案](../../resource/image/os/chapter3/physical_structure_index_mix.png "索引分配混合索引方案")
+
+    ![索引分配总结](../../resource/image/os/chapter3/physical_structure_index_summary.png "索引分配总结")
+
 * 操作
 
 * 文件共享
@@ -46,9 +79,23 @@
 
 ### 1.2 目录
 
-* 概念
+![目录概念](../../resource/image/os/chapter3/directory.png "目录概念")
 
-* 结构
+* 文件控制块 $\text{FCB}$ 与索引节点
+
+  ![FCB](../../resource/image/os/chapter3/directory_FCB.png "FCB")
+
+  ![索引结点](../../resource/image/os/chapter3/directory_index_node.png "索引结点")
+
+* 目录结构
+
+  ![单级目录](../../resource/image/os/chapter3/directory_structure_1.png "单级目录")
+
+  ![二级目录](../../resource/image/os/chapter3/directory_structure_2.png "二级目录")
+
+  ![多级目录](../../resource/image/os/chapter3/directory_structure_multi.png "多级目录")
+
+  ![无环图目录](../../resource/image/os/chapter3/directory_structure_DAG.png "无环图目录")
 
 ### 1.3 文件系统
 
