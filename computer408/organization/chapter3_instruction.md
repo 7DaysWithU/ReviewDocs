@@ -327,8 +327,8 @@
 
 ![CISC与RISC](../../resource/image/organization/chapter3/CISC_RISC_compare.png "CISC与RISC")
 
-* $\text{CISC(Complex Instruction Set Computer)}$ 设计思路是一条指令完成一个复杂的基本功能，多条指令组合完成一个复杂的基本功能。代表：x86架构，主要用于笔记本、台式机等
-* $\text{RISC(Reduced instruction Set Computer)}$ 设计思路是一条指令完成一个基本动作。代表：ARM架构，主要用于手机、平板等
+* $\text{CISC (Complex Instruction Set Computer)}$ 设计思路是一条指令完成一个复杂的基本功能，多条指令组合完成一个复杂的基本功能。代表：x86架构，主要用于笔记本、台式机等
+* $\text{RISC (Reduced instruction Set Computer)}$ 设计思路是一条指令完成一个基本动作。代表：ARM架构，主要用于手机、平板等
 
 ## 2 题目
 

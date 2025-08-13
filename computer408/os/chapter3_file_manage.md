@@ -10,6 +10,8 @@
 
 * 逻辑结构
 
+  逻辑结构可以由 **用户** 确定
+  
   ![逻辑结构](../../resource/image/os/chapter3/logical_structure.png "逻辑结构")
 
   ![有结构文件](../../resource/image/os/chapter3/logical_structure_structured.png "有结构文件")
@@ -38,7 +40,7 @@
 
 * 物理结构
 
-  物理结构说明的是文件在 **外存** 中的存储形式，即如何管理 **非空闲磁盘块**
+  物理结构说明的是文件在 **外存** 中的存储形式，即如何管理 **非空闲磁盘块**。物理结构是由 **操作系统** 确定的
 
   ![物理结构](../../resource/image/os/chapter3/physical_structure.png "物理结构")
 
@@ -48,14 +50,14 @@
 
     ![连续分配](../../resource/image/os/chapter3/physical_structure_sequence.png "连续分配")
 
-  * 链式分配
+  * 链接分配
 
-    ![链式分配隐式链接](../../resource/image/os/chapter3/physical_structure_list_implicit.png "链式分配隐式链接")
+    ![链接分配隐式链接](../../resource/image/os/chapter3/physical_structure_list_implicit.png "链接分配隐式链接")
 
     * 读入`i`号块需要访存 $i+1$ 次，找到`i`号块需要访存 $i$ 次
     * 链接分配未说明具体链接形式时，默认为隐式链接
 
-    ![链式分配显式链接](../../resource/image/os/chapter3/physical_structure_list_explicit.png "链式分配显式链接")
+    ![链接分配显式链接](../../resource/image/os/chapter3/physical_structure_list_explicit.png "链接分配显式链接")
 
     * 想访问`i`号逻辑块时不需要访问(访存)之前的块，逻辑地址转物理地址时不需要访存
 
@@ -106,6 +108,8 @@
 
   ![FCB](../../resource/image/os/chapter3/directory_FCB.png "FCB")
 
+  * 文件目录项就是 $\text{FCB}$，因为目录就是 $\text{FCB}$ 的集合
+
   ![索引结点](../../resource/image/os/chapter3/directory_index_node.png "索引结点")
 
 * 目录结构
@@ -144,7 +148,7 @@
   ![文件系统内存结构](../../resource/image/os/chapter3/file_system_in_memory.png "文件系统内存结构")
 
   * 打开文件只需要将文件索引结点装入内存一次即可；共享文件时不同进程可以通过系统打开文件表或目录缓存直接获得文件的文件索引结点，因此也只需要将文件索引结点装入内存一次即可
-  * **进程读取文件只需要文件描述符，不需要路径**
+  * **进程读取文件只需要文件描述符，不需要其他任何参数(比如路径、文件名等)**
 
 * 存储空间管理
 
@@ -223,6 +227,18 @@
 ## 2 题目
 
 * 4.1习题
+  * 09(文件目录项)
+  * 14(进入系统注册是系统级安全管理)
+  * 15(磁盘调度算法可以提升文件系统性能)
+  * 28(存储文件时采用的物理形式与存储介质有关)
+  * 30(记录成组分解技术、写文件也需要启动磁盘1次)
+  * ***33(FAT表块号大小)***
+  * ***35(索引分配修改信息时，只要索引结点在内存就不需要IO)***
+  * 40(文件分配表必须数组实现)
+  * 44(睡眠就是阻塞、read只要文件描述符)
+  * ***49(索引分配访存次数)***
+  * ***51(按簇分配必须是簇的整数倍)***
+  * ***52(文件按索引结点算)***
 * 4.2习题
   * 01(目录检索)
   * 03(多级目录主要目的是解决命名冲突)
