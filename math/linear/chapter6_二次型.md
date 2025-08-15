@@ -145,6 +145,34 @@
 
 ### 1.3 正定二次型
 
+$n$ 元二次型 $f(x_1,x_2,\cdots,x_n)=x^T A x$，若对任意 $x=\begin{bmatrix}x_1,x_2,\cdots,x_n\end{bmatrix}^T\neq 0$ 均有 $x^T A x>0$,则称 $f$ 为正定二次型，对应矩阵 $A$ 为正定矩阵。有
+
+$$
+\begin{align*}
+  \qquad\qquad\qquad\qquad\qquad&\qquad n元二次型f=x^T A x正定 \\
+  \textcolor{cyan}{定义法}&\begin{cases}
+    \Leftrightarrow对任意x\neq 0均有x^T A x>0
+  \end{cases} \\
+  \textcolor{cyan}{特征值法}&\begin{cases}
+    \Leftrightarrow A的特征值\lambda_i>0\,(i=1,2,\cdots,n)
+  \end{cases} \\
+  \textcolor{cyan}{配方法}&\begin{cases}
+    \Leftrightarrow f的正惯性指数p=n
+  \end{cases} \\
+  \textcolor{cyan}{可逆矩阵法}&\begin{cases}
+    \Leftrightarrow 存在可逆变换将A变为规范形，即C^T A C=E，即A\simeq E \\
+    \Leftrightarrow A=(C^T)^{-1} E C^{-1}=(C^T)^{-1}C^{-1}=(C^{-1})^T C^{-1}\xlongequal{令D=C^{-1}}D^T D
+  \end{cases} \\
+  \textcolor{cyan}{顺序主子式法}&\begin{cases}
+    \Leftrightarrow A的顺序主子式均大于0
+  \end{cases} \\
+  \textcolor{cyan}{必要条件}&\begin{cases}
+    \Rightarrow A的主对角线元素a_{ii}>0\,(i=1,2,\cdots,n) \\
+    \Rightarrow \begin{vmatrix}A\end{vmatrix}>0
+  \end{cases}
+\end{align*}
+$$
+
 ## 2 题目
 
 * 基础30讲
@@ -157,5 +185,8 @@
   * 例6.7(惯性指数)
   * 例6.8(惯性指数判断合同、配方法)
   * 例6.9(初等矩阵的转置和逆)
+  * ⭐***例6.10(正定判别法)***
+  * ***例6.11(非拉格朗日配方法二次型、正定定义、齐次方程唯一零解)***
+  * ***例6.12( $A^{*},A^{-1}$ 正定充要条件)***
 * 基础30讲课后题
 * 1000题

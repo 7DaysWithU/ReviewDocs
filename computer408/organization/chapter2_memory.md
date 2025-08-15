@@ -183,6 +183,10 @@
 
   ![SSD结构](../../resource/image/organization/chapter2/SSD_structure.png "SSD结构")
 
+  * $\text{SSD}$ 容易磨损，因此采用磨损均衡技术延长寿命
+  * 磁盘需要调度算法，$\text{SSD}$ 不需要；$\text{SSD}$ 需要磨损均衡，磁盘不需要
+  * 静态磨损均衡比动态磨损均衡表现更好
+
 ### 1.4 高速缓冲存储器Cache
 
 * $\text{Cache}$ 概念

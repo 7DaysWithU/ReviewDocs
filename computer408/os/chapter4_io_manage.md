@@ -108,13 +108,66 @@
 
 * 磁盘
 
-  详见[组成原理-存储-外部存储器](../organization/chapter2_memory.md#13-外部存储器)
+  ![磁盘](../../resource/image/os/chapter4/disk.png "磁盘")
+  
+  磁盘结构详见[组成原理-存储-外部存储器](../organization/chapter2_memory.md#13-外部存储器)
 
 * 磁盘管理
 
+  ![磁盘管理](../../resource/image/os/chapter4/disk_manage.png "磁盘管理")
+
+  ![磁盘初始化](../../resource/image/os/chapter4/disk_manage_initiate.png "磁盘初始化")
+
+  * 逻辑格式化也称高级格式化。在此期间文件系统被创建，操作系统存储引导程序
+
+  ![引导块](../../resource/image/os/chapter4/disk_manage_boot.png "引导块")
+
+  ![坏块管理](../../resource/image/os/chapter4/disk_manage_damaged_block.png "坏块管理")
+
 * 磁盘调度
 
+  ![磁盘调度](../../resource/image/os/chapter4/disk_algorithm.png "磁盘调度")
+
+  ![减少延迟](../../resource/image/os/chapter4/disk_time_reduce.png "减少延迟")
+  
+  * 调度时间
+
+    ![磁盘调度时间](../../resource/image/os/chapter4/disk_time.png "磁盘调度时间")
+
+    * $\dfrac{1}{r}$ 表示转一圈所需的时间
+    * 延迟时间、传输时间与磁盘的固有属性有关，调度算法影响的是寻道时间
+    * **影响最大的是寻道时间**
+  
+    ![磁盘地址设计](../../resource/image/os/chapter4/disk_address_design.png "磁盘地址设计")
+
+    * 采用`(驱动器号, 柱面号, 盘面号, 扇区号)`的地址格式时，当一个盘面的所有扇区读完时，下一个连续地址就是下一个盘面的初始扇区，只需要激活不同的磁头即可
+    * 采用`(驱动器号, 盘面号, 柱面号, 扇区号)`的地址格式时，当一个柱面的所有扇区读完时，下一个连续地址需要切换柱面，带来额外的磁头启动时间和寻道时间，因此不如上一个方案
+
+    ![交替编号](../../resource/image/os/chapter4/disk_time_reduce_alternate_numbering.png "交替编号")
+
+    * 由于磁头每读入一个扇区的数据就要进行处理，但处理时磁盘仍在旋转，因此如果逻辑连续的数据存在物理连续的扇区上，读完前一个扇区还在处理数据时，磁盘就已经转过了该读的下一个扇区，想要读入就得重新转一圈回来。因此采用交替编号，处理数据时转过的扇区不是要读的扇区，处理完数据磁头能够接着读入时正好转到对应的扇区
+
+    ![错位命名](../../resource/image/os/chapter4/disk_time_reduce_staggered.png "错位命名")
+
+    * 采用`(驱动器号, 柱面号, 盘面号, 扇区号)`的地址格式时，当一个盘面的所有扇区读完时，下一个连续地址就是下一个盘面的初始扇区。同交替编号的思想一样，为避免处理数据时转过该读的扇区，不同盘面间也错位命名，使上下同一位置的扇区号不一样，流出时间进行数据处理
+
+  * 调度算法
+
+    ![FCFS](../../resource/image/os/chapter4/disk_algorithm_FCFS.png "FCFS")
+
+    ![SSTF](../../resource/image/os/chapter4/disk_algorithm_SSTF.png "SSTF")
+
+    ![LOOK](../../resource/image/os/chapter4/disk_algorithm_LOOK.png "LOOK")
+
+    ![C-LOOK](../../resource/image/os/chapter4/disk_algorithm_CLOOK.png "C-LOOK")
+
+    ![SCAN](../../resource/image/os/chapter4/disk_algorithm_SCAN.png "SCAN")
+
+    ![C-SCAN](../../resource/image/os/chapter4/disk_algorithm_CSCAN.png "C-SCAN")
+
 * 固态硬盘 $\text{SSD}$
+
+  详见[组成原理-存储-外部存储器](../organization/chapter2_memory.md#13-外部存储器)
 
 ## 2 题目
 
@@ -133,3 +186,6 @@
   * ***34(设备驱动程序处理流程)***
   * ***45(内核缓冲区)***
 * 5.3习题
+  * ***06(操作系统已簇为单位给文件分配空间，1个簇(逻辑块)=1到多个物理块，1个物理块=1个扇区)***
+  * 24(SSD容易磨损)
+  * ***32(SSTF、SCAN、CSCAN都有磁臂黏着现象)***
