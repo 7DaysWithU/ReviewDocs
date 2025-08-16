@@ -153,11 +153,11 @@ $$
   \textcolor{cyan}{定义法}&\begin{cases}
     \Leftrightarrow对任意x\neq 0均有x^T A x>0
   \end{cases} \\
-  \textcolor{cyan}{特征值法}&\begin{cases}
-    \Leftrightarrow A的特征值\lambda_i>0\,(i=1,2,\cdots,n)
-  \end{cases} \\
   \textcolor{cyan}{配方法}&\begin{cases}
     \Leftrightarrow f的正惯性指数p=n
+  \end{cases} \\
+  \textcolor{cyan}{特征值法}&\begin{cases}
+    \Leftrightarrow A的特征值\lambda_i>0\,(i=1,2,\cdots,n)
   \end{cases} \\
   \textcolor{cyan}{可逆矩阵法}&\begin{cases}
     \Leftrightarrow 存在可逆变换将A变为规范形，即C^T A C=E，即A\simeq E \\
@@ -189,4 +189,6 @@ $$
   * ***例6.11(非拉格朗日配方法二次型、正定定义、齐次方程唯一零解)***
   * ***例6.12( $A^{*},A^{-1}$ 正定充要条件)***
 * 基础30讲课后题
+  * ⭐***6.12(依据正交计算未知特征向量)***
+  * 6.13(分类讨论正定)
 * 1000题
