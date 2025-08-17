@@ -120,12 +120,14 @@
 
   * **惯性定理**：无论选取什么可逆线性变换将二次型化成标准形或规范形，**标准形或规范形的**正项个数 $p$、负项个数 $q$ 均保持不变。$p$ 称为正惯性指数，$q$ 称为负惯性指数。则二次型的秩 $r(A)=p+q$。两个二次型合同的充要条件为
 
-   $$
-   A\simeq B
-   \Leftrightarrow\begin{cases}p_A=p_B \\ q_A=q_B\end{cases}
-   \Leftrightarrow\begin{cases}r(A)=r(B) \\ p_A=p_B \\ q_A=q_B\end{cases}
-   \Leftrightarrow\begin{cases}正特征值个数相同 \\ 负特征值个数相同\end{cases}
-   $$
+    $$
+    A\simeq B
+    \Leftrightarrow\begin{cases}p_A=p_B \\ q_A=q_B\end{cases}
+    \Leftrightarrow\begin{cases}r(A)=r(B) \\ p_A=p_B \\ q_A=q_B\end{cases}
+    \Leftrightarrow\begin{cases}正特征值个数相同 \\ 负特征值个数相同\end{cases}
+    $$
+
+    **由惯性定理可得，只要获得了二次型的标准形，那么不需要再做额外变换，只需从标准形中读出 $p,q$，就唯一确定了规范形。即对应正负零项填 $+1,-1,0$**
 
 * 化简
   * 配方法
@@ -145,7 +147,7 @@
 
 ### 1.3 正定二次型
 
-$n$ 元二次型 $f(x_1,x_2,\cdots,x_n)=x^T A x$，若对任意 $x=\begin{bmatrix}x_1,x_2,\cdots,x_n\end{bmatrix}^T\neq 0$ 均有 $x^T A x>0$,则称 $f$ 为正定二次型，对应矩阵 $A$ 为正定矩阵。有
+$n$ 元二次型 $f(x_1,x_2,\cdots,x_n)=x^T A x$，若对任意 $x=\begin{bmatrix}x_1,x_2,\cdots,x_n\end{bmatrix}^T\neq 0$ 均有 $x^T A x>0$，则称 $f$ 为正定二次型，对应矩阵 $A$ 为正定矩阵。有
 
 $$
 \begin{align*}
@@ -192,3 +194,7 @@ $$
   * ⭐***6.12(依据正交计算未知特征向量)***
   * 6.13(分类讨论正定)
 * 1000题
+  * ⛔***04(二次型等于0的解、正定判别法、正定二次型的规范形、二次型化规范形)***
+  * ***05(二次型合同前提是 $A,B$ 都是实对称矩阵、$(\lambda E-A)\sim(\lambda E-B)$ )***
+  * ⛔***09(矩阵分解)***
+  * ⭐***12(二次型最值)***
