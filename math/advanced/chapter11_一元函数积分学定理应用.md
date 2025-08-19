@@ -72,7 +72,7 @@
     扩展的积分中值定理&: \int^b_a{f(x)g(x)\mathrm{d}x}=f\left(\xi\right)\int^b_a{g(x)\mathrm{d}x}\\\\
     牛顿莱布尼茨公式&: \int^x_a{f^{'}(t)\mathrm{d}t}=f(x)-f(a)\\\\
     拉格朗日中值定理&: f(x)-f(a)=f^{'}\left(\xi\right)(x-a)\\\\
-    变限积分求导&: \left[\int^{x+2}_x{f(t)\mathrm{d}t}\right]^{'}=f(x+2)-f(x)
+    变限积分求导&: \left[\int^{x+a}_x{f(t)\mathrm{d}t}\right]^{'}=f(x+a)-f(x)
   \end{align*}
   $$
 

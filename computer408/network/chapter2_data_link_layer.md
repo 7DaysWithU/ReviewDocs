@@ -121,7 +121,93 @@
 
   ![GBN与SR信道利用率](../../resource/image/network/chapter2/flow_controll_SR_GBN_channel_usage.png "GBN与SR信道利用率")
 
-#### 1.1.4 介质访问控制
+#### 1.1.4 介质访问控制 (MAC)
+
+##### 1.1.4.1 信道划分
+
+![信道划分](../../resource/image/network/chapter2/mac_split.png "信道划分")
+
+* 时分复用 $\text{TDM}$
+
+  ![时分复用](../../resource/image/network/chapter2/mac_split_TDM.png "时分复用")
+
+* 统计时分复用 $\text{STDM}$
+
+  ![统计时分复用](../../resource/image/network/chapter2/mac_split_STDM.png "统计时分复用")
+
+* 频分复用 $\text{FDM}$
+
+  ![频分复用](../../resource/image/network/chapter2/mac_split_FDM.png "频分复用")
+
+* 波分复用 $\text{WDM}$
+
+  ![波分复用](../../resource/image/network/chapter2/mac_split_WDM.png "波分复用")
+
+  * 本质上也是频分复用，因为波长与频率是倒数关系，但光信号的带宽更大，能拆出更多子信道
+
+* 码分复用 $\text{CDM}$
+
+  ![码分复用](../../resource/image/network/chapter2/mac_split_CDM.png "码分复用")
+
+  * 各站点码片序列相互正交，且各站点知道其他站点的码片序列
+  * 码片序列为 $m$ 维向量，元素值为 $\set{1,-1}$
+  * 从叠加信号中分辨是哪个站发的信号，使用下式计算。其中 $\eta_i$ 为 $i$ 站的码片序列，$\xi$ 为收到的混合码片序列，$m$ 为码片序列长度
+  
+    $$
+    \dfrac{1}{m}\eta_i\cdot\xi=
+    \begin{cases}
+      1,&i站发送的1 \\
+      -1,&i站发送的0 \\
+      0,&i站没有发送
+    \end{cases}
+    $$
+
+##### 1.1.4.2 随机访问
+
+![随机访问](../../resource/image/network/chapter2/mac_random_0.png "随机访问")
+
+* $\text{ALOHA}$ 协议
+
+  ![ALOHA协议](../../resource/image/network/chapter2/mac_random_ALOHA.png "ALOHA协议")
+
+  ![纯ALOHA](../../resource/image/network/chapter2/mac_random_ALOHA_pure.png "纯ALOHA")
+
+  ![时隙ALOHA](../../resource/image/network/chapter2/mac_random_ALOHA_time.png "时隙ALOHA")
+
+* $\text{CSMA}$ 协议
+
+  ![1坚持CSMA](../../resource/image/network/chapter2/mac_random_CSMA_1_hold.png "1坚持CSMA")
+
+  * 因为坚持监听，所以信道刚空闲时可能有多个节点同时发数据造成冲突
+
+  ![非坚持CSMA](../../resource/image/network/chapter2/mac_random_CSMA_non_hold.png "非坚持CSMA")
+
+  * 非坚持通过等待监听改进了 1 坚持可能冲突的特点，但导致信道利用率低
+
+  ![p坚持CSMA](../../resource/image/network/chapter2/mac_random_CSMA_p_hold.png "p坚持CSMA")
+
+* $\text{CSMA/CD}$ 协议
+
+  ![CSMACD](../../resource/image/network/chapter2/mac_random_CSMACD.png "CSMACD")
+
+  ![CSMACD发送流程图](../../resource/image/network/chapter2/mac_random_CSMACD_flowchart_send.png "CSMACD发送流程图")
+
+  ![CSMACD接收流程图](../../resource/image/network/chapter2/mac_random_CSMACD_flowchart_reveive.png "CSMACD接收流程图")
+
+  ![CSMACD争用期](../../resource/image/network/chapter2/mac_random_CSMACD_contention.png "CSMACD争用期")
+
+  * 单倍最大单向传播时延能使一个节点发出的比特流占满整个信道，其他节点监听到信道忙时就不会再发帧
+  * 两倍最大单向传播时延是最大可能的冲突时间。以图中数据为例，假设 $A$ 给 $B$ 发送一个帧，在第 $29\mu\text{s}$ 时，$B$ 还认为信道是空的，遂发送一个帧，但马上与 $A$ 发送的帧冲突了。再经过 $30\mu\text{s}$ 冲突信息才能被 $A$ 接收到，从 $A$ 发出信息到收到碰撞信息，总共过去两倍的单向最大传播时延。
+  * 如果能度过争用期，则后续都是安全不会被打扰的
+
+  ![CSMACD最短帧](../../resource/image/network/chapter2/mac_random_CSMACD_shortest_frame.png "CSMACD最短帧")
+
+  * 如果帧太短，在极限情况，也就是争用期马上要满的情况下发生冲突，但此前因为帧太短导致已经发送完毕，且发送完毕前都未冲突，发送方因此认为发送成功，但实际出现冲突发送失败了。因此最短帧长不能低于关于争用期的时延带宽积。**以太网规定最小帧长为 $64\text{B}$**
+  * 最大帧长也应该被限制，否则发送方会持续霸占信道导致其他节点无法收发信息，但最大帧长的限制由不同技术有不同的方案。**以太网规定最大帧长为 $1518\text{B}$**
+
+* $\text{CSMA/CA}$ 协议
+
+##### 1.1.4.3 轮询访问
 
 ### 1.2 局域网
 
@@ -136,6 +222,7 @@
 * 3.2习题
 * 3.3习题
 * 3.4习题
+  * ***24(帧动态大小要求信道利用率恒100%，应以短帧计算，这样短的满足长的也满足，反正不成立)***
   * ⭐***26(滑动窗口协议帧序号比特数)***
 * 3.5习题
 * 3.6习题

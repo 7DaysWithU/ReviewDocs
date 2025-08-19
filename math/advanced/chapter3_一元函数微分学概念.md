@@ -11,26 +11,26 @@
   * 可导必定连续，连续不一定可导
   * 导数性质
     * 若 $f(x)$ 是 $n$ 阶可导，则每导一次奇偶性互换
-    * 若  $f(x)$  以  $T$  为周期且可导，则  $f^{'}(x)$  仍以  $T$  为周期
+    * 若 $f(x)$ 以 $T$ 为周期且可导，则 $f^{'}(x)$ 仍以 $T$ 为周期
     * 若 $f(x)$ 可导且有界，则 $f^{'}(x)$ 不一定有界
   * $f(x)$ 与 $\lvert f(x)\rvert$ 的连续、可导关系
   * ***$f(x)$ 在 $x_0$ 处连续*** 是 ***$\lvert f(x)\rvert$ 在 $x_0$ 处连续*** 的充分不必要条件
   * 设 $f(x)$ 在 $x_0$ 处可导，则
     * $f(x_0) \neq 0 \Rightarrow |f(x)|$  在  $x_0$  处可导且
-        $
-        \left[|f(x)|\right]'_{x=x_0} =
-        \begin{cases}
-        f'(x_0), & f(x_0) > 0, \\
-        -f'(x_0), & f(x_0) < 0.
-        \end{cases}
-        $
+      $
+      \left[|f(x)|\right]'_{x=x_0} =
+      \begin{cases}
+      f'(x_0), & f(x_0) > 0, \\
+      -f'(x_0), & f(x_0) < 0.
+      \end{cases}
+      $
     * $f(x_0)=0$ ，且
-        $
-        \begin{cases}
-        f'(x_0) = 0 \Rightarrow |f(x)| \text{ 在 } x_0 \text{ 处可导且 } \left[|f(x)|       \right]'_{x=x_0} = 0, \\
-        f'(x_0) \neq 0 \Rightarrow |f(x)| \text{ 在 } x_0 \text{ 处不可导}.
-        \end{cases}
-        $
+      $
+      \begin{cases}
+      f'(x_0) = 0 \Rightarrow |f(x)| \text{ 在 } x_0 \text{ 处可导且 } \left[|(x)|       \right]'_{x=x_0} = 0, \\
+      f'(x_0) \neq 0 \Rightarrow |f(x)| \text{ 在 } x_0 \text{ 处不可导}.
+      \end{cases}
+      $
 * 导数几何意义
   * $y=f(x)$ 在点 $x_0$ 处的导数值 $f^{'}(x_0)$ 就是曲线 $y=f(x)$ 在点 $(x_0,y_0)$ 处的切线斜率 $k$
   * 曲线 $y=f(x)$ 在点 $x_0$ 处的方程

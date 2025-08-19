@@ -95,7 +95,7 @@
     设函数 $F(x)$ 是连续函数 $f(x)$ 在 $[a,b]$ 上的一个原函数，则
 
     $$
-    \int^b_a{f(x)\mathrm{d}x}=F(x)\Big|^b_a-F(a)
+    \int^b_a{f(x)\mathrm{d}x}=F(x)\Big|^b_a=F(b)-F(a)
     $$
 
     若 $f(x)$ 在 $[a,b]$ 上分段有原函数，在 $[a,c)$ 上有原函数 $F_1(x)$，$(c,b]$ 上有原函数 $F_2(x)$，则
