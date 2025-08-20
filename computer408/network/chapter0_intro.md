@@ -8,7 +8,7 @@
 
   ![计算机网络定义](../../resource/image/network/chapter0/network_definition.png "计算机网络定义")
 
-  * 家用路由器通过交换机将手机、电脑、电视等连接到同一个计算机网络中，再通过路由器连接到外部的互连网
+  * 家用路由器通过交换机将手机、电脑、电视等连接到同一个计算机网络中，再通过路由器连接到外部的互连网。路由器=路由器+交换机+接入点 $\text{AP}$，接入点与交换机连接，负责给无线设备提供接入
 
   ![计算机网络组成](../../resource/image/network/chapter0/network_component.png "计算机网络组成")
 

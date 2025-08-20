@@ -2,11 +2,18 @@
 
 ## 1 知识点
 
-### 1.1 数据链路层功能
+### 1.1 数据链路层概念
+
+![数据链路层与IEEE802](../../resource/image/network/chapter2/data_link_layer_IEEE802.png "数据链路层与IEEE802")
+
+* $802.3$ 是以太网的代名词，$802.11$ 是无线网络技术 $\text{WiFi}$ 的代名词
+* $\text{LLC}$ 子层名存实亡，数据链路层本质上几乎就是 $\text{MAC}$ 层了
+
+### 1.2 数据链路层功能
 
 ![数据链路层功能](../../resource/image/network/chapter2/data_link_layer_function.png "数据链路层功能")
 
-#### 1.1.1 组帧 (封装成帧)
+#### 1.2.1 组帧 (封装成帧)
 
 ![组帧](../../resource/image/network/chapter2/framing.png "组帧")
 
@@ -20,7 +27,7 @@
 
 ![违规编码法](../../resource/image/network/chapter2/framing_illegal_coding.png "违规编码法")
 
-#### 1.1.2 差错控制
+#### 1.2.2 差错控制
 
 * 奇偶校验码
 
@@ -49,7 +56,7 @@
 
   * 如果有 $2$ 位错了，则校验方程 $S$ 指出的出错位置是不正确的，因此添加全校验位区分是"错一位在多个方程里体现"还是"错多位"。全校验码就是对整体偶校验，能识别一位错误。如果全校验码错了说明是"错一位在多个方程里体现"，修改即可；反正是"错多位"，只能重传
 
-#### 1.1.3 流量控制与可靠传输
+#### 1.2.3 流量控制与可靠传输
 
 ![流量控制欲可靠传输](../../resource/image/network/chapter2/flow_controll.png "流量控制与可靠传输")
 
@@ -121,15 +128,20 @@
 
   ![GBN与SR信道利用率](../../resource/image/network/chapter2/flow_controll_SR_GBN_channel_usage.png "GBN与SR信道利用率")
 
-#### 1.1.4 介质访问控制 (MAC)
+#### 1.2.4 介质访问控制 (MAC)
 
-##### 1.1.4.1 信道划分
+##### 1.2.4.1 信道划分
 
 ![信道划分](../../resource/image/network/chapter2/mac_split.png "信道划分")
 
 * 时分复用 $\text{TDM}$
 
   ![时分复用](../../resource/image/network/chapter2/mac_split_TDM.png "时分复用")
+
+  * $\text{TDM}$ 必须满足如下条件
+    * 介质的位速率(每秒传输的二进制位数)大于单个信号的位速率
+    * 介质的带宽(所能传输信号的最高频率与最低频率之差)大于结合信号的带宽(所有信号经过调制后形成的复合信号的带宽)
+  * $\text{TDM}$ 适合传输数字信号。所以在计算机网络中更常用
 
 * 统计时分复用 $\text{STDM}$
 
@@ -138,6 +150,8 @@
 * 频分复用 $\text{FDM}$
 
   ![频分复用](../../resource/image/network/chapter2/mac_split_FDM.png "频分复用")
+
+  * $\text{FDM}$ 适合传输模拟信号
 
 * 波分复用 $\text{WDM}$
 
@@ -162,7 +176,9 @@
     \end{cases}
     $$
 
-##### 1.1.4.2 随机访问
+##### 1.2.4.2 随机访问
+
+![随机访问](../../resource/image/network/chapter2/mac_random.png "随机访问")
 
 ![随机访问](../../resource/image/network/chapter2/mac_random_0.png "随机访问")
 
@@ -188,32 +204,86 @@
 
 * $\text{CSMA/CD}$ 协议
 
-  ![CSMACD](../../resource/image/network/chapter2/mac_random_CSMACD.png "CSMACD")
+  ![CSMA/CD](../../resource/image/network/chapter2/mac_random_CSMACD.png "CSMA/CD")
 
-  ![CSMACD发送流程图](../../resource/image/network/chapter2/mac_random_CSMACD_flowchart_send.png "CSMACD发送流程图")
+  * **以太网最短帧长 $64\text{B}=512\text{bit}$，则默认争用期为按此最短帧长计算的争用期**
 
-  ![CSMACD接收流程图](../../resource/image/network/chapter2/mac_random_CSMACD_flowchart_reveive.png "CSMACD接收流程图")
+  ![CSMA/CD发送流程图](../../resource/image/network/chapter2/mac_random_CSMACD_flowchart_send.png "CSMA/CD发送流程图")
 
-  ![CSMACD争用期](../../resource/image/network/chapter2/mac_random_CSMACD_contention.png "CSMACD争用期")
+  ![CSMA/CD接收流程图](../../resource/image/network/chapter2/mac_random_CSMACD_flowchart_reveive.png "CSMA/CD接收流程图")
+
+  ![CSMA/CD争用期](../../resource/image/network/chapter2/mac_random_CSMACD_contention.png "CSMA/CD争用期")
 
   * 单倍最大单向传播时延能使一个节点发出的比特流占满整个信道，其他节点监听到信道忙时就不会再发帧
   * 两倍最大单向传播时延是最大可能的冲突时间。以图中数据为例，假设 $A$ 给 $B$ 发送一个帧，在第 $29\mu\text{s}$ 时，$B$ 还认为信道是空的，遂发送一个帧，但马上与 $A$ 发送的帧冲突了。再经过 $30\mu\text{s}$ 冲突信息才能被 $A$ 接收到，从 $A$ 发出信息到收到碰撞信息，总共过去两倍的单向最大传播时延。
   * 如果能度过争用期，则后续都是安全不会被打扰的
 
-  ![CSMACD最短帧](../../resource/image/network/chapter2/mac_random_CSMACD_shortest_frame.png "CSMACD最短帧")
+  ![CSMA/CD最短帧](../../resource/image/network/chapter2/mac_random_CSMACD_shortest_frame.png "CSMA/CD最短帧")
 
   * 如果帧太短，在极限情况，也就是争用期马上要满的情况下发生冲突，但此前因为帧太短导致已经发送完毕，且发送完毕前都未冲突，发送方因此认为发送成功，但实际出现冲突发送失败了。因此最短帧长不能低于关于争用期的时延带宽积。**以太网规定最小帧长为 $64\text{B}$**
   * 最大帧长也应该被限制，否则发送方会持续霸占信道导致其他节点无法收发信息，但最大帧长的限制由不同技术有不同的方案。**以太网规定最大帧长为 $1518\text{B}$**
 
 * $\text{CSMA/CA}$ 协议
 
-##### 1.1.4.3 轮询访问
+  ![CSMA/CA](../../resource/image/network/chapter2/mac_random_CSMACA.png "CSMA/CA")
 
-### 1.2 局域网
+  ![隐蔽站](../../resource/image/network/chapter2/mac_random_CSMACA_hiden_station.png "隐蔽站")
 
-### 1.3 广域网
+  * 因为信号是广播发送的，且随着距离增加信号强度降低，因此距离过远的两个站点可能检测不到对方，但二者发出的信号会在接入点处冲突，这就是隐蔽站问题
 
-### 1.4 数据链路层设备
+  ![收发流程](../../resource/image/network/chapter2/mac_random_CSMACA_flowchart_0.png "收发流程")
+
+  * $\text{DIFS}>\text{SFIS}+\text{传播时延}$，只有这样才能确保一个完整的发送确认流程不会被打断。如果不满足该要求，则接收方在 $\text{SFIS}$ 后准备发 $\text{ACK}$ 时，信道会被认为是空闲的，新的信号与 $\text{ACK}$ 冲突导致之前的帧发送失败
+  * 随机退避倒计时只在信道空闲时才继续，信道忙时冻结。这样能保证倒计时归零的时刻信道是空闲的
+
+  ![收发流程](../../resource/image/network/chapter2/mac_random_CSMACA_flowchart_1.png "收发流程")
+
+  * $\text{NAV}$ 值
+  
+    当 $A$ 站广播一个 $\text{RTS}$ 帧时,将占用信道的持续时间
+
+    $$
+    \text{SIFS+CTS+ SIFS+DATA+ SIFS+ACK}
+    $$
+
+    写入 $\text{RTS}$ 帧的首部；当 $\text{AP}$ 收到 $\text{RTS}$ 帧后,广播一个 $\text{CTS}$ 帧,将占用信道的持续时间
+
+    $$
+    \text{SIFS+DATA+SIFS+ACK}
+    $$
+
+    写入 $\text{CTS}$ 帧的首部。之后传送的数据帧的首部也携带本次通信所需的持续时间。其他站收到 $\text{CTS}$ 帧后，根据帧中的持续时间设置自己的 $\text{NAV}$ 值，即 $\text{CTS}$ 帧中批准的时间即为其他站的 $\text{NAV}$ 值
+
+  * 返回的 $\text{CTS}$ 对预约者而言是同意预约，对其他站点而言是等待要求
+  * 预约失败时，会随机退避一段时间，再尝试预约
+  * 预约是选用的，长帧使用较多，因为短帧退避重发的代价相对较低，但长帧冲突的代价较高
+
+##### 1.2.4.3 轮询访问
+
+![令牌传递协议](../../resource/image/network/chapter2/mac_pollng_token.png "令牌传递协议")
+
+* 令牌循环流动，持有令牌的节点每次只能发一个数据帧，发完就要释放转交令牌；不需要发数据帧的节点拿到令牌后会立即释放转交
+* 转交令牌时是重新产生一个新令牌，将新令牌传给下个节点
+
+![令牌传递协议工作流程](../../resource/image/network/chapter2/mac_pollng_token_flowchart.png "令牌传递协议工作流程")
+
+![MAU](../../resource/image/network/chapter2/mac_pollng_token_MAU.png "MAU")
+
+### 1.3 局域网
+
+* 概念
+
+  ![局域网特点](../../resource/image/network/chapter2/LAN_characteristic.png "局域网特点")
+  
+  ![局域网分类](../../resource/image/network/chapter2/LAN_classification.png "局域网分类")
+
+  ![局域网硬件架构](../../resource/image/network/chapter2/LAN_hardware.png "局域网硬件架构")
+  
+  * $\text{MAC}$ 地址写死在以 $\text{ROM}$ 中，不同适配器各自拥有全球唯一的 $\text{MAC}$ 地址
+
+### 1.4 广域网
+
+### 1.5 数据链路层设备
 
 ## 2 题目
 
@@ -225,6 +295,11 @@
   * ***24(帧动态大小要求信道利用率恒100%，应以短帧计算，这样短的满足长的也满足，反正不成立)***
   * ⭐***26(滑动窗口协议帧序号比特数)***
 * 3.5习题
+  * 04(TDM适合数字信号)
+  * ***13(争用期时延带宽积)***
+  * 15(二进制退避考虑了网络负载对冲突的影响)
+  * 24(CSMA/CA预约不是必须的)
+  * ⭐***33(争用期是两倍的最长传播时间)***
 * 3.6习题
 * 3.7习题
 * 3.8习题
