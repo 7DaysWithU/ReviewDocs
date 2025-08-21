@@ -281,6 +281,81 @@
   
   * $\text{MAC}$ 地址写死在以 $\text{ROM}$ 中，不同适配器各自拥有全球唯一的 $\text{MAC}$ 地址
 
+* $\text{IEEE 802.3}$ 以太网
+
+  ![以太网](../../resource/image/network/chapter2/LAN_Ethernet.png "以太网")
+
+  * 传输速度 $\geq 2.5\text{Gbps}$ 的双绞线只支持全双工；低于该速率的双绞线由通信双方协商采用半双工还是全双工。如集线器采用半双工，交换机采用全双工
+  * **以太网提供的是无确认、无连接的服务！！！**
+
+  ![以太网V2标准MAC帧](../../resource/image/network/chapter2/LAN_Ethernet_MAC_frame.png "以太网V2标准MAC帧")
+
+  * 地址字段占 $6\text{B}$，对应 $48$ 位的全球唯一 $\text{MAC}$ 地址
+  * $\text{IEEE 802.3}$ 标准与 $\text{V2}$ 标准的以太网帧仅在占 $2\text{B}$ 的字段不同。$\text{IEEE 802.3}$ 标准下该字段表示数据部分的长度，因为标准 $\text{IEEE 802.3}$ 标准中与网络层直接连接的是 $\text{LLC}$ 层
+  * 因为整帧长度为 $[64,1518]\text{B}$，因此数据部分长度为 $[46,1500]\text{B}$
+
+  ![以太网帧传播](../../resource/image/network/chapter2/LAN_Ethernet_MAC_frame_spread.png "以太网帧传播")
+
+  * 设备
+    * 集线器工作在物理层，自然没有 $\text{MAC}$ 地址
+    * 交换机工作在物理层、数据链路层，有 $\text{MAC}$ 地址。可能是多个接口共用一个 $\text{MAC}$ 地址，也可能各自独立拥有一个 $\text{MAC}$ 地址
+    * 路由器工作在物理层、数据链路层、网络层，有 $\text{MAC}$ 地址
+  * 冲突域、广播域
+    * 集线器不隔离冲突域，也不隔离广播域
+
+      > $E,F,G$ 主机只能半双工通信，因为同处一个冲突域
+
+    * 交换机隔离冲突域，但不隔离广播域
+
+      > $D,E$ 可以同时与其他主机通信，因为交换机将两个冲突域隔离了
+      >
+      > 当 $D$ 发送广播帧时，$A,B,C,E,F,G$ 都会收到，因为交换机不隔离广播域
+
+    * 路由器既隔离冲突域，也隔离广播域
+
+      > 当 $D$ 发送广播帧时，交换机也会将广播帧转发给路由器，但会被路由器拒绝，因为路由器隔离广播域
+
+* $\text{IEEE 802.1Q}$ 虚拟局域网 $\text{VLAN}$
+
+  ![VLAN](../../resource/image/network/chapter2/LAN_VLAN.png "VLAN")
+
+  * 划分方式
+
+    ![接口划分](../../resource/image/network/chapter2/LAN_VLAN_split_0.png "接口划分")
+
+    * 需要管理员手动配置，且主机换接口就需要重新配置映射关系
+
+    ![MAC地址划分](../../resource/image/network/chapter2/LAN_VLAN_split_1.png "MAC地址划分")
+
+    * 可以自动识别主机所属的 $\text{VLAN}$。交换机转发后接收的交换机通过查看 $\text{802.1Q}$ 帧内的 $\text{VID}$ 即可确定转发对象
+
+    ![IP地址划分](../../resource/image/network/chapter2/LAN_VLAN_split_2.png "IP地址划分")
+
+    * 在网络层功能的支持下，$\text{VLAN}$ 可以跨局域网，让多个局域网的主机组成一个 $\text{VLAN}$
+
+  * $\text{802.1Q}$ 帧
+
+    ![802.1Q帧结构](../../resource/image/network/chapter2/LAN_VLAN_8021Q_frame.png "802.1Q帧结构")
+
+    * 在标准以太网帧的基础上增设 $\text{VLAN}$ 标签，用于区别所属虚拟局域网
+    * $\text{802.1Q}$ 帧整帧实际长度范围为 $[68,1522]\text{B}$
+    * 增设 $\text{VLAN}$ 标签后，$\text{FCS}$ 字段需要更新，对前面 $6\,6\,4\,2\,\text{N}$ 的数据重新进行 $\text{CRC}$ 校验
+
+    ![802.1Q帧作用](../../resource/image/network/chapter2/LAN_VLAN_8021Q_frame_function.png "802.1Q帧作用")
+
+    * 主机与交换机之间使用普通帧，跨交换机时使用 $\text{802.1Q}$ 帧
+    * 交换机转发后接收的交换机通过查看 $\text{802.1Q}$ 帧内的 $\text{VID}$ 即可确定转发对象
+
+* $\text{IEEE 802.11}$ 无线局域网 $\text{WLAN}$
+
+  ![WLAN](../../resource/image/network/chapter2/LAN_WLAN.png "WLAN")
+
+  ![WLAN概念](../../resource/image/network/chapter2/LAN_WLAN_term.png "WLAN概念")
+
+  ![802.11帧结构](../../resource/image/network/chapter2/LAN_WLAN_80211_frame.png "802.11帧结构")
+
+  * 地址 $1$ 是本次发送的目的地址，地址 $2$ 是本次发送的源地址，地址 $3$ 是剩下的地址，地址 $4$ 没用
+
 ### 1.4 广域网
 
 ### 1.5 数据链路层设备
@@ -301,5 +376,7 @@
   * 24(CSMA/CA预约不是必须的)
   * ⭐***33(争用期是两倍的最长传播时间)***
 * 3.6习题
+  * ？***10(802.1Q帧数据段长度)***
+  * ***23(VLAN优点)***
 * 3.7习题
 * 3.8习题

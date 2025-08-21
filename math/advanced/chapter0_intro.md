@@ -40,9 +40,24 @@
 * 配方公式( $\lvert x_1-x_2\rvert=\sqrt{(x_1+x_2)^2-4 x_1 x_2}$ )
 * 重要不等式
   * 基本性质
-  * 均值不等式： $\frac{2}{\frac{1}{a}+\frac{1}{b}} \leq \sqrt{a b}\leq \frac{a+b}{2} \leq \sqrt{\frac{a^2+b^2}{2}}，a，b\geq0$ ，三个变量同理
+  * 均值不等式： $\dfrac{2}{\dfrac{1}{a}+\dfrac{1}{b}} \leq \sqrt{a b}\leq \dfrac{a+b}{2} \leq \sqrt{\dfrac{a^2+b^2}{2}}，a，b\geq0$
+  
+    > 对任意 $n$ 个正实数 $a_1, a_2, \dots, a_n$，有
+    >
+    > $$
+    > \dfrac{n}{\displaystyle\sum_{i=1}^n \dfrac{1}{a_i}}
+    > \leq
+    > \sqrt[\textcolor{cyan}{n}]{\prod_{i=1}^n a_i}
+    > \leq
+    > \dfrac{1}{n} \sum_{i=1}^n a_i
+    > \leq
+    > \sqrt{\dfrac{1}{n} \sum_{i=1}^n a_i^2}
+    > $$
+    >
+    > 即：**调和平均 ≤ 几何平均 ≤ 算术平均 ≤ 平方平均**
+
   * 三角不等式： $\lvert \lvert a\rvert -\lvert b\rvert \rvert\leq\lvert a\pm b\rvert\leq\lvert a\rvert+\lvert b\rvert$
-  * 柯西不等式： $\sum_{i=1}^{n}{a_i^2} \sum_{i=1}^{n}{b_i^2}\geq(\sum_{i=1}^{n}{a_i b_i})^2$
+  * 柯西不等式： $\displaystyle\sum_{i=1}^{n}{a_i^2} \sum_{i=1}^{n}{b_i^2}\geq(\sum_{i=1}^{n}{a_i b_i})^2$
 * 二次不等式区间根问题
 
 ### 1.4 函数
