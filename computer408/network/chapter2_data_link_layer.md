@@ -319,6 +319,8 @@
 
   ![VLAN](../../resource/image/network/chapter2/LAN_VLAN.png "VLAN")
 
+  $\text{VLAN}$ 既隔离冲突域，也隔离广播域
+
   * 划分方式
 
     ![接口划分](../../resource/image/network/chapter2/LAN_VLAN_split_0.png "接口划分")
@@ -358,7 +360,46 @@
 
 ### 1.4 广域网
 
+* 广域网概念
+
+  ![广域网](../../resource/image/network/chapter2/WAN.png "广域网")
+
+  * 局域网使用广播通信，广域网使用点对点通信
+
+* $\text{PPP}$ 协议
+
+  ![PPP帧格式](../../resource/image/network/chapter2/WAN_PPP_frame.png "PPP帧格式")
+
+  * $\text{PPP}$ 协议是点对点通信的，而不是像以太网、无线网一样使用广播信道，因此没有最短帧要求。帧数据部分长度范围为 $[0,1500]\text{B}$
+  * $\text{PPP}$ 协议虽然提供差错检测，但不提供纠错
+  * $\text{PPP}$ 协议只支持全双工通信
+  * $\text{PPP}$ 协议提供的是有连接但不可靠的服务
+
+  ![PPP组帧](../../resource/image/network/chapter2/WAN_PPP_framing.png "PPP组帧")
+
+  ![PPP工作流程](../../resource/image/network/chapter2/WAN_PPP_flowchart.png "PPP工作流程")
+
+  ![PPP工作流程](../../resource/image/network/chapter2/WAN_PPP_flowchart_1.png "PPP工作流程")
+
 ### 1.5 数据链路层设备
+
+![以太网交换机](../../resource/image/network/chapter2/switch.png "以太网交换机")
+
+* 集线器的用户共享带宽，交换机的用户独占带宽。例如 $10\text{kbps}$ 的带宽，$10$ 个用户，用集线器连接则每个用户有 $1\text{kbps}$ 带宽，用交换机连接每个用户有 $10\text{kbps}$ 带宽
+* 交换机的多个接口之间可以并行传输
+* 交换机工作在数据链路层和物理层，因此不能实现 不同网络层协议的网络互连
+
+![交换表](../../resource/image/network/chapter2/switch_table.png "交换表")
+
+* 同冲突域的主机第一次发送消息时，尽管集线器会直接送达消息，但交换机仍然会广播，因为目的主机的 $\text{MAC}$ 地址并不在交换机的转发表中
+
+  > $E$ 给 $F$ 发信息，集线器会直接传输，但交换机仍然会广播
+  >
+  > $F$ 给 $E$ 发信息，因为上次 $E$ 的 $\text{MAC}$ 地址已被记录，因此交换机不再广播，也不会从接口中再次发送一遍，因为 $E$ 和 $F$ 是同一接口
+
+![转发方式](../../resource/image/network/chapter2/switch_transmit.png "转发方式")
+
+* 直通交换只传输 $6\text{B}$ 的目的地址，非常快。但在 $\text{VLAN}$ 中交换机之间必须使用 $\text{802.1Q}$ 帧通信，直通交换相当于电路交换，传进来什么传出去什么，因此不能转换协议
 
 ## 2 题目
 
@@ -380,3 +421,6 @@
   * ***23(VLAN优点)***
 * 3.7习题
 * 3.8习题
+  * 02(VLAN既隔离冲突域，也隔离广播域)
+  * ⭐***03(交换表构建)***
+  * ***17(交换机转发看目的物理地址，交换表记录的是源物理地址)***
