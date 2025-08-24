@@ -118,7 +118,7 @@
   \Delta z=A\Delta x+B\Delta y+o(\rho)
   $$
   
-  且 $A,B$ 仅与点 $(x,y)$ 有关，与 $\Delta x,\Delta y$ 无关；$\rho=\sqrt{\Delta x^2+\Delta y^2}$；并且当 $\Delta x\to0,\Delta y\to0$ 时 $o(\rho)$ 是 $\sqrt{\Delta x^2+\Delta y^2}$ 的高阶无穷小，则称函数 $z=f(x,y)$ 在点 $(x,y)$ 处可微分，并称 $A\Delta x+B\Delta y+o(\rho)$ 为函数 $z=f(x,y)$ 在点 $(x,y)$ 处的全微分，记作
+  且 $A,B$ 仅与点 $(x,y)$ 有关，与 $\Delta x,\Delta y$ 无关；$\rho=\sqrt{\Delta x^2+\Delta y^2}$；并且当 $\Delta x\to0,\Delta y\to0$ 时 $o(\rho)$ 是 $\sqrt{\Delta x^2+\Delta y^2}$ 的高阶无穷小，则称函数 $z=f(x,y)$ 在点 $(x,y)$ 处可微分，并称 $A\Delta x+B\Delta y$ 为函数 $z=f(x,y)$ 在点 $(x,y)$ 处的全微分，记作
   
   $$
   \mathrm dz=A\Delta x+B\Delta y=A\mathrm dx+B\mathrm dy

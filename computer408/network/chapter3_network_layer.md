@@ -52,25 +52,74 @@
 
   * 默认网关及默认使用发送 $\text{IP}$ 数据报的路由器，路由器接口应该具有和对着的网络相同的 $\text{IP}$ 地址
 
-* 划分子网
+* 子网划分技术
 
-  ![IPv4划分子网](../../resource/image/network/chapter3/IPv4_subnet.png "IPv4划分子网")
+  ![IPv4子网划分](../../resource/image/network/chapter3/IPv4_subnet.png "IPv4子网划分")
 
   * 默认路由 $\text{IP}$ 为`0.0.0.0`，子网掩码为`0.0.0.0`。当其他网络号无法匹配时，则通过默认路由转发出去
 
-  ![IPv4划分子网发送过程](../../resource/image/network/chapter3/IPv4_subnet_send.png "IPv4划分子网发送过程")
+  ![IPv4子网划分发送过程](../../resource/image/network/chapter3/IPv4_subnet_send.png "IPv4子网划分发送过程")
 
-  ![IPv4划分子网转发过程](../../resource/image/network/chapter3/IPv4_subnet_relay.png "IPv4划分子网转发过程")
+  ![IPv4子网划分转发过程](../../resource/image/network/chapter3/IPv4_subnet_relay.png "IPv4子网划分转发过程")
 
-  ![IPv4划分子网示例](../../resource/image/network/chapter3/IPv4_subnet_eg.png "IPv4划分子网示例")
+  ![IPv4子网划分示例](../../resource/image/network/chapter3/IPv4_subnet_eg.png "IPv4子网划分示例")
 
 * 无分类编址 $\text{CIDR}$
 
+  ![CIDR](../../resource/image/network/chapter3/IPv4_CIDR.png "CIDR")
+
+  ![子网划分示例](../../resource/image/network/chapter3/IPv4_CIDR_eg.png "子网划分示例")
+
+  * 给狗剩分配时，路由器接口和主机各占一个 $\text{IP}$ 地址，全 $0$、全 $1$ 地址保留，因此一个最小的网络需要 $4$ 个 $\text{IP}$ 地址，即 $2\text{bit}$ 主机号。再往下就不能划分了，因为只有 $1\text{bit}$ 主机号，只剩全 $0$、全 $1$ 地址
+
 * 路由聚合
+
+  ![路由聚合](../../resource/image/network/chapter3/IPv4_CIDR_gather.png "路由聚合")
+  
+  ![路由聚合发送过程](../../resource/image/network/chapter3/IPv4_CIDR_gather_send.png "路由聚合发送过程")
+
+  ![路由聚合转发过程](../../resource/image/network/chapter3/IPv4_CIDR_gather_relay.png "路由聚合转发过程")
+
+  * 转发时匹配最长的网络前缀，默认路由的网络前缀的长度为 $0$
 
 * 网络地址转换 $\text{NAT}$
 
+  ![NAT](../../resource/image/network/chapter3/IPv4_NAT.png "NAT")
+
+  * 普通路由器工作在物理层、数据链路层、网络层；$\text{NAT}$ 路由器工作在物理层、数据链路层、网络层、应用层
+
+  ![NAT示例](../../resource/image/network/chapter3/IPv4_NAT_eg.png "NAT示例")
+
+  > ***例 1：手机 1给手机 2发微信***
+  >
+  > 手机 $1$ 构造报文，并包装成 $\text{IP}$ 数据报。源端口为手机 $1$ 的内网端口`9855`，目的端口为手机 $2$ 的外网端口`4096`；源 $\text{IP}$ 地址为手机 $1$ 的内网 $\text{IP}$ 地址`192.168.3.48`，目的 $\text{IP}$ 地址为手机 $2$ 的外网 $\text{IP}$ 地址`66.211.88.55`。当手机 $1$ 的数据报经过自己网络的路由器时，根据 $\text{NAT}$ 表将源端口和源 $\text{IP}$ 地址换成对应的外网端口和 $\text{IP}$ 地址，即将源端口`9855`换成`7788`，源 $\text{IP}$ 地址`192.168.3.48`换成`59.175.49.153`。随后经过传输到达手机 $2$ 网络的路由器。该路由器根据 $\text{NAT}$ 表将目的端口和目的 $\text{IP}$ 地址换成内网中手机 $2$ 的端口和 $\text{IP}$ 地址完成传输
+
+  </br>
+
+  > ***例 2：手机 1给 DiliDili服务器发信息***
+  >
+  > 手机 $1$ 构造报文，并包装成 $\text{IP}$ 数据报。源端口为手机 $1$ 的内网端口`9855`，目的端口为服务器的端口`80`；源 $\text{IP}$ 地址为手机 $1$ 的内网 $\text{IP}$ 地址`192.168.3.48`，目的 $\text{IP}$ 地址为服务器的外网 $\text{IP}$ 地址`200.1.1.4`。当手机 $1$ 的数据报经过自己网络的路由器时，根据 $\text{NAT}$ 表将源端口和源 $\text{IP}$ 地址换成对应的外网端口和 $\text{IP}$ 地址，即将源端口`9855`换成`7788`，源 $\text{IP}$ 地址`192.168.3.48`换成`59.175.49.153`。随后经过传输到达服务器
+
+* 地址解析协议 $\text{ARP}$
+
+  ![ARP](../../resource/image/network/chapter3/IPv4_ARP.png "ARP")
+
+  ![ARP分组格式](../../resource/image/network/chapter3/IPv4_ARP_structure.png "ARP分组格式")
+
+  * $\text{ARP}$ 组帧时必定要填充，因为以太网帧数据部分长度应为 $[46,1500]\text{B}$
+
+  ![ARP示例](../../resource/image/network/chapter3/IPv4_ARP_eg.png "ARP示例")
+
+  * 每台主机、路由器都有自己的 $\text{ARP}$ 表，并且需要定期更新表项
+  * 当被查询方收到请求分组或查询方收到响应分组时，会将 $\text{IP}$ 地址与 $\text{MAC}$ 地址对应关系记录在自己的 $\text{ARP}$ 表中
+
 * 动态主机配置协议 $\text{DHCP}$
+
+  ![DHCP](../../resource/image/network/chapter3/IPv4_DHCP.png "DHCP")
+
+  ![DHCP示例](../../resource/image/network/chapter3/IPv4_DHCP_eg.png "DHCP示例")
+
+  * 因为一个网络中可能存在多个 $\text{DHCP}$ 服务器，因此主机请求 $\text{IP}$ 地址时的 $\text{DISCOVER}$ 帧和 $\text{REQUEST}$ 帧会被多个 $\text{DHCP}$ 服务器收到，每个服务器都认为是要求自己分配一个 $\text{IP}$ 地址。因此 $\text{DISCOVER}$ 帧和 $\text{REQUEST}$ 帧在数据链路层和网络层都必须是广播的，而不能是单播的，否则可能出现主机请求 $\text{IP}$ 地址，服务器 $1$ 和服务器 $2$ 都分配了地址，但主机只跟服务器 $2$ 单播接受了服务器 $2$ 的 $\text{IP}$ 地址，导致服务器 $1$ 分配的地址看似分配出去实则未被使用的情况
 
 * 网际控制报文协议 $\text{ICMP}$
 

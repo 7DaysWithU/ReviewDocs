@@ -7,30 +7,30 @@
   * 导数定义式
     * $f^{'}(x_0)=\lim\limits_{\Delta x\to0}{\dfrac{f(x_0+\Delta x)-f(x_0)}{\Delta x}}=\lim\limits_{狗\to0}{\dfrac{f(x_0+狗)-f(x_0)}{狗}}$
     * 令 $x=x_0+\Delta x$ ，上式替换得 $f^{'}(x_0)=\lim\limits_{x\to x_0}{\dfrac{f(x)-f(x_0)}{x-x_0}}$
-  * 可导充要条件： $f^{'}_-(x_0)=f^{'}_+(x_0)=f(x_0)\Leftrightarrow f^{'}(x_0)$ 存在
-  * 可导必定连续，连续不一定可导
+  * 可导充要条件： $f^{'}_-(x_0)=f^{'}_+(x_0)\Leftrightarrow f^{'}(x_0)$ 存在
+  * 可导必定连续，连续不一定可导，不连续一定不可导
   * 导数性质
     * 若 $f(x)$ 是 $n$ 阶可导，则每导一次奇偶性互换
     * 若 $f(x)$ 以 $T$ 为周期且可导，则 $f^{'}(x)$ 仍以 $T$ 为周期
     * 若 $f(x)$ 可导且有界，则 $f^{'}(x)$ 不一定有界
   * $f(x)$ 与 $\lvert f(x)\rvert$ 的连续、可导关系
-  * ***$f(x)$ 在 $x_0$ 处连续*** 是 ***$\lvert f(x)\rvert$ 在 $x_0$ 处连续*** 的充分不必要条件
-  * 设 $f(x)$ 在 $x_0$ 处可导，则
-    * $f(x_0) \neq 0 \Rightarrow |f(x)|$  在  $x_0$  处可导且
-      $
-      \left[|f(x)|\right]'_{x=x_0} =
-      \begin{cases}
-      f'(x_0), & f(x_0) > 0, \\
-      -f'(x_0), & f(x_0) < 0.
-      \end{cases}
-      $
-    * $f(x_0)=0$ ，且
-      $
-      \begin{cases}
-      f'(x_0) = 0 \Rightarrow |f(x)| \text{ 在 } x_0 \text{ 处可导且 } \left[|(x)|       \right]'_{x=x_0} = 0, \\
-      f'(x_0) \neq 0 \Rightarrow |f(x)| \text{ 在 } x_0 \text{ 处不可导}.
-      \end{cases}
-      $
+    * ***$f(x)$ 在 $x_0$ 处连续*** 是 ***$\lvert f(x)\rvert$ 在 $x_0$ 处连续*** 的充分不必要条件
+    * 设 $f(x)$ 在 $x_0$ 处可导，则
+      * $f(x_0) \neq 0 \Rightarrow |f(x)|$  在  $x_0$  处可导且
+        $
+        \left[|f(x)|\right]'_{x=x_0} =
+        \begin{cases}
+        f'(x_0), & f(x_0) > 0, \\
+        -f'(x_0), & f(x_0) < 0.
+        \end{cases}
+        $
+      * $f(x_0)=0$ ，且
+        $
+        \begin{cases}
+        f'(x_0) = 0 \Rightarrow |f(x)| \text{ 在 } x_0 \text{ 处可导且 } \left[\lvert f(x)\rvert\right]'_{x=x_0} = 0, \\
+        f'(x_0) \neq 0 \Rightarrow |f(x)| \text{ 在 } x_0 \text{ 处不可导}.
+        \end{cases}
+        $
 * 导数几何意义
   * $y=f(x)$ 在点 $x_0$ 处的导数值 $f^{'}(x_0)$ 就是曲线 $y=f(x)$ 在点 $(x_0,y_0)$ 处的切线斜率 $k$
   * 曲线 $y=f(x)$ 在点 $x_0$ 处的方程
@@ -45,8 +45,38 @@
   * $\mathrm{d}x=\Delta x$
   * 可微 $\Leftrightarrow$ 可导，证明可微 $\Leftrightarrow$ 证明可导
   * 配合导数： $\left.\dfrac{\mathrm{d}y}{\mathrm{d}x}\right|_{x=x_0}=f^{'}(x_0)$
+  * 微分公式本质上是一阶带佩亚诺余项的泰勒公式，即
 
-## 2 题目
+    $$
+    \begin{align*}
+      \Delta y&=A \Delta x+o(\Delta x) \\
+      f(x)-f(x_0)&=f^{'}(x_0)(x-x_0)+o(x-x_0) \\
+      f(x)&=f(x_0)+f^{'}(x_0)+o(x-x_0)
+    \end{align*}
+    $$
+
+## 2 进阶
+
+* 研究一元函数微分学的概念 $\textcolor{LightSkyBlue}{\text{O} (盯住目标)}$
+  * 微分——一阶泰勒公式 $\textcolor{Cyan}{\text{D}_\text{1} (常规操作) + \text{D}_\text{2} (脱胎换骨)}$
+  * 导数——因变量差与自变量差的比值极限 $\textcolor{Cyan}{\text{D}_\text{1} (常规操作) + \text{D}_\text{22} (转换等价表述)}$
+  * $f(x)$ 与 $\lvert f(x)\rvert$ 连续、可导关系 $\textcolor{Cyan}{\text{D}_\text{1} (常规操作) + \text{D}_\text{21} (观察研究对象)+ \text{D}_\text{43} (数形结合)}$
+  * 导数性质 $\textcolor{Cyan}{\text{D}_\text{1} (常规操作) + \text{D}_\text{21} (观察研究对象)}$
+    * 若导数存在，且导数在一点的极限存在时，导数在该点连续
+    * 若 $f(x)$ 连续，且 $\lim\limits_{x\to x_0}{f^{'}(x)}$ 存在，则 $f^{'}(x_0)$ 存在。左右导定义可证
+    * 若导数在某点存在，则该点不会是导数的第一类间断点
+    * 若 $f(x)$ 可导，则 $f^{'}(x)$ 可能连续也可能是振荡间断点
+    * $\lim\limits_{x\to\infty}{f(x)}$ 存在，但 $\lim\limits_{x\to\infty}{f^{'}(x)}$ 不一定存在
+    * $f(x)$ 在 $[0,+\infty]$ 可导且 $f(x)$ 在 $x\to+\infty$ 时有斜渐近线，但 $\lim\limits_{x\to\infty}{f^{'}(x)}$ 不一定存在
+  * 函数在一点求导问题 $\textcolor{Cyan}{\text{D}_\text{1} (常规操作) + \text{D}_\text{22} (转换等价表述)}$
+    * 绝对值求导
+      * $\lvert f(x)\rvert=\sqrt{f^2(x)}$，使用求导公式求导
+      * $F(x)=f(x)g(x)$，若 $f(x)$ 在 $x_0$ 除连续但不可导，$g(x)$ 在 $x_0$ 处可导，则 $F(x)$ 在 $x_0$ 处可导的充要条件是 $g(x_0)=0$
+    * 分段函数
+
+      分段点用定义法求导，部分非分段函数使用公式法求导后导数在某点无定义，则该点应用定义法求导
+
+## 3 题目
 
 * 基础30讲
   * 例3.1(导数性质)
@@ -65,7 +95,7 @@
   * 3.7(洛必达法则)
   * 3.8(可导必定连续)
   * 3.9(泰勒公式)
-* 1000题
+* 1000题基础
   * 03(极限倒数、凑导数定义式)
   * 05(定义式、夹逼准则)
   * 06(凑导数定义式、对数运算)
@@ -73,3 +103,12 @@
   * 12(极限四则运算、凑导数定义式)
   * 13(极限四则运算、凑导数定义式)
   * 15(可导必定连续)
+* 强化36讲
+  * 例3.1(导数定义)
+  * ⭐***例3.2(连续极限导数综合)***
+  * ⭐***例3.3(绝对值函数的连续性可导性、导数定义、数形结合、分类讨论、去绝对值)***
+  * ***例3.4(导数性质、连续极限导数综合)***
+  * ***例3.5(求导公式法无定义处用定义法)***
+  * ***例3.6(绝对值求导)***
+  * 例3.7(绝对值0处可导性)
+* 1000题强化
