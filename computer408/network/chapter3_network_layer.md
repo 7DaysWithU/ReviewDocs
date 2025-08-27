@@ -29,6 +29,9 @@
 
   ![IPv4数据报格式](../../resource/image/network/chapter3/IPv4_message_2.png "IPv4数据报格式")
 
+  * 首部检验和的计算同 $\text{UDP}$，详见[首部检验和](./chapter4_transport_layer.md#12-udp)。但与 $\text{UDP}$ 相比，$\text{IP}$ 首部检验和不需要加伪首部再运算，且 $\text{IP}$ 首部检验和只检验首部，而不是像 $\text{UDP}$ 一样检验首部和数据
+  * 跨网络传输时，$\text{IP}$ 数据报的 $\text{TTL}$ 会改变，因此首部检验和也会改变
+
 * $\text{IP}$ 地址
 
   ![IPv4地址](../../resource/image/network/chapter3/IPv4_address.png "IPv4地址")
