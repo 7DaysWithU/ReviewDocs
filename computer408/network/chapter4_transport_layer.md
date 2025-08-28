@@ -15,7 +15,7 @@
 | 网络管理 | 简单网络管理协议 $(\text{SNMP})$ | $\text{UDP}$ | $161$ |
 | 电子邮件 | 简单邮件传送协议 $(\text{SMTP})$ | $\text{TCP}$ | $25$ |
 | 远程终端接入 | 远程终端协议 $(\text{TELNET})$ | $\text{TCP}$ | $23$ |
-| 万维网 | 超文本传送协议 $(\text{HTTP})$ | $\text{TCP}$ | $80$ |
+| 万维网(服务端) | 超文本传送协议 $(\text{HTTP})$ | $\text{TCP}$ | $80$ |
 | 文件传送 | 文件传送协议 $(\text{FTP})$ | $\text{TCP}$ | $21$ |
 
 * $\text{TCP}$ 和 $\text{UDP}$ 的端口互相独立，即两个协议可以使用同一个端口号，以套接字中的协议作区分
@@ -96,7 +96,56 @@
 
 * 可靠传输与流量控制
 
+  ![可靠传输](../../resource/image/network/chapter4/TCP_reliable_transmission.png "可靠传输")
+
+  * 推迟确认等待一段时间，如果到来了其他的数据报，则可以一起累计确认。但如果连续收到两个超过 $\text{MSS}$ 的报文段，因为长报文段超时重传代价更高，为了避免超时风险应该立即确认
+
+  ![流量控制](../../resource/image/network/chapter4/TCP_flow_control.png "流量控制")
+
+  * 发送窗口不能大于接受窗口，以免发太快导致接收缓冲区溢出，由此实现流量控制
+  * $\text{TCP}$ 为每个连接设有一个持续计时器，只要发送方收到对方的零窗口 $(\text{rwnd}=0)$ 通知，就启动**持续计时器**。若计时器超时，则发送一个零窗口探测报文段，而对方就在确认这个探测报文段时给出现在的窗口值。若窗口仍然为零，则发送方收到确认报文段后就重置持续计时器
+
+  ![可靠传输与流量控制示例](../../resource/image/network/chapter4/TCP_reliable_transmission_eg_0.png "可靠传输与流量控制示例")
+
+  * **$\text{TCP}$ 的窗口收发单位是字节，区分于数据链路层的 $\text{ARQ}$ 协议，$\text{ARQ}$ 的收发单位是帧**
+
+  ![可靠传输与流量控制示例](../../resource/image/network/chapter4/TCP_reliable_transmission_eg_00.png "可靠传输与流量控制示例")
+
+  * 一个端口可以创建多个套接字对象
+  * 发送缓冲区和接收缓冲区大小可以不等
+
+  ![可靠传输与流量控制示例](../../resource/image/network/chapter4/TCP_reliable_transmission_eg_1.png "可靠传输与流量控制示例")
+
+  ![可靠传输与流量控制示例](../../resource/image/network/chapter4/TCP_reliable_transmission_eg_2.png "可靠传输与流量控制示例")
+
+  ![可靠传输与流量控制示例](../../resource/image/network/chapter4/TCP_reliable_transmission_eg_3.png "可靠传输与流量控制示例")
+
+  * 数据必须是有序的，即若收到了 $1,2,4,5$，则只能上交 $1,2$，确保收到的数据序号是连续的
+
+  ![可靠传输与流量控制示例](../../resource/image/network/chapter4/TCP_reliable_transmission_eg_4.png "可靠传输与流量控制示例")
+
+  ![可靠传输与流量控制示例](../../resource/image/network/chapter4/TCP_reliable_transmission_eg_5.png "可靠传输与流量控制示例")
+
+  ![可靠传输与流量控制示例](../../resource/image/network/chapter4/TCP_reliable_transmission_eg_6.png "可靠传输与流量控制示例")
+
+  * **收到一个 $\text{TCP}$ 数据报就立即确认。若发送方连续收到 $3$ 个冗余的对同一数据报的确认，即一共收到 $4$ 个对同一数据报的确认(第一个是正常确认，后三个是冗余确认)，则证明数据报丢失，立即在收到第 $3$ 个冗余确认时重传该数据报**
+
 * 拥塞控制
+
+  ![拥塞控制](../../resource/image/network/chapter4/TCP_congest.png "拥塞控制")
+
+  ![拥塞控制题目](../../resource/image/network/chapter4/TCP_congest_eg.png "拥塞控制题目")
+
+  * 拥塞窗口是 **发送方** 根据网络拥塞情况确定的窗口值
+  * 发送窗口的大小为接收窗口和拥塞窗口的最小值。如果说接收窗口无限大，则发送窗口即为拥塞窗口。但如果接收窗口有固定大小，注意是累计确认还是立即确认，累计确认会使接收窗口一直减小，因为接收窗口需要暂存已接收的数据报
+
+  ![拥塞控制慢开始与拥塞避免](../../resource/image/network/chapter4/TCP_congest_slow_start.png "拥塞控制慢开始与拥塞避免")
+
+  * 遇到超时重传会重新慢开始，同时 $\text{ssthresh}=\text{cwnd}/2$，$\text{cwnd}=1$。但 $\text{ssthresh}$ 不能低于 $2$
+  * 遇到超时重传会重新慢开始，遇到 $3\text{ACK}$ 则会快恢复。但超时与 $3\text{ACK}$ 都是网络拥塞
+  * 若慢开始经过一个 $\text{RTT}$ 窗口翻倍后大于拥塞控制阈值，则只能增长到阈值。即慢开始算法中 $\text{cwnd}=\min{(2\cdot\text{cwnd},\,\text{ssthresh})}$
+
+  ![拥塞控制快重传与快恢复](../../resource/image/network/chapter4/TCP_congest_quick_restore.png)
 
 ## 2 题目
 
@@ -105,3 +154,7 @@
 * 5.2习题
   * 08(全0检验和)
 * 5.3习题
+  * ***10(TCP的窗口是字节)***
+  * 14(持续计时器)
+  * 17(拥塞窗口是发送方确定的)
+  * ***22(序号消耗总量)***
