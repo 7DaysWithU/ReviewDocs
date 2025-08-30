@@ -6,20 +6,6 @@
 
 ![传输层功能](../../resource/image/network/chapter4/transport_layer.png "传输层功能")
 
-| 互联网应用 | $\text{TCP/IP}$ 应用层协议 | $\text{TCP/IP}$ 传输层协议 | 端口号 |
-| :-: | :-: | :-: | :-: |
-| 域名解析 | 域名系统 $(\text{DNS})$ | $\text{UDP}$ | $53$ |
-| 文件传送 | 简单文件传送协议 $(\text{TFTP})$ | $\text{UDP}$ | $69$ |
-| 路由选择 | 路由信息协议 $(\text{RIP})$ | $\text{UDP}$ | $520$ |
-| $\text{IP}$ 地址分配 | 动态主机配置协议 $(\text{DHCP})$ | $\text{UDP}$ | $68$ |
-| 网络管理 | 简单网络管理协议 $(\text{SNMP})$ | $\text{UDP}$ | $161$ |
-| 远程终端接入 | 远程终端协议 $(\text{TELNET})$ | $\text{TCP}$ | $23$ |
-| 万维网(服务端) | 超文本传送协议 $(\text{HTTP})$ | $\text{TCP}$ | $80$ |
-| 文件传送 | 文件传送协议 $(\text{FTP})$ | $\text{TCP}$ | 控制通道 $21$ </br> 数据通道 $20$ |
-| 电子邮件发送 | 简单邮件传送协议 $(\text{SMTP})$ | $\text{TCP}$ | $25$ |
-| 电子邮件接收 | 邮局协议 $(\text{POP3})$ | $\text{TCP}$ | $110$ |
-| 电子邮件接收 | 因特网邮件访问协议 $(\text{IMAP4})$ | $\text{TCP}$ | $143$ |
-
 * $\text{TCP}$ 和 $\text{UDP}$ 的端口互相独立，即两个协议可以使用同一个端口号，以套接字中的协议作区分
 * $\text{TCP}$ 的面向连接可以保证可靠与顺序交付
 * 套接字可以唯一确定一个在互联网上通信的进程

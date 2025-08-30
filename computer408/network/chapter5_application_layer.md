@@ -4,6 +4,21 @@
 
 ![应用层](../../resource/image/network/chapter5/applicant_layer.png "应用层")
 
+| 互联网应用 | $\text{TCP/IP}$ 应用层协议 | $\text{TCP/IP}$ 传输层协议 | 端口号 |
+| :-: | :-: | :-: | :-: |
+| 域名解析 | 域名系统 $(\text{DNS})$ | $\text{UDP}$ | $53$ |
+| 文件传送 | 简单文件传送协议 $(\text{TFTP})$ | $\text{UDP}$ | $69$ |
+| 路由选择 | 路由信息协议 $(\text{RIP})$ | $\text{UDP}$ | $520$ |
+| 路由选择 | 边界网关协议 $(\text{BGP})$ | $\text{TCP}$ | $179$ |
+| $\text{IP}$ 地址分配 | 动态主机配置协议 $(\text{DHCP})$ | $\text{UDP}$ | $68$ |
+| 网络管理 | 简单网络管理协议 $(\text{SNMP})$ | $\text{UDP}$ | $161$ |
+| 远程终端接入 | 远程终端协议 $(\text{TELNET})$ | $\text{TCP}$ | $23$ |
+| 万维网(服务端) | 超文本传送协议 $(\text{HTTP})$ | $\text{TCP}$ | $80$ |
+| 文件传送 | 文件传送协议 $(\text{FTP})$ | $\text{TCP}$ | 服务器控制通道 $21$ </br> 服务器数据通道 $20$ </br> 客户端使用临时端口 |
+| 电子邮件发送 | 简单邮件传送协议 $(\text{SMTP})$ | $\text{TCP}$ | $25$ |
+| 电子邮件接收 | 邮局协议 $(\text{POP3})$ | $\text{TCP}$ | $110$ |
+| 电子邮件接收 | 因特网邮件访问协议 $(\text{IMAP4})$ | $\text{TCP}$ | $143$ |
+
 ### 1.1 网络应用模型
 
 ![C/S模型](../../resource/image/network/chapter5/applicant_model_CS.png "C/S模型")
@@ -121,7 +136,33 @@
 
   ![基于万维网的电子邮件](../../resource/image/network/chapter5/mail_web.png "基于万维网的电子邮件")
 
-### 1.5 万维网 WWW
+### 1.5 万维网
+
+* 万维网 $\text{WWW}$
+
+  ![WWW](../../resource/image/network/chapter5/WWW.png "WWW")
+
+  ![浏览器访问网页过程](../../resource/image/network/chapter5/WWW_access.png "浏览器访问网页过程")
+
+  * 请求报文内容较少，因此大部分情况下传输时延可以忽略，但 $\text{HTTP}$ 响应内容大，传输时延往往不能忽略
+
+  ![非持续连接](../../resource/image/network/chapter5/WWW_connection_non_continue.png "非持续连接")
+
+  * $\text{HTTP1.0}$ 默认采用非持续连接，$\text{HTTP1.1}$ 默认采用持续连接 </br> $\text{HTTP}$ 请求报文中 $\text{Connection: Close}$ 是非持续连接，$\text{Connection: keep-alive}$ 是持续连接
+  * 非持续连接(非并行)请求一个文档时，若文档内有 $n$ 个其他资源，则一共要建立 $n+1$ 次 $\text{TCP}$ 连接，$(n+2)\cdot\text{RTT}$，第一个 $\text{RTT}$ 用于建立连接，第二个则捎带请求信息
+  * 并行方式可以在 $2\cdot\text{RTT}$ 内并行地建立连接，再请求资源
+  * **挥手时间可以忽略，即刚开始挥手，就立即开始建立新的连接，则每请求一个资源只需要 $2\cdot\text{RTT}$，一个 $\text{RTT}$ 用来连接，一个 $\text{RTT}$ 用来请求资源**
+
+  ![持续连接非流水线方式](../../resource/image/network/chapter5/WWW_connection_continue_non_pipeline.png "持续连接非流水线方式")
+
+  ![持续连接流水线方式](../../resource/image/network/chapter5/WWW_connection_continue_pipeline.png "持续连接流水线方式")
+
+* 超文本传输协议 $\text{HTTP}$
+
+  ![HTTP](../../resource/image/network/chapter5/HTTP.png "HTTP")
+
+  * `GET`返回资源信息和资源；`HEAD`只返回资源信息，相当于询问资源存不存在
+  * $\text{Cookie}$ 由服务端生成，在客户端和服务端存储
 
 ## 2 题目
 
@@ -137,3 +178,9 @@
   * 05(只能发不能收因为POP3地址错误)
   * 08(POP3冷门知识)
 * 6.5习题
+  * ***11(并行非持续连接所需RTT)***
+  * ***13(访问网页最长RTT、获得解析IP比只查询DNS多一个RTT)***
+  * ***14(TCP拥塞控制RTT综合)***
+  * ***16(PPP用于接入网络)***
+  * ⛔***18(带拥塞控制窗口的连续流水线连接)***
+  * ⛔***19(忽略挥手的非持续连接)***
