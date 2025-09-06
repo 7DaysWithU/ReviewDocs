@@ -227,6 +227,8 @@
 
   ![OSPF](../../resource/image/network/chapter3/route_protocol_OSPF.png "OSPF")
 
+  * $\text{OSPF}$ 的 $\text{LSI}$ 中不写下一跳的 $\text{IP}$ 地址，而是写下一跳路由器的 $\text{Router ID}$
+
   ![OSPF分组](../../resource/image/network/chapter3/route_protocol_OSPF_classification.png "OSPF分组")
 
   ![OSPF工作流程](../../resource/image/network/chapter3/route_protocol_OSPF_flowchart.png "OSPF工作流程")
