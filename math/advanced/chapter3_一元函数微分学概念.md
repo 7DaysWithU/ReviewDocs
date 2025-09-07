@@ -60,28 +60,30 @@
 
 ## 2 进阶
 
-* 研究一元函数微分学的概念 $\textcolor{LightSkyBlue}{\text{O} (盯住目标)}$
-  * 微分——一阶泰勒公式 $\textcolor{Cyan}{\text{D}_\text{1} (常规操作) + \text{D}_\text{2} (脱胎换骨)}$
-  * 导数——因变量差与自变量差的比值极限 $\textcolor{Cyan}{\text{D}_\text{1} (常规操作) + \text{D}_\text{22} (转换等价表述)}$
-  * $f(x)$ 与 $\lvert f(x)\rvert$ 连续、可导关系 $\textcolor{Cyan}{\text{D}_\text{1} (常规操作) + \text{D}_\text{21} (观察研究对象)+ \text{D}_\text{43} (数形结合)}$
-  * 导数性质 $\textcolor{Cyan}{\text{D}_\text{1} (常规操作) + \text{D}_\text{21} (观察研究对象)}$
-    * 若导数存在，且导数在一点的极限存在时，导数在该点连续
-    * $f^{'}(x)$ 与 $\lim\limits_{x\to x_0}{f^{'}(x)}$ 的关系
-      * 一般来说 $f^{'}(x)$ 与 $\lim\limits_{x\to x_0}{f^{'}(x)}$ 没有直接关系
-      * 若 $f(x)$ 连续，且 $\lim\limits_{x\to x_0}{f^{'}(x)}=A$，则 $f^{'}(x_0)=A$，反之不成立。左右导定义可证
-      * 若 $\lim\limits_{x\to x_0}{f^{'}(x)}=\infty$，无论 $f(x)$ 在 $x_0$ 处是否连续，都有 $f^{'}(x_0)=\infty$
-    * 若导数在某点存在，则该点不会是导数的第一类间断点
-    * 若 $f(x)$ 可导，则 $f^{'}(x)$ 可能连续也可能是振荡间断点
-    * $\lim\limits_{x\to\infty}{f(x)}$ 存在，但 $\lim\limits_{x\to\infty}{f^{'}(x)}$ 不一定存在
-    * $f(x)$ 在 $[0,+\infty]$ 可导且 $f(x)$ 在 $x\to+\infty$ 时有斜渐近线，但 $\lim\limits_{x\to\infty}{f^{'}(x)}$ 不一定存在
-  * 函数在一点求导问题 $\textcolor{Cyan}{\text{D}_\text{1} (常规操作) + \text{D}_\text{22} (转换等价表述)}$
-    * 绝对值求导
-      * $\lvert f(x)\rvert=\sqrt{f^2(x)}$，使用求导公式求导
-      * $F(x)=f(x)g(x)$，若 $f(x)$ 在 $x_0$ 除连续但不可导，$g(x)$ 在 $x_0$ 处可导，则 $F(x)$ 在 $x_0$ 处可导的充要条件是 $g(x_0)=0$
-      * $(\,\lvert x\rvert\,)^{'}=\dfrac{\lvert x\rvert}{x},\,x\neq 0$
-    * 分段函数
+### 2.1 研究一元函数微分学的概念 $\textcolor{LightSkyBlue}{\text{O} (盯住目标)}$
 
-      分段点用定义法求导，部分非分段函数使用公式法求导后导数在某点无定义，则该点应用定义法求导
+* 微分——一阶泰勒公式 $\textcolor{Cyan}{\text{D}_\text{1} (常规操作) + \text{D}_\text{2} (脱胎换骨)}$
+* 导数——因变量差与自变量差的比值极限 $\textcolor{Cyan}{\text{D}_\text{1} (常规操作) + \text{D}_\text{22} (转换等价表述)}$
+  * $f-f$ 定义式或 $\Delta x$ 定义式
+* $f(x)$ 与 $\lvert f(x)\rvert$ 连续、可导关系 $\textcolor{Cyan}{\text{D}_\text{1} (常规操作) + \text{D}_\text{21} (观察研究对象)+ \text{D}_\text{43} (数形结合)}$
+* 导数性质 $\textcolor{Cyan}{\text{D}_\text{1} (常规操作) + \text{D}_\text{21} (观察研究对象)}$
+  * 若导数存在，且导数在一点的极限存在时，导数在该点连续
+  * $f^{'}(x)$ 与 $\lim\limits_{x\to x_0}{f^{'}(x)}$ 的关系
+    * 一般来说 $f^{'}(x)$ 与 $\lim\limits_{x\to x_0}{f^{'}(x)}$ 没有直接关系
+    * 若 $f(x)$ 连续，且 $\lim\limits_{x\to x_0}{f^{'}(x)}=A$，则 $f^{'}(x_0)=A$，反之不成立。左右导定义可证
+    * 若 $\lim\limits_{x\to x_0}{f^{'}(x)}=\infty$，无论 $f(x)$ 在 $x_0$ 处是否连续，都有 $f^{'}(x_0)=\infty$
+  * 若导数在某点存在，则该点不会是导数的第一类间断点
+  * 若 $f(x)$ 可导，则 $f^{'}(x)$ 可能连续也可能是振荡间断点
+  * $\lim\limits_{x\to\infty}{f(x)}$ 存在，但 $\lim\limits_{x\to\infty}{f^{'}(x)}$ 不一定存在
+  * $f(x)$ 在 $[0,+\infty]$ 可导且 $f(x)$ 在 $x\to+\infty$ 时有斜渐近线，但 $\lim\limits_{x\to\infty}{f^{'}(x)}$ 不一定存在
+* 函数在一点求导问题 $\textcolor{Cyan}{\text{D}_\text{1} (常规操作) + \text{D}_\text{22} (转换等价表述)}$
+  * 绝对值求导
+    * $\lvert f(x)\rvert=\sqrt{f^2(x)}$，使用求导公式求导
+    * $F(x)=f(x)g(x)$，若 $f(x)$ 在 $x_0$ 除连续但不可导，$g(x)$ 在 $x_0$ 处可导，则 $F(x)$ 在 $x_0$ 处可导的充要条件是 $g(x_0)=0$
+    * $(\,\lvert x\rvert\,)^{'}=\dfrac{\lvert x\rvert}{x},\,x\neq 0$
+  * 分段函数
+
+    分段点用定义法求导，部分非分段函数使用公式法求导后导数在某点无定义，则该点应用定义法求导
 
 ## 3 题目
 

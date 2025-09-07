@@ -31,8 +31,8 @@
     * 树的边数 $m$  =  $n-1$
     * $m$ 度树第 $i$ 层最多有 $m^{i-1}$ 个结点
     * 高 $h$ 的 $m$ 叉树最多有 $\dfrac{1\cdot(1-m^h)}{1-m}$ 个结点。(等比数列求和)
-    * $n$ 个结点的 $m$ 度树最小高度为 $\lceil\log_m{(n(m-1)+1)}\rceil$
-    * $n$ 个结点的 $m$ 度树最大高度为 $n-1+m$
+    * **$n$ 个结点的 $m$ 度树最小高度为 $\lceil\log_m{(n(m-1)+1)}\rceil$**
+    * **$n$ 个结点的 $m$ 度树最大高度为 $n-1+m$**
     * 高 $h$ 的 $m$ 度树至少有 $h-1+m$ 个结点
     * 结点数与度数
       * 总结点数 $n=\displaystyle\sum^m_{i=0}{n_i}=\left(\displaystyle\sum^m_{i=1}{i\cdot n_i}\right)+1$

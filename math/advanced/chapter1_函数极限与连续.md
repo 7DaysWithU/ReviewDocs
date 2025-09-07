@@ -114,40 +114,43 @@
 
 ## 2 进阶
 
-* 判定类型, 做好计算 $\textcolor{LightSkyBlue}{\text{O}_\text{1} (盯住目标 \text{1})}$
-  * 未定式整体判定 $\textcolor{Cyan}{\text{D}_\text{1} (常规操作) + \text{D}_\text{23} (化归经典形式)}$
+### 2.1 判定类型, 做好计算 $\textcolor{LightSkyBlue}{\text{O}_\text{1} (盯住目标 \text{1})}$
 
-    疑似七大未定式的直接按未定式处理，否则极限不存在，根本不会出题问极限
+* 未定式整体判定 $\textcolor{Cyan}{\text{D}_\text{1} (常规操作) + \text{D}_\text{23} (化归经典形式)}$
 
-  * 未定式局部判定 $\textcolor{Cyan}{\text{D}_\text{1} (常规操作) + \text{D}_\text{23} (化归经典形式)}$
-  * 常用的无穷小量阶的比较 $\textcolor{Cyan}{\text{D}_\text{1} (常规操作)}$
-    * 普通函数
-    * 差函数：必须泰勒展开保精度
-    * 复合函数：作为乘项时可直接复合极限
-    * 变上限积分：一型二型复合型
-    * 带头大哥：无穷大找高阶，无穷小找低阶
-  * 常用的无穷大量阶的比较 $\textcolor{Cyan}{\text{D}_\text{1} (常规操作)}$
+  疑似七大未定式的直接按未定式处理，否则极限不存在，根本不会出题问极限
+
+* 未定式局部判定 $\textcolor{Cyan}{\text{D}_\text{1} (常规操作) + \text{D}_\text{23} (化归经典形式)}$
+* 常用的无穷小量阶的比较 $\textcolor{Cyan}{\text{D}_\text{1} (常规操作)}$
+  * 普通函数
+  * 差函数：必须泰勒展开保精度
+  * 复合函数：作为乘项时可直接复合极限
+  * 变上限积分：一型二型复合型
+  * 带头大哥：无穷大找高阶，无穷小找低阶
+* 常用的无穷大量阶的比较 $\textcolor{Cyan}{\text{D}_\text{1} (常规操作)}$
   
-    $$
-    常函数<对数函数<幂函数<指数函数<阶乘<幂指函数
-    $$
+  $$
+  常函数<对数函数<幂函数<指数函数<阶乘<幂指函数
+  $$
 
-  * 涉及 $\infty$ 的计算问题 $\textcolor{Cyan}{\text{D}_\text{1} (常规操作) + \text{D}_\text{23} (化归经典形式)}$
-    * 趋于无穷时极限存在要求正负无穷极限存在且相等
-    * 和差化积、拉格朗日中值定理
-    * 同底数不同幂、同幂不同底数：提公因式造 $1$
-    * 整合同形。如 $\ln{x}-1$ 变成 $\ln{x}-\ln{e}$，方便后续和差化积、提公因式
+* 涉及 $\infty$ 的计算问题 $\textcolor{Cyan}{\text{D}_\text{1} (常规操作) + \text{D}_\text{23} (化归经典形式)}$
+  * 趋于无穷时极限存在要求正负无穷极限存在且相等
+  * 和差化积、拉格朗日中值定理
+  * 同底数不同幂、同幂不同底数：提公因式造 $1$
+  * 整合同形。如 $\ln{x}-1$ 变成 $\ln{x}-\ln{e}$，方便后续和差化积、提公因式
 
-* 判定连续与间断 $\textcolor{LightSkyBlue}{\text{O}_\text{2} (盯住目标 \text{2})}$
-  * 常见备选点判定 $\textcolor{Cyan}{\text{D}_\text{1} (常规操作)}$
-  * 计算: ①$\lim_{x \to x_\text{0}^-} f(x)$; ②$\lim_{x \to x_\text{0}^+} f(x)$; ③$f(x_\text{0})$ $\textcolor{Cyan}{\text{D}_\text{1} (常规操作)}$
-  * 按定义作出结论: ①跳跃间断点; ②可去间断点; ③无穷间断点; ④振荡间断点 $\textcolor{Cyan}{\text{D}_\text{22} (转换等价表述)}$
+### 2.2 判定连续与间断 $\textcolor{LightSkyBlue}{\text{O}_\text{2} (盯住目标 \text{2})}$
 
-* 研究 $x \to \infty$ 时 $f(x)$ 的微观性态 $\textcolor{LightSkyBlue}{\text{O}_\text{3} (盯住目标 \text{3})}$
-  * 极限定义 $\textcolor{Cyan}{\text{D}_\text{22} (转换等价表述)}$
-  * 局部保号性 $\textcolor{Cyan}{\text{D}_\text{22} (转换等价表述)}$
-  * 夹逼准则 $\textcolor{Cyan}{\text{D}_\text{1} (常规操作) + \text{D}_\text{22} (转换等价表述) + \text{D}_\text{23} (化归经典形式)}$
-  * 单调有界准则 $\textcolor{Cyan}{\text{D}_\text{1} (常规操作) + \text{D}_\text{23} (化归经典形式)}$
+* 常见备选点判定 $\textcolor{Cyan}{\text{D}_\text{1} (常规操作)}$
+* 计算: ①$\lim_{x \to x_\text{0}^-} f(x)$; ②$\lim_{x \to x_\text{0}^+} f(x)$; ③$f(x_\text{0})$ $\textcolor{Cyan}{\text{D}_\text{1} (常规操作)}$
+* 按定义作出结论: ①跳跃间断点; ②可去间断点; ③无穷间断点; ④振荡间断点 $\textcolor{Cyan}{\text{D}_\text{22} (转换等价表述)}$
+
+### 2.3 研究 $x \to \infty$ 时 $f(x)$ 的微观性态 $\textcolor{LightSkyBlue}{\text{O}_\text{3} (盯住目标 \text{3})}$
+
+* 极限定义 $\textcolor{Cyan}{\text{D}_\text{22} (转换等价表述)}$
+* 局部保号性 $\textcolor{Cyan}{\text{D}_\text{22} (转换等价表述)}$
+* 夹逼准则 $\textcolor{Cyan}{\text{D}_\text{1} (常规操作) + \text{D}_\text{22} (转换等价表述) + \text{D}_\text{23} (化归经典形式)}$
+* 单调有界准则 $\textcolor{Cyan}{\text{D}_\text{1} (常规操作) + \text{D}_\text{23} (化归经典形式)}$
 
 ## 3 题目
 
