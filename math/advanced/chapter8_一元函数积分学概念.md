@@ -37,7 +37,7 @@
   * 含有第一类间断点和无穷间断点的 $f(x)$ 在区间内必定没有原函数
     * 若 $f(x)$ 可导，且 $\lim\limits_{x\to x_0}{f^{'}(x)}=0$，则 $f^{'}(x)$ 在 $x_0$ 处连续
       * 可导必连续、洛必达、导数定义来证明
-    * 若 $f(x)$ 可导，则 $f^{'}(x)$ 有介值性
+    * **达布定理：若 $f(x)$ 可导，则 $f^{'}(x)$ 有介值性**
       * 辅助函数、零点定理或介值定理、费马定理证明
     * 若 $f^{'}(x)$ 存在且 $\neq0$，则 $f^{'}(x)$ 必恒正或恒负
       * 介值性证明
@@ -54,7 +54,7 @@
   当将区间 $[a,b]$ $N$ 等分时，每个小区间为 $I_k=\Bigg[a+\dfrac{b-a}{N}(k-1),a+\dfrac{b-a}{N}k\Bigg]$，当 $\xi_k\in I_k$ 时，可进一步写为
 
   $$
-  \int^b_a{f(x)\mathrm{d}x}=\lim\limits_{N\to\infty}{\sum^N_{i=1}{f\big(\xi_k\big)\dfrac{b-a}{N}}}
+  \int^b_a{f(x)\mathrm{d}x}=\lim\limits_{N\to\infty}{\sum^N_{k=1}{f\big(\xi_k\big)\dfrac{b-a}{N}}}
   $$
 
   * 几何意义：定积分 $\int^b_a{f(x)\mathrm{d}x}$ 表示由曲线 $f(x)$ 、直线 $x=a,x=b$ 与 $x$ 轴围出的曲边梯形的面积。特别的，若 $f(x)\leq0$，则定积分表示曲边梯形面积的 ***负值***
@@ -127,7 +127,7 @@
     设 $F(x)$ 是 $f(x)$ 在相应区间上的一个原函数，$x_0$ 为 $f(x)$ 的瑕点(使 $f(x)$ 在 $U(x_0,\delta)$ 内无界的点称为瑕点)
     * 若 $x=a$ 是唯一瑕点，则 $\int^b_a{f(x)\mathrm{d}x}=F(b)-\Big[\lim\limits_{x\to a^+}{F(x)}\Big]$,若极限存在，则称反常积分收敛，否则称发散
     * 若 $x=b$ 是唯一瑕点，则 $\int^b_a{f(x)\mathrm{d}x}=\Big[\lim\limits_{x\to b^-}{F(x)}\Big]-F(a)$,若极限存在，则称反常积分收敛，否则称发散
-    * 若 $x=c\in(a,b)$ 是唯一瑕点，则 $\int^a_b{f(x)\mathrm{d}x}=\int^c_a{f(x)\mathrm{d}x}+\int^b_c{f(x)\mathrm{d}x}$，若右端两个积分都收敛，则称反常积分收敛，否则称发散
+    * 若 $x=c\in(a,b)$ 是唯一瑕点，则 $\int^b_a{f(x)\mathrm{d}x}=\int^c_a{f(x)\mathrm{d}x}+\int^b_c{f(x)\mathrm{d}x}$，若右端两个积分都收敛，则称反常积分收敛，否则称发散
   * 将 $\infty$ 和瑕点统称为奇点。***判别敛散性时，一个积分只能有一个奇点***
 * 敛散性判别法
   * 无穷区间
@@ -175,8 +175,54 @@
     $$
 
     * ***凡是与 $x$ 趋 $0$ 速度相同(即与 $x$ 是同阶无穷小)的式子都可以带入上述公式中的 $x$***
+    * **$\displaystyle\int^1_0{\dfrac{\ln{x}}{x^p}}$ 在 $p=0$ 时也收敛，因为此时不是反常积分了。根据题目是否说明为反常积分，注意该边界值的判断**
 
-## 2 题目
+## 2 进阶
+
+### 2.1 计算求和 $\displaystyle\sum^n_{k=1}{a_k}$、连乘 $\displaystyle\prod^n_{k=1}{a_k}$ 的极限 $\textcolor{LightSkyBlue}{\text{O} (盯住目标)}$
+
+求和根据下列形式做对应处理；连乘通过取 $\ln$ 转化成求和
+
+* 基本型 (能凑成 $\dfrac{i}{n}$) $\textcolor{Cyan}{\text{D}_\text{1} (常规操作) + \text{D}_\text{23} (化归经典形式)}$
+
+  对于 $n+i$、 $n^2+i^2$、 $n^2+ni$ 通过提公因式的方法凑成 $\dfrac{i}{n}$。特别地有
+  
+  $$
+  \begin{align*}
+    \int^1_0{f(x)\mathrm{d}x}
+    &=\lim\limits_{N\to\infty}{\sum^N_{i=1}{f\big(0+\dfrac{1-0}{N}\cdot i)\dfrac{1-0}{N}}}\\
+    &=\lim\limits_{N\to\infty}{\sum^{N-1}_{i=0}{f\big(0+\dfrac{1-0}{N}\cdot i)\dfrac{1-0}{N}}}
+  \end{align*}
+  $$
+  
+* 放缩型 (凑不成 $\dfrac{i}{n}$) $\textcolor{Cyan}{\text{D}_\text{1} (常规操作) + \text{D}_\text{23} (化归经典形式)}$
+  * 放缩+夹逼准则：如含有 $n^2+i$，则凑不成 $\dfrac{i}{n}$，需要考虑对通项放缩用夹逼准则求极限
+  * 放缩后再凑 $\dfrac{i}{n}$：如含有 $\dfrac{i^2+1}{n^2}$，虽然凑不成 $\dfrac{i}{n}$，但通过放缩成 $\left(\dfrac{i}{n}\right)^2<\dfrac{i^2+1}{n^2}<\left(\dfrac{i+1}{n}\right)^2$ 则能凑成 $\dfrac{i}{n}$
+
+* 变量型 ($\dfrac{i}{n}\cdot x$) $\textcolor{Cyan}{\text{D}_\text{1} (常规操作) + \text{D}_\text{23} (化归经典形式)}$
+
+  如含有 $\dfrac{i}{n}\cdot x$，则考虑写成变限积分
+  
+  $$
+  \int^x_0{f(t)\mathrm{d}t}
+  =\lim\limits_{N\to\infty}{\sum^N_{i=1}{f\big(0+\dfrac{x-0}{N}\cdot i)\dfrac{x-0}{N}}}
+  $$
+  
+* 其他分割取高型 $\textcolor{Cyan}{\text{D}_\text{1} (常规操作) + \text{D}_\text{23} (化归经典形式)}$
+  * 极坐标系分割
+  * 按比例的区间内点、几何均值点、均方根点、调和均值点。注意识别这些点的通分化简形式
+
+### 2.2 判断反常积分的敛散性 $\textcolor{LightSkyBlue}{\text{O} (盯住目标)}$
+
+* 恒等变形向 $\displaystyle\int{\dfrac{1}{x^p}\mathrm{d}x},\,\displaystyle\int{\dfrac{\ln{x}}{x^p}\mathrm{d}x}$ 靠近 $\textcolor{Cyan}{\text{D}_\text{23} (化归经典形式)}$
+  * 遇到瑕点利用积分可拆性拆开讨论敛散性
+  * 分母设置法：$x^p=\dfrac{1}{x^{-p}}$，人为制造分母向经典形靠近
+  * 换元法：换元向经典形靠近
+  * 等价代换：$\Box\to 0$ 时，$\ln{(1+\Box)}\sim\Box$，在积分中直接替换方便化简
+  * 加绝对值：利用缩放讨论敛散性
+  * 抹去无关项：当在一个区间内时，被积函数的某项不会产生瑕点，即其结果显然是一个"常数"，则可将该项抹去，被积函数整体的敛散性等价于剩余部分的敛散性
+
+## 3 题目
 
 * 基础30讲
   * 例8.2(不连续一定不可导)
@@ -199,7 +245,7 @@
   * 8.5(定积分定义、夹逼准则)
   * 8.6(取整函数、变限积分)
   * 8.7(积分换元法)
-* 1000题
+* 1000题基础
   * 01(定积分定义)
   * 02(积分区间形式)
   * 04(奇偶性质)
@@ -213,3 +259,22 @@
   * 20(奇偶性质)
   * 21(求不定积分)
   * 24(反常积分)
+* 强化36讲
+  * ⭐***例8.1(基本型、取对数把连乘转换为求和)***
+  * ***例8.2(缩放、幺元缩放)***
+  * ***例8.3(变量型)***
+  * ***例8.4(极坐标系分割)***
+  * ***例8.5(取中点型)***
+  * ***例8.6(拆区间、抹去无关项、换元法、非反常积分)***
+  
+    > 如果不限定必须是反常积分，则 $\displaystyle\int{\dfrac{1}{x^p}\mathrm{d}x}$ 的 $p$ 可以小于等于 $0$
+
+  * ***例8.7(拆区间、抹去无关项、换元法、分母设置法、取0问题)***
+  
+    > 同上，注意观察题目说没说是反常积分，因此确定 $p$ 能不能取 $0$ 或负数
+  
+  * ***例8.8(绝对值被积函数、缩放)***
+
+    > $x\in(0,1)$ 时，$\sin{x}\leq x$；$x\in(1,+\infty)$ 时，$\sin{x}\leq 1$.选取合适的缩放范围
+
+* 1000题强化
