@@ -69,7 +69,7 @@
 
     ![建立连接标志位](../../resource/image/network/chapter4/TCP_build_tag.png "建立连接标志位")
 
-    * **握手 $3$ 可以携带 $1\cdot\text{MSS}$ 的数据，之后的数据量由拥塞窗口和接收窗口决定。也就是说，如果握手 $3$ 要携带数据，则从连接建立到第一个 $\text{MSS}$ 被接收必定需要 $2\cdot\text{RTT}$，后续随着发送窗口的提高才能够叠发(即一个 $\text{RTT}$ 内完成发送窗口内所有 $\text{MSS}$ 的发送和确认)**
+    * **握手 $3$ 可以携带 $1\cdot\text{MSS}$ 的数据，之后的数据量由拥塞窗口和接收窗口决定。也就是说，如果握手 $3$ 要携带数据，则从连接建立到第一个 $\text{MSS}$ 被接收必定需要 $2\cdot\text{RTT}$，后续随着发送窗口的提高才能够叠发(即一个 $\text{RTT}$ 内完成发送窗口内多个 $\text{MSS}$ 的发送和确认)**
 
     ![建立连接状态和最短时间](../../resource/image/network/chapter4/TCP_build_state_time.png "建立连接状态和最短时间")
 
@@ -108,8 +108,11 @@
 
   ![可靠传输与流量控制示例](../../resource/image/network/chapter4/TCP_reliable_transmission_eg_2.png "可靠传输与流量控制示例")
 
+  * 不携带数据的确认段不会消耗序号 $\text{seq}$
+
   ![可靠传输与流量控制示例](../../resource/image/network/chapter4/TCP_reliable_transmission_eg_3.png "可靠传输与流量控制示例")
 
+  * 即使缓冲区未满，也可以提前按序上交
   * 数据必须是有序的，即若收到了 $1,2,4,5$，则只能上交 $1,2$，确保收到的数据序号是连续的
 
   ![可靠传输与流量控制示例](../../resource/image/network/chapter4/TCP_reliable_transmission_eg_4.png "可靠传输与流量控制示例")
@@ -139,6 +142,8 @@
 
 ## 2 题目
 
+### 2.1 选择
+
 * 5.1习题
   * 03(面向连接的服务可以确保数据的顺序交付)
 * 5.2习题
@@ -153,3 +158,9 @@
   * ***53(拥塞窗口增加最长时间)***
   * ⛔***54(序号消耗总量)***
   * ⛔***60(TCP连接全过程最少时间)***
+
+### 2.2 大题
+
+* 5.3习题
+  * ⛔***13(16进制的IP分组包含TCP首部综合分析)***
+  * 14()
