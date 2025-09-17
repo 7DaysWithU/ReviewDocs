@@ -17,6 +17,15 @@
     $$
     S=\dfrac{1}{2}\int^{\beta}_{\alpha}{\Big\lvert r_1^2(\theta)-r_2^2(\theta)\Big\rvert\mathrm{d}\theta}
     $$
+  * 参数方程
+
+    曲线 $\begin{cases}x=x(t) \\ y=y(t)\end{cases},t\in[\alpha, \beta]$ 所围平面图形的面积为
+
+    $$
+    S=\int^b_a{\Big\lvert y(t)\Big\rvert\mathrm{d}x}=\int^{\beta}_{\alpha}{\Big\lvert y(t)\cdot x^{'}(t)\Big\rvert\mathrm{d}t}
+    $$
+
+    **注意 $\mathrm{d}x=x^{'}(t)\mathrm{d}t$ 后要同步更改上下限**
 * 旋转体体积
   * 绕 $x$ 轴旋转
 
@@ -41,6 +50,13 @@
     $$
     V=\dfrac{\pi}{\left(A^2+B^2\right)^\frac{3}{2}}\int^b_a{\left[Ax+Bf(x)+C\right]^2\lvert Af^{'}(x)-B\rvert\mathrm{d}x}
     $$
+  * 绕极轴旋转
+
+    设平面图形 $D=\{(r,\theta)\,|\,0\leq r\leq r(\theta),\,\theta\in[\alpha,\beta]\subset[0,\pi]\}$，则 $D$ 绕极轴旋转一周所得旋转体的体积为
+
+    $$
+    V=\dfrac{2}{3}\pi\int^{\beta}_{\alpha}{r^3(\theta)\sin{\theta}\mathrm{d}\theta}
+    $$
 * 函数平均值
 
   设 $x\in[a,b]$，由定积分中值定理可得，函数 $f(x)$ 在 $[a,b]$ 上的平均值为
@@ -54,7 +70,7 @@
 
 * 平面图形形心
   
-  设平面区域 $D=\{(x,y)|0\leq y\leq f(x),a\leq x\leq b\}$，$y=f(x)$ 在 $[a,b]$ 上连续，则 $D$ 的形心坐标为
+  设平面区域 $D=\{(x,y)|a\leq x\leq b,0\leq y\leq f(x)\}$，$y=f(x)$ 在 $[a,b]$ 上连续，则 $D$ 的形心坐标为
 
   $$
   \begin{align*}
@@ -67,7 +83,7 @@
   * 平面光滑曲线由直角坐标方程 $y=f(x),x\in[a,b]$ 给出，则弧长
 
     $$
-    s=\int^b_a{\sqrt{1+\left[f^{'}\left(x\right)\right]^2}\mathrel{d}x}
+    s=\int^b_a{\sqrt{1+\left[f^{'}\left(x\right)\right]^2}\mathrm{d}x}
     $$
 
   * 平面光滑曲线由参数方程 $\begin{cases}
@@ -76,20 +92,20 @@
   \end{cases},t\in[\alpha, \beta]$ 给出，则弧长
   
     $$
-    s=\int^{\beta}_{\alpha}{\sqrt{\left[x^{'}\left(t\right)\right]^2+\left[y^{'}\left(t\right)\right]^2}\mathrel{d}t}
+    s=\int^{\beta}_{\alpha}{\sqrt{\left[x^{'}\left(t\right)\right]^2+\left[y^{'}\left(t\right)\right]^2}\mathrm{d}t}
     $$
 
   * 平面光滑曲线由极坐标方程 $r=r(\theta),\theta\in[\alpha,\beta]$ 给出，则弧长
 
     $$
-    s=\int^{\beta}_{\alpha}{\sqrt{\left[r\left(\theta\right)\right]^2+\left[r^{'}\left(\theta\right)\right]^2}\mathrel{d}\theta}
+    s=\int^{\beta}_{\alpha}{\sqrt{\left[r\left(\theta\right)\right]^2+\left[r^{'}\left(\theta\right)\right]^2}\mathrm{d}\theta}
     $$
 
 * 旋转体侧面积
   * 曲线 $L$：$y=f(x),x\in[a,b]$ 绕 $x$ 轴旋转一周所得旋转体侧面积为
 
     $$
-    S=2\pi\int^b_a{\left\lvert f\left(x\right)\right\rvert\sqrt{1+\left[f^{'}\left(x\right)\right]^2}\mathrel{d}x}
+    S=2\pi\int^b_a{\left\lvert f\left(x\right)\right\rvert\sqrt{1+\left[f^{'}\left(x\right)\right]^2}\mathrm{d}x}
     $$
 
   * 曲线 $L$：$\begin{cases}
@@ -98,13 +114,13 @@
   \end{cases},t\in[\alpha, \beta]$ 绕 $x$ 轴旋转一周所得旋转体侧面积为
   
     $$
-    S=2\pi\int^{\beta}_{\alpha}{\left\lvert y\left(t\right)\right\rvert\sqrt{\left[x^{'}\left(t\right)\right]^2+\left[y^{'}\left(t\right)\right]^2}\mathrel{d}t}
+    S=2\pi\int^{\beta}_{\alpha}{\left\lvert y\left(t\right)\right\rvert\sqrt{\left[x^{'}\left(t\right)\right]^2+\left[y^{'}\left(t\right)\right]^2}\mathrm{d}t}
     $$
 
   * 曲线 $L$：$r=r(\theta),\theta\in[\alpha,\beta]$ 绕 $x$ 轴旋转一周所得旋转体侧面积为
 
     $$
-    S=2\pi\int^{\beta}_{\alpha}{\left\lvert r\left(\theta\right)\sin{\theta}\right\rvert\sqrt{\left[r\left(\theta\right)\right]^2+\left[r^{'}\left(\theta\right)\right]^2}\mathrel{d}\theta}
+    S=2\pi\int^{\beta}_{\alpha}{\left\lvert r\left(\theta\right)\sin{\theta}\right\rvert\sqrt{\left[r\left(\theta\right)\right]^2+\left[r^{'}\left(\theta\right)\right]^2}\mathrm{d}\theta}
     $$
 
 * 平行截面面积已知的立体体积
@@ -117,7 +133,17 @@
 
   ***常用微元划分思想***
 
-## 2 题目
+## 2 进阶
+
+### 2.1 计算图形的相关几何量 $\textcolor{LightSkyBlue}{\text{O} (盯住目标)}$
+
+* 计算公式与基本图形的几何量大观 $\textcolor{Cyan}{\text{D}_\text{1} (常规操作)}$
+  * 所围面积、旋转体体积、弧长、旋转体侧面积、形心、平均值、立体体积
+  * 心形线、阿基米德螺线、平摆线、星形线、三叶玫瑰线、四叶玫瑰线
+
+* 各种函数表达式的几何量计算 $\textcolor{Cyan}{\text{D}_\text{1} (常规操作) + \text{D}_\text{23} (化归经典形式)}$
+
+## 3 题目
 
 * 基础30讲
   * 例10.1(递推式、未定式)
@@ -138,7 +164,7 @@
   * 10.2(取体积微元)
   * 10.8(参数方程、换元法)
   * ***10.9(分段函数取微元、不能用公式)***
-* 1000题
+* 1000题基础
   * 05(未知f(x)直接分部积分法)
   * ***08(变化率)***
   * ***11(反函数切换积分视角)***
@@ -146,3 +172,28 @@
   * ***16(绕非坐标轴直线旋转)***
   * 17(反函数切换积分视角)
   * 19(变化率、参数方程)
+* 强化36讲
+  * 例10.1(心形线弧长、面积、旋转体体积、半角公式)
+  * 例10.2(阿基米德螺线面积)
+  * 例10.3(三叶玫瑰线面积)
+  * ***例10.4(平摆线弧长、面积、旋转体体积)***
+  * 例10.5(星形线弧长、面积、旋转体体积)
+  * ***例10.6(笛卡尔叶形线面积、渐近线)***
+  * 例10.7(极限定义的幂函数)
+  * 例10.8(积分定义的幂函数)
+  * ***例10.9(已知旋转体体积反求幂函数参数、 $a^{f(x)}$ 特殊情况下的积分)***
+  * ***例10.10(求三角函数定义的函数的弧长、半角公式)***
+  
+    > 注意函数的定义域。利用半角公式 $\cos{2\theta}=\cos^2{\theta}-\sin^2{\theta}$ 化简 $\sqrt{1\pm\cos{\theta}}$ 的情况
+  
+  * ***例10.11(x,y互换位置)***
+  * ⭐***例10.12(函数绕平行坐标轴的直线旋转)***
+  
+    > 若函数 $f(x)$ 绕 $y=a$ 旋转，求旋转体的体积，则 $r=f(x)-a$，计算积分 $\int^b_a{\pi r^2\mathrm{d}x}$ 即可。绕 $x$ 轴旋转其实是绕 $y=0$ 旋转的特殊情况
+  
+  * 例10.13(求指数函数定义的函数的旋转体体积)
+  * ⭐***例10.14(悬链线函数、经典化简)***
+  
+    > $\sqrt{1+\left(\dfrac{1}{2}\Box-\dfrac{1}{2\Box}\right)^2}=\sqrt{\left(\dfrac{1}{2}\Box+\dfrac{1}{2\Box}\right)^2}$，本质就是配平方
+
+* 1000题强化
