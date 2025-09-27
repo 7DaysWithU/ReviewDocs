@@ -147,7 +147,7 @@
 
 ### 2.2 定积分不等式 $\textcolor{LightSkyBlue}{\text{O} (盯住目标)}$
 
-* 定积分保号性放缩
+* 定积分保号性放缩 $\textcolor{Cyan}{\text{D}_\text{1} (常规操作) + \text{D}_\text{23} (化归经典形式)}$
 
   若在区间 $[a,b]$ 上有 $f(x)\leq g(x)$，则有 $\int^b_a{f(x)\mathrm{d}x}\leq\int^b_a{g(x)\mathrm{d}x}$。注意，若函数 $f(x)-g(x)$ 连续且不恒为 $0$，则等号无法取到 $\textcolor{Cyan}{\text{D}_\text{1} (常规操作) + \text{D}_\text{23} (化归经典形式)}$
 

@@ -68,16 +68,31 @@
   \end{align*}
   $$
 
-* 平面图形形心
+* 平面图形形心(也是密度均匀时的重心)
   
   设平面区域 $D=\{(x,y)|a\leq x\leq b,0\leq y\leq f(x)\}$，$y=f(x)$ 在 $[a,b]$ 上连续，则 $D$ 的形心坐标为
 
   $$
   \begin{align*}
-    \overline{x}&=\dfrac{\int^b_a{xf(x)\mathrm{d}x}}{\int^b_a{f(x)\mathrm{d}x}}\\\\
-    \overline{y}&=\dfrac{\dfrac{1}{2}\int^b_a{f^2(x)\mathrm{d}x}}{\int^b_a{f(x)\mathrm{d}x}}
+    \overline{x}&=\dfrac{\displaystyle\int^b_a{xf(x)\mathrm{d}x}}{\displaystyle\int^b_a{f(x)\mathrm{d}x}},\quad
+    \overline{y}&=\dfrac{\dfrac{1}{2}\displaystyle\int^b_a{f^2(x)\mathrm{d}x}}{\displaystyle\int^b_a{f(x)\mathrm{d}x}}
   \end{align*}
   $$
+
+* 平面图形重心
+
+  $$
+  M=\iint_D{\rho(x,y)\mathrm{d}A}
+  $$
+  
+  $$
+  \begin{align*}
+    \overline{x} = \frac{M_y}{M} = \frac{\displaystyle\iint_D{x\cdot\rho(x,y)\mathrm{d}A}}{\displaystyle\iint_D{\rho(x,y)\mathrm{d}A}}, &\quad
+    \overline{y} = \frac{M_x}{M} = \frac{\displaystyle\iint_D{y\cdot\rho(x,y)\mathrm{d}A}}{\displaystyle\iint_D{\rho(x,y)\mathrm{d}A}}
+  \end{align*}
+  $$
+
+  其中，$M$ 是图形的总质量，$\mathrm{d}A$ 是图形的面积，$\rho(x,y)$ 是图形关于坐标的密度
 
 * 平面曲线弧长
   * 平面光滑曲线由直角坐标方程 $y=f(x),x\in[a,b]$ 给出，则弧长
