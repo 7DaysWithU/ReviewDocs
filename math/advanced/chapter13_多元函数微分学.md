@@ -118,7 +118,7 @@
   \Delta z=A\Delta x+B\Delta y+o(\rho)
   $$
   
-  且 $A,B$ 仅与点 $(x,y)$ 有关，与 $\Delta x,\Delta y$ 无关；$\rho=\sqrt{\Delta x^2+\Delta y^2}$；并且当 $\Delta x\to0,\Delta y\to0$ 时 $o(\rho)$ 是 $\sqrt{\Delta x^2+\Delta y^2}$ 的高阶无穷小，则称函数 $z=f(x,y)$ 在点 $(x,y)$ 处可微分，并称 $A\Delta x+B\Delta y$ 为函数 $z=f(x,y)$ 在点 $(x,y)$ 处的全微分，记作
+  且 $A,B$ 仅与点 $(x,y)$ 有关，与 $\Delta x,\Delta y$ 无关；$\rho=\sqrt{\Delta x^2+\Delta y^2}$；并且当 $\Delta x\to0,\Delta y\to0$ 时 $o(\rho)$ 是 $\sqrt{\Delta x^2+\Delta y^2}$ 的高阶无穷小，则称函数 $z=f(x,y)$ 在点 $(x,y)$ 处可微分，并称 $A\Delta x+B\Delta y$ 为函数 $z=f(x,y)$ 在点 $(x,y)$ 处的 **全微分**，记作
   
   $$
   \mathrm dz=A\Delta x+B\Delta y=A\mathrm dx+B\mathrm dy
@@ -230,7 +230,7 @@
 
     * 两边求导法
 
-      直接两边求导 $\left[(z+y)^x\right]^{'}=\left[x^2\right]^{'}$，即 $\left[\left(f\left(x,y\right)+y\right)^x\right]^{'}=\left[x^2\right]^{'}$。此时，自变量是 $x,y$，因变量是 $z$，因此等式左边是个幂指函数求导
+      直接两边求全微分 $\left[(z+y)^x\right]^{'}=\left[x^2\right]^{'}$，即 $\left[\left(z\left(x,y\right)+y\right)^x\right]^{'}=\left[x^2\right]^{'}$。此时，自变量是 $x,y$，因变量是 $z$，因此等式左边是个幂指函数求导
 
     * 总结
 
@@ -397,9 +397,9 @@ $$
     $$
 
 * 计算二重极限 $\textcolor{Cyan}{\text{D}_\text{1} (常规操作) + \text{D}_\text{22} (转换等价表述)}$
-  * 夹逼准则：利用放缩法、凑平方等手段直接夹逼出极限
+  * 夹逼准则：利用放缩法(套绝对值用绝对值不等式、裂项)、凑平方等手段直接夹逼出极限
   * 无穷小乘有界是无穷小：可以通过凑项把原本复杂的式子凑成一些无穷小乘有界，就能得到结果
-  * 整体换元法：变成一元极限
+  * 整体换元法：变成一元极限。如换元成极坐标，将 $\lim\limits_{\substack{x\to x_0 \\ y\to y_0}}{f(x,y)}\Rightarrow\lim\limits_{r\to r_0}{r(\theta)}$，不指定 $\theta$ 的趋向是为了确保所有路径的极限一致，即保证极限存在
 
 * 判别累次极限是否存在 $\textcolor{Cyan}{\text{D}_\text{1} (常规操作)}$
 
@@ -415,6 +415,137 @@ $$
 * 连续、偏导数、全微分、连续 $\textcolor{Cyan}{\text{D}_\text{1} (常规操作)}$
   * $f(x,y)$ 在 $(x_0,y_0)$ 处连续则在该点单变量也连续，反之未必
   * 关系
+
+### 2.3 计算偏导和全微分 $\textcolor{LightSkyBlue}{\text{O} (盯住目标)}$
+
+* 链式求导法则 $\textcolor{Cyan}{\text{D}_\text{1} (常规操作)}$
+  
+  **遇到求二阶导时一定先求对应位置的导，再求该位置的对具体变量的导**
+
+  * 一元复合函数 $f[g(x)]$ 求导
+  * 二元多变量复合函数 $f(u,v)$ 求导，其中 $u=u(x,y),v=v(x,y)$
+  * 二元单变量复合函数 $f(u,v)$ 求导，其中 $u=u(t),v=v(t)$
+
+* 隐函数求导法 $\textcolor{Cyan}{\text{D}_\text{1} (常规操作)}$
+  * 单方程：隐函数存在定理
+  
+    $F(x,y,z)$ 在点 $(x_0,y_0,z_0)$ 的某邻域内有连续的偏导数，且
+    $
+    \begin{cases}
+      F(x_0,y_0,z_0)=0\\
+      F^{'}_z(x_0,y_0,z_0)\neq0
+    \end{cases}
+    $
+    ，则
+
+    $$
+    \dfrac{\partial z}{\partial x}=-\dfrac{F^{'}_x(x,y,z)}{F^{'}_z(x,y,z)}\,,
+    \dfrac{\partial z}{\partial y}=-\dfrac{F^{'}_y(x,y,z)}{F^{'}_z(x,y,z)}
+    $$
+
+  * 方程组：雅可比行列式
+
+    设
+    $
+    \begin{cases}
+      F(x, y, z) &= 0 \\
+      G(x, y, z) &= 0
+    \end{cases}$
+    ，当满足
+    $
+    \dfrac{\partial(F,G)}{\partial(y,z)} =
+    \begin{vmatrix}
+      \dfrac{\partial F}{\partial y} & \dfrac{\partial F}{\partial z} \\\\
+      \dfrac{\partial G}{\partial y} & \dfrac{\partial G}{\partial z}
+    \end{vmatrix}
+    \neq 0
+    $时，可确定
+    $
+    \begin{cases}
+      y &= y(x) \\
+      z &= z(x)
+    \end{cases}
+    $
+
+    且有
+
+    $$
+    \dfrac{dy}{dx} = -\dfrac{\dfrac{\partial(F,G)}{\partial(x,z)}}{\dfrac{\partial(F,G)}{\partial(y,z)}}
+    = -\dfrac{
+    \begin{vmatrix}
+      \dfrac{\partial F}{\partial x} & \dfrac{\partial F}{\partial z} \\\\
+      \dfrac{\partial G}{\partial x} & \dfrac{\partial G}{\partial z}
+    \end{vmatrix}
+    }{
+    \begin{vmatrix}
+      \dfrac{\partial F}{\partial y} & \dfrac{\partial F}{\partial z} \\\\
+      \dfrac{\partial G}{\partial y} & \dfrac{\partial G}{\partial z}
+    \end{vmatrix}
+    },
+    \quad
+    \dfrac{dz}{dx} = -\dfrac{\dfrac{\partial(F,G)}{\partial(y,x)}}{\dfrac{\partial(F,G)}{\partial(y,z)}}
+    = -\dfrac{
+    \begin{vmatrix}
+      \dfrac{\partial F}{\partial y} & \dfrac{\partial F}{\partial x} \\\\
+      \dfrac{\partial G}{\partial y} & \dfrac{\partial G}{\partial x}
+    \end{vmatrix}
+    }{
+    \begin{vmatrix}
+      \dfrac{\partial F}{\partial y} & \dfrac{\partial F}{\partial z} \\\\
+      \dfrac{\partial G}{\partial y} & \dfrac{\partial G}{\partial z}
+    \end{vmatrix}
+    }.
+    $$
+
+* 全微分不变性、全微分公式大观 $\textcolor{Cyan}{\text{D}_\text{1} (常规操作)}$
+
+### 2.4 偏微分方程 $\textcolor{LightSkyBlue}{\text{O} (盯住目标)}$
+
+* 已知偏导方程求原函数 $\textcolor{Cyan}{\text{D}_\text{1} (常规操作) + \text{D}_\text{23} (化归经典形式) + \text{D}_\text{3} (移花接木)}$
+
+  找到 $u,v$，令 $f=f(u,v)$，画结构图，求偏导并带入题目中的偏导方程进行化简，得到纯的一阶偏导或二阶混合偏导，再往回积分即可获得 $f$。特别注意，积分产生的"常数"实质上是另一个变量的函数，如 $\dfrac{\partial^2{f}}{\partial{x}\partial{y}}$ 对 $y$ 积分产生的是 $C(x)$
+
+* 化简偏微分方程 $\textcolor{Cyan}{\text{D}_\text{1} (常规操作) + \text{D}_\text{23} (化归经典形式) + \text{D}_\text{3} (移花接木)}$
+
+  画结构图，求偏导并带入题目中的偏导方程进行化简，通过比对系数解出题目给的偏导方程中的未知数
+
+* 已知关于偏导的复合函数求原函数 $\textcolor{Cyan}{\text{D}_\text{1} (常规操作) + \text{D}_\text{23} (化归经典形式) + \text{D}_\text{3} (移花接木)}$
+
+  如题目给出的是 $u=f[g(x)]$ 满足含 $u$ 的偏导方程，则令 $g(x)=t$，画结构图，求偏导并带入题目中的偏导方程进行化简，最后积分求原函数，仍然注意"常数"的问题
+
+* 已知偏导与原函数关系求原函数 $\textcolor{Cyan}{\text{D}_\text{1} (常规操作) + \text{D}_\text{23} (化归经典形式) + \text{D}_\text{3} (移花接木)}$
+
+  如题目给出的是 $f^{'}(x,y)=-f(x,y)$，则可以化简成 $\dfrac{f^{'}(x,y)}{f(x,y)}=-1$，类似凑微分。两边同时对 $x$ 积分得 $\ln{\lvert f(x,y)\rvert}=-x+C(y)$。通过其他取值条件定下来 $C(y)$ 等"常数"
+
+### 2.5 多元函数的极值最值 $\textcolor{LightSkyBlue}{\text{O} (盯住目标)}$
+
+* 无条件极值 $\textcolor{Cyan}{\text{D}_\text{1} (常规操作) + \text{D}_\text{22} (转换等价表述) + \text{D}_\text{3} (移花接木)}$
+  * 求解方法：一阶偏导为 $0$、二阶偏导判断 $\Delta$
+  * $\Delta=0$ 时的否定极值方法
+    * 沿 $x$ 方向是极小，沿 $y$ 方向是极大，即马鞍面
+    * 沿 $y=kx$ 有极大也有极小
+    * 邻域内有极大也有极小
+  * 与一元函数区别
+    * 多元函数唯一的极值点不一定是最值点；一元函数唯一极值点必是最值点
+    * 多元函数可以有多个极值点，也可以只有多个极大值没有极小值；一元函数的两个极值点必定一个极大值一个极小值
+  * 利用 $\Delta$ 判别极值点位置：若 $\Delta<0$，则区域内部一定没有极值点
+
+* 条件极值、拉格朗日乘数法 $\textcolor{Cyan}{\text{D}_\text{1} (常规操作) + \text{D}_\text{22} (转换等价表述)}$
+  * 可以利用 $k$ 次齐次函数优化乘数法方程组，方便求解
+  * 在可微的条件下，条件极值点满足
+
+    $$
+    \left.\begin{vmatrix}
+      f^{'}_x & f^{'}_y & f^{'}_z \\
+      \phi^{'}_x & \phi^{'}_y & \phi^{'}_z \\
+      \psi^{'}_x & \psi^{'}_y & \psi^{'}_z \\
+    \end{vmatrix}\right|_{P_0}
+    =0
+    $$
+
+* 闭区域上的最值 $\textcolor{Cyan}{\text{D}_\text{1} (常规操作)}$
+
+  区域内用无条件极值求候选点，区域边界上用拉格朗日乘数法或带入消元法求候选点，最后比较所有候选点的函数值大小
 
 ## 3 题目
 
@@ -476,4 +607,44 @@ $$
   * ⭐***例13.12(判断可微与偏导连续)***
   * ***例13.13(带值求二阶混合偏导)***
   * 例13.14(连续函数的二阶混合偏导相等)
+  * ⭐***例13.15(方程隐函数求全微分)***
+  
+    > 求快就两边同时求全微分再化简，求稳就公式法用隐函数存在定理
+
+  * ⭐***例13.16(二元函数求混合二阶偏导)***
+  
+    > 对于 $f(u,v)$ 一定是先求对第一个位置的偏导，再求第一个位置相关变量的偏导，第二个位置也是一样
+    >
+    > **若一阶偏导是 $0$，则二阶偏导未必是 $0$**
+  
+  * ***例13.17(雅可比行列式、观察法解方程)***
+  * 例13.18($k$ 次齐次函数充要条件证明)
+  
+    > **$f(x,y)$ 是 $k$ 次齐次函数 $f(tx,ty)=t^k f(x,y)\Leftrightarrow x\dfrac{\partial{f}}{\partial{x}}+y\dfrac{\partial{f}}{\partial{y}}=k f(x,y)$**
+
+  * ***例13.19($k$ 次齐次函数)***
+  * ⛔***例13.20($k$ 次齐次函数)***
+  * ⭐***例13.21(已知偏导方程求原函数)***
+  
+    > 可以利用二阶混合偏导相等的性质交换积分先后。**特别注意对一个变量积分得到的"常数"是关于其他变量的表达式**，需要用题目中的表达式带值确认
+
+  * ⭐***例13.22(化简偏微分方程)***
+  * ⭐***例13.23(已知关于偏导的复合函数求原函数)***
+  * ⭐***例13.24(已知偏导与原函数关系求原函数)***
+  * 例13.25(无条件极值)
+  * ***例13.26(无条件极值否定判断)***
+  * 例13.27($\Delta$ 判别法判断最值在区域内还是边界上)
+  * 例13.28($\Delta$ 判别法判断抽象函数取极值的充分条件)
+  * ⛔***例13.29(条件极值点偏导行列式)***
+  * ***例13.30(条件最值、$k$ 次齐次函数优化乘数法方程组、齐次线性方程组 $\det=0$ 是唯一零解)***
+  * 例13.31(区域最值)
 * 1000题强化
+  * ⭐***02(求点的二阶复合偏导值、求分段函数的累次极限)***
+  
+    > 求点的二阶复合偏导值，则需要先固定一个变量($\neq 0$)并求出一阶偏导的表达式，再走导数定义求二阶偏导
+    >
+    > 若要求 $x\to 0$，则一定有 $x\neq 0$，据此选择分段函数符合 $x\neq 0$ 的部分
+
+  * ***03(即使偏导都是0也要先证明可微才能求全微分、夹逼放缩证明可微)***
+  * ***04(极限存在母为0子必为0)***
+  * ⭐***05(极坐标换元求二重极限、判断二重极限存在)***
