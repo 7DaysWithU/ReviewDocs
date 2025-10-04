@@ -206,12 +206,10 @@
   
   $$
   \dfrac{\partial(x,y)}{\partial(u,v)}=
-  \left|
-  \begin{matrix}
+  \begin{vmatrix}
     \dfrac{\partial x}{\partial u} & \dfrac{\partial x}{\partial v}\\\\
     \dfrac{\partial y}{\partial u} & \dfrac{\partial y}{\partial v}
-  \end{matrix}
-  \right|
+  \end{vmatrix}
   $$
 
 * **⚠️广义极坐标系**
