@@ -11,6 +11,21 @@
   $$
   \iint_D{f(x,y)\mathrm{d}\sigma}=\lim\limits_{\lambda\to0}{\sum^n_{i=1}{f(\xi_i,\eta_i)\Delta\sigma_i}}
   $$
+
+  当将区间 $[a,b]$ 和 $[c,d]$ $N$ 等分时，每个小区间为
+  
+  $$
+  \begin{align*}
+    I_{x_k}=\left[a+\dfrac{b-a}{N}(k-1),a+\dfrac{b-a}{N}k\right] \\\\
+    I_{y_k}=\left[c+\dfrac{d-c}{N}(k-1),c+\dfrac{d-c}{N}k\right]
+  \end{align*}
+  $$
+
+  当点 $(\xi_{x_k},\xi_{y_k})$ 满足 $\xi_{x_k}\in I_{x_k},\,\xi_{y_k}\in I_{y_k}$ 时，可进一步写为
+
+  $$
+  \iint_D{f(x,y)\mathrm{d}\sigma}=\lim\limits_{N\to\infty}{\sum^N_{i=1}{\sum^N_{j=1}{f(\xi_{x_k},\xi_{y_k})\cdot\dfrac{b-a}{N}\cdot \dfrac{d-c}{N}}}}
+  $$
   
   **若 $f(x,y)$ 在有界闭区域 $D$ 上连续，则二重积分 $\iint_D{f(x,y)\mathrm{d}\sigma}$ 一定存在**
 
@@ -148,7 +163,7 @@
     上下是曲边 $y=\phi_1(x),y=\phi_2(x)$，左右是直线 $x=a,x=b$
 
     $$
-    \iint_D{f(x,y)\mathrm{d}\sigma}=\int^b_a{\mathrm{d}x}\int^{\phi_2(x)}_{\phi_1(x)}{f(x,y)\mathrm{d}y}
+    \iint_D{f(x,y)\mathrm{d}\sigma}=\displaystyle\int^b_a{\mathrm{d}x}\displaystyle\int^{\phi_2(x)}_{\phi_1(x)}{f(x,y)\mathrm{d}y}
     $$
 
   * $Y$ 型区域
@@ -156,7 +171,7 @@
     左右是曲边 $x=\psi_1(x),x=\psi_2(x)$，上下是直线 $y=a,y=b$
 
     $$
-    \iint_D{f(x,y)\mathrm{d}\sigma}=\int^b_a{\mathrm{d}y}\int^{\psi_2(y)}_{\psi_1(y)}{f(x,y)\mathrm{d}x}
+    \iint_D{f(x,y)\mathrm{d}\sigma}=\displaystyle\int^b_a{\mathrm{d}y}\displaystyle\int^{\psi_2(y)}_{\psi_1(y)}{f(x,y)\mathrm{d}x}
     $$
 
   **二重积分严格要求 $\begin{cases}a<b \\ \phi_1(x)<\phi_2(x)或\psi_1(x)<\psi_2(x)\end{cases}$，即保证积分上下界为从小到大，否则必须换上下界**
@@ -175,37 +190,37 @@
   * 极点在区域外
 
     $$
-    \iint_D{f(x,y)\mathrm{d}\sigma}=\int^{\beta}_{\alpha}{\mathrm{d}\theta}\int^{r_2(\theta)}_{r_1(\theta)}{f(r\cos{\theta},r\sin{\theta})r\mathrm{d}r}
+    \iint_D{f(x,y)\mathrm{d}\sigma}=\displaystyle\int^{\beta}_{\alpha}{\mathrm{d}\theta}\displaystyle\int^{r_2(\theta)}_{r_1(\theta)}{f(r\cos{\theta},r\sin{\theta})r\mathrm{d}r}
     $$
 
   * 极点在区域边界上
 
     $$
-    \iint_D{f(x,y)\mathrm{d}\sigma}=\int^{\beta}_{\alpha}{\mathrm{d}\theta}\int^{r(\theta)}_{0}{f(r\cos{\theta},r\sin{\theta})r\mathrm{d}r}
+    \iint_D{f(x,y)\mathrm{d}\sigma}=\displaystyle\int^{\beta}_{\alpha}{\mathrm{d}\theta}\displaystyle\int^{r(\theta)}_{0}{f(r\cos{\theta},r\sin{\theta})r\mathrm{d}r}
     $$
 
   * 极点在区域内
 
     $$
-    \iint_D{f(x,y)\mathrm{d}\sigma}=\int^{2\pi}_{0}{\mathrm{d}\theta}\int^{r(\theta)}_{0}{f(r\cos{\theta},r\sin{\theta})r\mathrm{d}r}
+    \iint_D{f(x,y)\mathrm{d}\sigma}=\displaystyle\int^{2\pi}_{0}{\mathrm{d}\theta}\displaystyle\int^{r(\theta)}_{0}{f(r\cos{\theta},r\sin{\theta})r\mathrm{d}r}
     $$
 
-  **若被积函数为 $f(x^2+y^2),f(\dfrac{x}{y}),f(\dfrac{y}{x})$ 等形式，或积分区域为圆或圆的一部分，则有限考虑使用极坐标系处理；否则优先考虑直角坐标系处理**
+  **若被积函数为 $f(x^2+y^2),f(\dfrac{x}{y}),f(\dfrac{y}{x})$ 等形式，或积分区域为圆或圆的一部分，则优先考虑使用极坐标系处理；否则优先考虑直角坐标系处理**
 
 * 换元法
 
-  若存在 $\begin{cases}x=x(u,v) \\ y=y(u,v)\end{cases}$ 是 $(x,y)$ 面到 $(u,v)$ 面的一对一映射，且 $x=x(u,v)\,,y=y(u,v)$ 存在一阶连续偏导，$\dfrac{\partial(x,y)}{\partial(u,v)}\pm0$ 时，有
+  若存在 $\begin{cases}x=x(u,v) \\ y=y(u,v)\end{cases}$ 是 $(x,y)$ 面到 $(u,v)$ 面的一对一映射，且 $x=x(u,v)\,,y=y(u,v)$ 存在一阶连续偏导，$\dfrac{\partial(x,y)}{\partial(u,v)}\neq0$ 时，有
   
   $$
   \iint_{D_{xy}}{f(x,y)\mathrm{d}x\mathrm{d}y}
   \xlongequal[y=y(u,v)]{x=x(u,v)}
-  \iint_{D_{uv}}{f\left[x\left(u,v\right),y\left(u,v\right)\right]\cdot\left\lvert\dfrac{\partial(x,y)}{\partial(u,v)}\right\rvert\cdot\mathrm{d}u\mathrm{d}v}
+  \iint_{D_{uv}}{f\left[x\left(u,v\right),y\left(u,v\right)\right]\cdot\left\lvert\det{J}\right\rvert\cdot\mathrm{d}u\mathrm{d}v}
   $$
 
-  其中
+  其中，公式中为 **雅可比行列式的绝对值**，雅可比行列式的计算方式如下：
   
   $$
-  \dfrac{\partial(x,y)}{\partial(u,v)}=
+  \det{J}=\dfrac{\partial(x,y)}{\partial(u,v)}=
   \begin{vmatrix}
     \dfrac{\partial x}{\partial u} & \dfrac{\partial x}{\partial v}\\\\
     \dfrac{\partial y}{\partial u} & \dfrac{\partial y}{\partial v}
@@ -217,14 +232,45 @@
   若积分区域 $D$ 为椭圆 $\dfrac{x^2}{a^2}+\dfrac{y^2}{b^2}=1$，则可令 $\begin{cases}x=a\cdot r\cos{\theta} \\ y=b\cdot r\sin{\theta}\end{cases}$，则积分可写作
   
   $$
-  \int^{\theta_2}_{\theta_1}{\mathrm{d}\theta}\int^{r_2}_{r_1}f(r,\theta)\cdot abr\cdot\mathrm{d}r
+  \displaystyle\int^{\theta_2}_{\theta_1}{\mathrm{d}\theta}\displaystyle\int^{r_2}_{r_1}f(r,\theta)\cdot abr\cdot\mathrm{d}r
   $$
 
   ***特别注意，由于原区域 $D$ 为椭圆，新区域 $D^{'}$ 为圆，因此 $\theta,r$ 新的上下限均需带回原式重新计算 !!!；$abr$ 项为换元需要额外乘的雅可比行列式的快捷结果***
   
   **广义极坐标系由狭义极坐标结合换元法得到，极其适合在椭圆区域 $D$ 上使用。对于其他类型的区域可根据区域性质进行类似的换元操作**
 
-## 2 题目
+## 2 进阶
+
+### 2.1 计算二重积分 $\textcolor{LightSkyBlue}{\text{O} (盯住目标)}$
+
+* 和式极限 $\textcolor{Cyan}{\text{D}_\text{22} (转换等价表述)}$
+
+  常考 $[0,1]$ 区间，但也要留意特殊点额区间特殊分割方法(详见[一元函数积分学概念-知识点-定积分](./chapter8_%E4%B8%80%E5%85%83%E5%87%BD%E6%95%B0%E7%A7%AF%E5%88%86%E5%AD%A6%E6%A6%82%E5%BF%B5.md#12-定积分)、[一元函数积分学概念-进阶-其他分割取高型](./chapter8_%E4%B8%80%E5%85%83%E5%87%BD%E6%95%B0%E7%A7%AF%E5%88%86%E5%AD%A6%E6%A6%82%E5%BF%B5.md#2-进阶))。通过化简化成二重积分对应的极限形式即可
+
+* 交换积分顺序 $\textcolor{Cyan}{\text{D}_\text{1} (常规操作)}$
+
+  常见的可积不可求积函数如下
+  
+  $$
+  \begin{matrix}
+    \displaystyle\int{\dfrac{\sin{x}}{x}\mathrm{d}x} & \displaystyle\int{\dfrac{\cos{x}}{x}\mathrm{d}x} & \displaystyle\int{\dfrac{\ln{(1+x)}}{x}\mathrm{d}x} & \displaystyle\int{\dfrac{1}{\ln{x}}\mathrm{d}x} \\\\
+    \displaystyle\int{\sin{x^2}\mathrm{d}x} & \displaystyle\int{\cos{x^2}\mathrm{d}x} & \displaystyle\int{\sin{\dfrac{1}{x}}\mathrm{d}x} & \displaystyle\int{\cos{\dfrac{1}{x}}\mathrm{d}x} \\\\
+    \displaystyle\int{\dfrac{\tan{x}}{x}\mathrm{d}x} & \displaystyle\int{\tan{x^2}\mathrm{d}x} & \displaystyle\int{\dfrac{e^x}{x}\mathrm{d}x} & \displaystyle\int{e^{ax^2+bx+c}\mathrm{d}x}(a\neq 0)
+  \end{matrix}
+  $$
+
+  * 如果是可积不可求积或求积特别麻烦，考虑交换积分顺序再积
+  * 变限积分求导时可考虑交换积分顺序以便于求导
+  
+* 积分保号性 $\textcolor{Cyan}{\text{D}_\text{1} (常规操作) + \text{D}_\text{22} (转换等价表述)}$
+
+* 积分对称性 $\textcolor{Cyan}{\text{D}_\text{1} (常规操作) + \text{D}_\text{44} (善于发现对称)}$
+
+* 二重积分常用结论 $\textcolor{Cyan}{\text{D}_\text{1} (常规操作)}$
+
+* 二重积分计算法 $\textcolor{Cyan}{\text{D}_\text{1} (常规操作)}$
+
+## 3 题目
 
 * 基础30讲
   * 例14.1(二重积分正负、保号性)
@@ -250,7 +296,7 @@
   * ***例14.10($\sec$ 区域、极坐标系转直角坐标系、点火公式)***
   * ***例14.11($\Gamma$ 函数、反常积分)***
   * ***例14.12(二重积分最大值(被积函数 $\geq0$)、广义极坐标系)***
-* 1000题
+* 1000题基础
   * 01(区域围法)
   * ***02(二重积分中值定理、极限趋于点)***
   * 03(换元法、普通对称性)
@@ -265,3 +311,28 @@
   * 21(计算)
   * ***22(圆平移换元)***
   * ***24(根式换元)***
+* 强化36讲
+  * 例14.1(和式极限)
+  * 例14.2(可积不可求积交换积分顺序)
+  * 例14.3(求积麻烦交换积分顺序)
+  * ***例14.4(二重积分最大值)***
+  
+    > ***示例：求二重积分 $\displaystyle\iint{(1-x^2-y^2)\mathrm{d}\sigma}$ 取最大值的区域***
+    >
+    > 显然区域内应让 $1-x^2-y^2\geq 0$，则区域就是 $D=\set{(x,y)\,|\,x^2+y^2\leq 1}$
+
+  * ***例14.5(轮换对称性)***
+  * ⭐***例14.6(极坐标系转直角坐标系、积分计算 $\int{\sqrt{a^2-x^2}\mathrm{d}x}$)***
+  
+    > 极坐标系下 $D=\set{(r,\theta)\,|\,0\leq\theta\leq\dfrac{\pi}{4},0\leq r\leq\sec{\theta}}$，由 $\theta$ 显然看出边界是 $y=x$，起点是原点。当 $r=\sec{\theta}$ 时，即为 $r=\dfrac{1}{\cos{\theta}}\Rightarrow r\cos{\theta}=1\Rightarrow x=1$
+    >
+    > ***用 $\begin{cases}x=r\cos{\theta} \\ y=r\sin{\theta}\end{cases}$ 将极坐标系转成直角坐标系***
+
+  * ⭐***例14.7(直角坐标系转极坐标系、二次型椭圆)***
+  
+    > ***示例：画出曲线 $x^2+y^2-xy=1$***
+    >
+    > 详见[番外-ep0二次型与椭圆](../_extra/ep0_%E4%BA%8C%E6%AC%A1%E5%9E%8B%E4%B8%8E%E6%A4%AD%E5%9C%86.md)
+
+  * 例14.8(平移换元)
+* 1000题强化
