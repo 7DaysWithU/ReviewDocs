@@ -2,11 +2,13 @@
 
 ## 1 知识点
 
-### 1.1 CPU
+### 1.1 CPU结构
 
 * 运算器
 
   ![运算器组成](../../resource/image/organization/chapter4/calculator_component.png "运算器组成")
+
+  * 移位寄存器与总线间的是 **三态门(尖三角形)**，用于控制移位器与总线间数据通路的连接和断开
 
 * 控制器
 
@@ -18,6 +20,7 @@
 
   * $\text{CPU}$ 的位数即为数据总线位数
   * $\text{PSW}$ 部分可见，用户只能读不能改
+  * **$\text{ALU}$ 的 $\text{B}$ 端连接的 $\text{MUX}$ 中，可以将 $\text{MUX}$ 的一个接入设置为一条指令占的存储单元数，方便 $\text{PC}$ 执行 $\text{PC}+1$ 操作**
 
 ### 1.2 指令执行过程
 
@@ -154,6 +157,10 @@
 
   ![指令流水线图示](../../resource/image/organization/chapter4/instruction_pipeline_diagram.png "指令流水线图示")
 
+* 分类
+
+  ![流水线分类](../../resource/image/organization/chapter4/instruction_pipeline_classification.png "流水线分类")
+
 * 指标
 
   ![指令流水线指标](../../resource/image/organization/chapter4/instruction_pipeline_index_0.png "指令流水线指标")
@@ -179,12 +186,6 @@
   * 编译优化指令顺序，将无关冲突的操作补到冲突期间执行，既执行了不冲突的指令没有浪费时间空操作，也避免了冲突
 
   ![影响因素](../../resource/image/organization/chapter4/instruction_pipeline_problem_3.png "影响因素")
-
-* 流水线分类
-
-  ![流水线分类](../../resource/image/organization/chapter4/instruction_pipeline_classification_0.png "流水线分类")
-
-  ![流水线分类](../../resource/image/organization/chapter4/instruction_pipeline_classification_1.png "流水线分类")
 
 * 流水线多发技术
 
@@ -217,6 +218,8 @@
 ![硬件多线程](../../resource/image/organization/chapter4/multi_core_hard.png "硬件多线程")
 
 ## 2 题目
+
+### 2.1 选择
 
 * 5.1习题
   * 02(通用寄存器功能)
@@ -253,3 +256,30 @@
   * 07(双核CPU)
   * 10(UMA、NUMA)
   * 11(多核处理器属于MIMD)
+
+### 2.2 大题
+
+* 5.3习题
+  * ⭐***07(写数据流和`in` `out`信号)***
+  
+    > $\text{ALU}$ 和其他寄存器不同，可以直接写运算过程，如 $(\text{R0})+(\text{R1})\to\text{AC}$，要求 $\text{R0}_\text{out},\text{R1}_\text{out},\text{ADD},\text{AC}_\text{in}$ 这些标志位
+    >
+    > ```Text
+    >    R0           R1
+    >     ↓            ↓
+    >   R0_out      R1_out
+    >      ↘         ↙
+    >        ALU (ADD)  ← 控制信号: ADD = 1
+    >            ↓
+    >          AC_in    ← 控制信号: AC_in = 1
+    >            ↓
+    >            AC     ← 结果存储
+    > ```
+
+  * ⭐**08(程序员可见寄存器、ALU为什么设置暂存寄存器、移位器与总线间有个三态门、控制器中的PC依靠运算器中的MUX实现PC+1)**
+  * 09()
+  * 10()
+* 5.6习题
+  * 03()
+  * 04()
+  * 05()
