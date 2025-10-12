@@ -74,25 +74,32 @@
 
   $$
   \begin{align*}
-    \overline{x}&=\dfrac{\displaystyle\int^b_a{xf(x)\mathrm{d}x}}{\displaystyle\int^b_a{f(x)\mathrm{d}x}},\quad
-    \overline{y}&=\dfrac{\dfrac{1}{2}\displaystyle\int^b_a{f^2(x)\mathrm{d}x}}{\displaystyle\int^b_a{f(x)\mathrm{d}x}}
+    \overline{x}&
+    =\dfrac{\displaystyle\iint_D{x\mathrm{d}\sigma}}{\displaystyle\iint_D{\mathrm{d}\sigma}}
+    =\dfrac{\displaystyle\int^b_a{\mathrm{d}x}\int^{f(x)}_0{x\mathrm{d}y}}{\displaystyle\int^b_a{\mathrm{d}x}\int^{f(x)}_0{\mathrm{d}y}}
+    =\dfrac{\displaystyle\int^b_a{xf(x)\mathrm{d}x}}{\displaystyle\int^b_a{f(x)\mathrm{d}x}} \\\\
+
+    \overline{y}&
+    =\dfrac{\displaystyle\iint_D{y\mathrm{d}\sigma}}{\displaystyle\iint_D{\mathrm{d}\sigma}}
+    =\dfrac{\displaystyle\int^b_a{\mathrm{d}x}\int^{f(x)}_0{y\mathrm{d}y}}{\displaystyle\int^b_a{\mathrm{d}x}\int^{f(x)}_0{\mathrm{d}y}}
+    =\dfrac{\dfrac{1}{2}\displaystyle\int^b_a{f^2(x)\mathrm{d}x}}{\displaystyle\int^b_a{f(x)\mathrm{d}x}}
   \end{align*}
   $$
 
 * 平面图形重心
 
   $$
-  M=\iint_D{\rho(x,y)\mathrm{d}A}
+  M=\iint_D{\rho(x,y)\mathrm{d}\sigma}
   $$
   
   $$
   \begin{align*}
-    \overline{x} = \frac{M_y}{M} = \frac{\displaystyle\iint_D{x\cdot\rho(x,y)\mathrm{d}A}}{\displaystyle\iint_D{\rho(x,y)\mathrm{d}A}}, &\quad
-    \overline{y} = \frac{M_x}{M} = \frac{\displaystyle\iint_D{y\cdot\rho(x,y)\mathrm{d}A}}{\displaystyle\iint_D{\rho(x,y)\mathrm{d}A}}
+    \overline{x} = \frac{M_y}{M} = \frac{\displaystyle\iint_D{x\cdot\rho(x,y)\mathrm{d}\sigma}}{\displaystyle\iint_D{\rho(x,y)\mathrm{d}\sigma}}, &\quad
+    \overline{y} = \frac{M_x}{M} = \frac{\displaystyle\iint_D{y\cdot\rho(x,y)\mathrm{d}\sigma}}{\displaystyle\iint_D{\rho(x,y)\mathrm{d}\sigma}}
   \end{align*}
   $$
 
-  其中，$M$ 是图形的总质量，$\mathrm{d}A$ 是图形的面积，$\rho(x,y)$ 是图形关于坐标的密度
+  其中，$M$ 是图形的总质量，$\mathrm{d}\sigma$ 是图形的面积，$\rho(x,y)$ 是图形关于坐标的密度。**当图形密度均匀时，重心与形心是同一个点**
 
 * 平面曲线弧长
   * 平面光滑曲线由直角坐标方程 $y=f(x),x\in[a,b]$ 给出，则弧长

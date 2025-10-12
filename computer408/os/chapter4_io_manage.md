@@ -155,6 +155,8 @@
 
     ![FCFS](../../resource/image/os/chapter4/disk_algorithm_FCFS.png "FCFS")
 
+    * $\text{FCFS}$ 与寻道顺序无关，只与请求先后顺序有关
+
     ![SSTF](../../resource/image/os/chapter4/disk_algorithm_SSTF.png "SSTF")
 
     ![LOOK](../../resource/image/os/chapter4/disk_algorithm_LOOK.png "LOOK")
@@ -163,13 +165,19 @@
 
     ![SCAN](../../resource/image/os/chapter4/disk_algorithm_SCAN.png "SCAN")
 
+    * ⚠️**408中 $\text{SCAN}$ 默认就是 $\text{LOOK}$**
+
     ![C-SCAN](../../resource/image/os/chapter4/disk_algorithm_CSCAN.png "C-SCAN")
+
+    * ⚠️**408中 $\text{C-SCAN}$ 默认就是 $\text{C-LOOK}$**
 
 * 固态硬盘 $\text{SSD}$
 
   详见[组成原理-存储-外部存储器](../organization/chapter2_memory.md#13-外部存储器)
 
 ## 2 题目
+
+### 2.1 选择
 
 * 5.1习题
   * 01(共享设备)
@@ -189,3 +197,17 @@
   * ***06(操作系统已簇为单位给文件分配空间，1个簇(逻辑块)=1到多个物理块，1个物理块=1个扇区)***
   * 24(SSD容易磨损)
   * ***32(SSTF、SCAN、CSCAN都有磁臂黏着现象)***
+
+### 2.2 大题
+
+* 5.2习题
+  * ⛔***03(进程I/O阻塞流程、驱动程序)***
+* 5.3习题
+  * ***06(位示图法记录磁盘块状态、C-SCAN、闪存SSD)***
+  
+    > * 位示图法省空间，每个块只用 $1\text{bit}$ 就能表示
+    > * ⚠️**408中 $\text{C-SCAN}$ 默认就是 $\text{C-LOOK}$**
+    > * $\text{FCFS}$ 与寻道顺序无关，且闪存不需要考虑寻道时间和旋转延迟，所以闪存用 $\text{FCFS}$ 比磁盘用 $\text{C-SCAN}$ 效率更高
+
+  * ⭐***07(磁盘容量、最短寻道时间优先、簇号转磁盘地址)***
+  * ⛔***08(磁盘格式化、操作系统自举流程)***
