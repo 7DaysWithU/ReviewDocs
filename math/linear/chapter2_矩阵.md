@@ -189,6 +189,12 @@
 
     只有一行(列)元素的矩阵，也称行(列)向量。**特别地，对列向量 $A_{m\times 1}$，$A^T A$ 是一个数(即内积)；$A A^T$ 是 $n$ 阶方阵**。使用乘法结合律在幂次运算时可将方阵大量化简为常数
 
+  * 秩 $1$ 矩阵
+
+    设 $\alpha=[x_1,x_2,\cdots,x_n]^T,\,\alpha\neq 0$，则 $\alpha\alpha^T$ 必然是秩 $1$ 矩阵，因为 $\alpha\alpha^T$ 每列都是关于 $\alpha$ 的倍数，整个矩阵线性相关
+
+    秩 $1$ 矩阵 $A$ 的特征值为 $\begin{cases}\lambda_1=\lambda_2=\cdots=\lambda_{n-1}=0 \\ \lambda_n=\text{tr}(A)\end{cases}$
+
 ### 1.2 矩阵的逆
 
 * 定义
