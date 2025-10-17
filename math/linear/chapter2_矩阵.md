@@ -81,7 +81,7 @@
 
   * 方阵的幂
 
-    $n$ 阶方阵 $A$ 的 $k$ 次幂为 $A^k=\overbrace{AA\cdots A}^{m个A}$
+    $n$ 阶方阵 $A$ 的 $k$ 次幂为 $A^k=\overbrace{AA\cdots A}^{k个A}$
 
     * 因矩阵乘法不满足交换律，故一般地，
 
@@ -152,7 +152,7 @@
 
     当 $i>j\,(i<j)$ 时，$a_{ij}=0$ 的矩阵称为上(下)三角矩阵
 
-  * $\text{Gram}$ 矩阵
+  * ⚠️ $\text{Gram}$ 矩阵
 
     对 $m \times n$ 的实数矩阵 $A$，其列向量为 $\alpha_1, \alpha_2, \dots, \alpha_n$(即每个 $\alpha_i$ 是一个 $m$ 维向量)。则 $\text{Gram}$ 矩阵  $G$ 是一个 $n$ 阶方阵，表示各列向量之间的内积
 
@@ -176,6 +176,9 @@
 
     * **$A A^T$ 研究行向量之间的相似度，$A^T A$ 研究列向量之间的相似度**。矩阵 $A$ 由列向量组成，因此研究的是列向量间的相似度，因此 $\text{Gram}$ 矩阵为 $A^T A$
     * 对任意矩阵 $A_{m\times n}$，其 $\text{Gram}$ 矩阵必定为 $n$ 阶对称方阵
+    * $\mathrm{tr}{(A^T A)}=\mathrm{tr}{(A A^T)}$。因为主对角线都是 $\langle \alpha_i\,,\alpha_i \rangle$
+    * 若 $A^T A=\Lambda$，则单个向量的模长就是对应主对角线元素的平方，且向量之间两两正交
+    * $Ax=0$ 与 $A^T Ax=0$ 是同解方程组
 
   * 对称矩阵
 
@@ -189,11 +192,13 @@
 
     只有一行(列)元素的矩阵，也称行(列)向量。**特别地，对列向量 $A_{m\times 1}$，$A^T A$ 是一个数(即内积)；$A A^T$ 是 $n$ 阶方阵**。使用乘法结合律在幂次运算时可将方阵大量化简为常数
 
-  * 秩 $1$ 矩阵
+  * ⚠️秩 $1$ 矩阵
 
     设 $\alpha=[x_1,x_2,\cdots,x_n]^T,\,\alpha\neq 0$，则 $\alpha\alpha^T$ 必然是秩 $1$ 矩阵，因为 $\alpha\alpha^T$ 每列都是关于 $\alpha$ 的倍数，整个矩阵线性相关
 
     秩 $1$ 矩阵 $A$ 的特征值为 $\begin{cases}\lambda_1=\lambda_2=\cdots=\lambda_{n-1}=0 \\ \lambda_n=\text{tr}(A)\end{cases}$
+
+    秩 $1$ 矩阵 $A$ 的 $k$ 次幂为 $A^n=\big[\mathrm{tr}(A)\big]^{n-1}A$
 
 ### 1.2 矩阵的逆
 
@@ -235,7 +240,8 @@
 * 性质
   * $A^*=\begin{vmatrix}A\end{vmatrix}A^{-1}$，$A^{-1}=\dfrac{1}{\begin{vmatrix}A\end{vmatrix}}A^*$，$A=\begin{vmatrix}A\end{vmatrix}(A^*)^{-1}$
   * $(狗)(狗^*)=\begin{vmatrix}狗\end{vmatrix}E$
-  * $\begin{vmatrix}A^*\end{vmatrix}=\begin{vmatrix}A\end{vmatrix}^{n-1}$，$(A^*)^*=\begin{vmatrix}A\end{vmatrix}^{n-2}A$
+  * $kA^{*}=k^{n-1}A^{*}$
+  * $\begin{vmatrix}A^*\end{vmatrix}=\begin{vmatrix}A\end{vmatrix}^{n-1}$，$(A^*)^*=\begin{vmatrix}A\end{vmatrix}^{n-2}A,\begin{vmatrix}(A^*)^{*}\end{vmatrix}=\begin{vmatrix}A\end{vmatrix}^{(n-1)^2}$
   * $(A^*)^{-1}=(A^{-1})^*$，$(A^T)^*=(A^*)^T$
   * $(ABC)^*=C^* B^* A^*$
 
@@ -258,7 +264,8 @@
 
 * 初等矩阵性质
   * 初等矩阵的转置仍然是初等矩阵，且 $\begin{cases} \left[E_i\left(k\right)\right]^T=E_i(k) \\ \left[E_{ij}\right]^T=E_{ij} \\ \left[E_{ij}\left(k\right)\right]^T=E_{ji}(k) \end{cases}$
-  * 因为 $\begin{cases} \begin{vmatrix}E_i(k)\end{vmatrix}=k\neq 0 \\ \begin{vmatrix}E_{ij}\end{vmatrix}=-1\neq 0 \\ \begin{vmatrix}E_{ij}(k)\end{vmatrix}=1\neq 0 \end{cases}$，所以初等矩阵都可逆，且 $\begin{cases} \left[E_i\left(k\right)\right]^{-1}=E_i(\dfrac{1}{k}) \\ \left[E_{ij}\right]^{-1}=E_{ij} \\ \left[E_{ij}\left(k\right)\right]^{-1}=E_{ij}(-k) \end{cases}$
+  * 因为 $\begin{cases} \begin{vmatrix}E_i(k)\end{vmatrix}=k\neq 0 \\ \begin{vmatrix}E_{ij}\end{vmatrix}=-1\neq 0 \\ \begin{vmatrix}E_{ij}(k)\end{vmatrix}=1\neq 0 \end{cases}$，所以初等矩阵都可逆，则 $\begin{cases} \left[E_i\left(k\right)\right]^{-1}=E_i(\dfrac{1}{k}) \\ \left[E_{ij}\right]^{-1}=E_{ij} \\ \left[E_{ij}\left(k\right)\right]^{-1}=E_{ij}(-k) \end{cases}$
+  * 根据 $A^{*}=\begin{vmatrix}A\end{vmatrix}A^{-1}$，对应行列式和逆可以获得初等矩阵的伴随矩阵
   * 若 $A$ 是可逆矩阵，则 $A$ 可以表示为有限个初等矩阵的乘积
 
 * 求逆矩阵
@@ -308,7 +315,7 @@
 
   * 行最简阶梯形矩阵
   
-    一个行阶梯形矩阵称为行最简阶梯形矩阵，如果其非零行的第一个非零元素为1，并且这些非零元素所在列的其他元素均为0
+    若行阶梯形矩阵非零行的第一个非零元素为 $1$，并且这些非零元素所在列的其他元素均为 $0$，则称为行最简阶梯形矩阵
 
   * 性质
 
@@ -379,7 +386,7 @@ $$
 \end{bmatrix}_{m\times n}
 $$
 
-其中，$r(A)$ 为 $A$ 的秩，该矩阵称为 $A$ 的等价标准形，且等价标准形是唯一的。设 $A$ 的一次变换为 $PAQ=B$，其中 $P,Q$ 可逆(任意可逆矩阵可以分解为若干初等矩阵的乘积)，则称 $A$ 与 $B$ 等价(等价关系满足自反、对称、传递)，有 $r(A)=r(B)$，即
+其中，$r(A)$ 为 $A$ 的秩，该矩阵称为 $A$ 的等价标准形，且等价标准形是唯一的。设 $A$ 的一次变换为 $PAQ=B$，其中 $P,Q$ 可逆(任意可逆矩阵可以分解为若干初等矩阵的乘积)，则称 $A$ 与 $B$ 等价(等价关系满足自反、对称、传递)，记作 $A\cong B$ ，有 $r(A)=r(B)$，即
 
 $$
 矩阵A,B等价 \Leftrightarrow 矩阵A,B同型且秩相等
@@ -395,14 +402,70 @@ $$
   * $0 \leq r(A_{m\times n}) \leq \min\{m, n\}$
   * $r(kA) = r(A) (k \neq 0)$
   * $r(AB) \leq \min\{r(A), r(B)\}$
-  * $r(A + B) \leq r(A) + r(B)$
+  * $r(A + B) \leq r([A,B]) \leq r(A) + r(B)$
+  * $\lvert r(A)-r(B)\rvert\leq r(A-B)\leq r(A)+r(B)$
+  * $r(AB)\geq r(A)-r(B)-n$
+  * $r(ABC)\geq r(AB)+r(BC)-r(B)$
   * 若 $A$ 为 $n(n \geq 2)$ 阶方阵，$r(A^*) =\begin{cases} n, & r(A) = n, \\ 1, & r(A) = n-1, \\ 0, & r(A) < n-1 \end{cases}$
   * 设 $A$ 是 $m \times n$ 矩阵，$P$, $Q$ 分别是 $m$ 阶、$n$ 阶可逆矩阵，则 $r(A) = r(PA) = r(AQ) = r(PAQ)$，即初等变换不改变秩，而可逆矩阵可以分解为若干初等变换矩阵
-  * 若 $A_{m \times n}B_{n \times s} = O$，则 $r(A) + r(B) \leq n$；
+  * 若 $A_{m \times n}B_{n \times s} = O$，则 $r(A) + r(B) \leq n$
   * $r(A) = r(A^T) = r(A^TA) = r(AA^T)$
   * 若 $r(A_{m\times n})=n$，则 $r(AB)=r(B)$；若 $r(A_{m\times n})=m$，则 $r(BA)=r(B)$
 
-## 2 题目
+## 2 进阶
+
+### 2.1 矩阵运算 $\textcolor{LightSkyBlue}{\text{O} (盯住目标)}$
+
+* 证明 $A$ 是零矩阵 $O$ $\textcolor{Cyan}{\text{D}_\text{1} (常规操作) + \text{D}_\text{23} (化归经典形式)}$
+  * 秩：若 $r(A)=0$，则 $A=O$
+  * 证 $A^{*}=O$：若 $r(A)<n-1$，则 $A^{*}=O$
+  * ⚠️迹：若 $\mathrm{tr}{(A A^T)}=0$，则 $A=O$
+  * ⚠️正交：若 $A$ 的行向量与 $B$ 的列向量均正交，则 $AB=O$
+
+* 计算 $A^{n}$  $\textcolor{Cyan}{\text{D}_\text{1} (常规操作) + \text{D}_\text{23} (化归经典形式)}$
+  * 秩 $1$ 方阵：$A^n=\big[\mathrm{tr}(A)\big]^{n-1}A$
+  * 试算高阶找规律
+  * 加法分解：$A^n\xlongequal{分解为}(B+C)^n$，利用二项式定理展开计算。一般 $B,C$ 中的一个高阶会很简单，这样大部分二项式都是 $0$，只用计算前几个二项式
+  * 初等变换
+    * 有现成的初等矩阵：可以直接按左行右列对 $A$ 做初等变换，$E^n$ 表示做 $n$ 次相应的初等变换
+    * 没有现成的初等矩阵：做初等变换。如 $P^{-1}AP=B\Rightarrow AP=PB\Rightarrow[P\,\vdots\,PB]\xrightarrow{初等行变换}[E\,\vdots\,PBP^{-1}]$。初等列变换就竖着拼
+  * 相似分解：$A^n=(P \Lambda P^{-1})^n=P \Lambda^n P^{-1}$，利用乘法结合律让中间的 $P^{-1}P$ 结合成 $E$
+
+* $A^{T}A$、$A^{*}$、$A^{-1}$ 与初等矩阵 $\textcolor{Cyan}{\text{D}_\text{1} (常规操作) + \text{D}_\text{2} (脱胎换骨)}$
+  * 扰动法
+
+    若 $A$ 满足条件 $T$ 的前提是满足条件 $t$，但有时 $A$ 不满足 $t$，则令 $B=A+kE$ 满足 $t$，这样 $B$ 就满足 $T$。再回头令 $k\to 0$ 检验 $A$ 不满足 $t$ 时是否仍然满足 $T$
+
+    > 例如未知矩阵 $A$ 满足某个等式，要分 $A$ 可逆与不可逆两种情况分别讨论
+
+  * $A^{-1}$ 等价条件大观： [逆的大观](../../resource/image/advanced/inverse_matrix.png "逆的大观")
+  * 初等矩阵
+    * 左行右列初等变换、初等行(列)变换求逆矩阵、求高阶幂、化行阶梯形求极大线性无关组
+    * ⚠️矩阵分解、矩阵满秩分解、等价标准形(详见 **强化36讲-线代-P30**)
+
+* ⚠️分块矩阵 $\textcolor{Cyan}{\text{D}_\text{1} (常规操作) + \text{D}_\text{23} (化归经典形式)}$
+
+  运算、逆、矩阵分解(详见 **强化36讲-线代-P32~P35**)
+
+  ***横拼左同多化零、竖拼右同多化零***
+
+* ⚠️矩阵方程 $\textcolor{Cyan}{\text{D}_\text{1} (常规操作) + \text{D}_\text{2} (脱胎换骨)}$
+  
+  $$
+  \begin{align*}
+    AX=B \quad&\Rightarrow\quad X=A^{-1}B \\
+    XA=B \quad&\Rightarrow\quad X=BA^{-1} \\
+    AXB=C \quad&\Rightarrow\quad X=A^{-1}CB^{-1}
+  \end{align*}
+  $$
+
+  * 如果 $A$ 可逆：利用初等变换两边同时变过去
+  * 如果 $A$ 不可逆：视 $B=[\beta_1,\beta_2,\cdots,\beta_n]$，求方程组的解，最后再拼回来
+  * 如果前两种都不行：把 $X$ 全部设出来 $x_{ij}$，直接带入方程比较对应位置的数值
+
+* ⚠️矩阵的秩 $\textcolor{Cyan}{\text{D}_\text{1} (常规操作) + \text{D}_\text{2} (脱胎换骨) + \text{D}_\text{41} (试取特殊情况) + \text{P}_\text{12} (反向思路)}$
+
+## 3 题目
 
 * 基础30讲
   * ***例2.1(列向量分解、乘法结合律、方阵的幂)***
@@ -431,8 +494,52 @@ $$
   * 2.10(E拆成逆)
   * 2.11(初始条件元素相等)
   * ***2.12(等价标准形求秩、非满秩情况下优先行列式确定未知数)***
-* 1000题
+* 1000题基础
   * 06(伴随与逆的关系、待定系数法)
   * 10(秩、可逆、初等列变换)
   * ***13(可逆矩阵可分解为若干初等变换矩阵、初等变换不改变秩)***
   * ***15(高阶多项式展开凑方程留E手)***
+* 强化36讲
+  * ⭐***例3.1(用 $\text{tr}$ 证明零矩阵)***
+  * ***例3.2(秩 $1$ 矩阵的高次幂)***
+  * 例3.3(试算高阶找规律)
+  * ⭐***例3.4(旋转算子)***
+  * 例3.5(矩阵加法分解)
+  * ***例3.6(矩阵分解为初等变换矩阵)***
+  * ⭐***例3.7(矩阵分解为相似矩阵)***
+  * ⭐***例3.8(扰动法、伴随、等价、相似、合同)***
+  * ***例3.9($(狗)(狗^*)=\begin{vmatrix}狗\end{vmatrix}E$)***
+  * ***例3.10(用行列式联系 $A,A^{*}$)***
+  * ***例3.11($x^T A x$ 行和列和、反对称矩阵)***
+  * ***例3.12(抽象型矩阵求逆、多项式除法)***
+  
+    > 若 $AB=E$，则 $B$ 就是 $A^{-1}$
+
+  * ***例3.13(抽象型矩阵求逆、待定系数法)***
+  * ***例3.14利用特征值判断可逆、(看到 $f(A)$ 想 $f(\lambda)$)***
+  
+    > 特征值没有 $0\Rightarrow\det{(A)}\neq 0\Rightarrow A$ 可逆
+
+  * 例3.15(初等矩阵的伴随矩阵)
+  * ⛔***例3.16(用初等变换求高阶幂)***
+  * ⭐***例3.17(矩阵分解、用初等变换求高阶幂)***
+  
+    > 高阶矩阵可以简写成列向量组形式 $A=[\alpha_1,\alpha_2,\cdots,\alpha_n]$ 以便于进行矩阵分解
+
+  * ***例3.18(分块矩阵的秩)***
+  * ⛔***例3.19(初等变换不改变秩、矩阵方程转非齐次线性方程组)***
+  
+    > * 经过初等变换的前后两个矩阵秩相同，有时候可能想找变换方式但找不到，这时就用秩
+    > * 求矩阵方程 $AP=B$ 时，可以转化成求多个非齐次方程组来求，即视 $B=[\beta_1,\beta_2,\cdots,\beta_n]$，分别求 $Ax=0$ 的通解 $\xi$ 和 $Ax=\beta_i$ 的特解 $\eta_i$，那么 $B=[\xi+\eta_1,\xi+\eta_2,\cdots,\xi+\eta_n]$，最后再根据 $P$ 是否可逆等条件确定通解 $\xi$ 的任意常数 $k_i$ 们的约束关系
+
+  * ⭐***例3.20(矩阵方程转非齐次线性方程组、思路试探)***
+  * ***例4.1(竖拼右同多化零、左乘列满秩矩阵不改变秩)***
+  * ***例4.2(行满秩矩阵的消除)***
+  * ⭐***例4.3(试算、行(列)满秩矩阵的消除)***
+  * ***例4.4(分块矩阵的"初等变换"、秩越乘越小)***
+  * ***例4.5(秩的加减不等式)***
+  * ***例4.6($r(AB)\geq r(A)-r(B)-n$)***
+  * ***例4.7($r(ABC)\geq r(AB)+r(BC)-r(B)$、秩越乘越小)***
+  * ⭐***例4.8(分块矩阵的"初等变换"、横拼竖拼、四秩相同)***
+  * ***例4.9($A^{*}$ 的秩、$AB=O$ 时的秩不等式)***
+* 1000题强化
