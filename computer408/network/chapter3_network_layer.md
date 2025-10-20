@@ -65,6 +65,7 @@
   ![IPv4子网划分](../../resource/image/network/chapter3/IPv4_subnet.png "IPv4子网划分")
 
   * 默认路由 $\text{IP}$ 为`0.0.0.0`，子网掩码为`0.0.0.0`。当其他网络号无法匹配时，则通过默认路由转发出去
+  * 指定主机的 $\text{IP}$ 为其对应的 $\text{IP}$ 地址，子网掩码为`255.255.255.255`。一般情况下路由表项主要是关于"目的网络"的网络地址，但若要求增加指定主机的路由则按该规则填写(2009统考题47)
 
   ![IPv4子网划分发送过程](../../resource/image/network/chapter3/IPv4_subnet_send.png "IPv4子网划分发送过程")
 

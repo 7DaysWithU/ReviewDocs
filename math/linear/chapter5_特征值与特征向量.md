@@ -217,7 +217,7 @@
     $$
     \begin{cases}
       \lambda_1\neq\lambda_2,&\xi_1\perp\xi_2 \\
-    \lambda_1=\lambda_2,&\xi_1,\xi_2 可能线性无关,也可能正交
+      \lambda_1=\lambda_2,&\xi_1,\xi_2 可能线性无关,也可能正交
     \end{cases}
     $$
 

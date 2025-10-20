@@ -37,7 +37,7 @@
 
     * 施密特正交化
 
-      对原向量 $\alpha_1,\alpha2$，其正交基 $\beta_1,\beta_2$、规范正交基 $\gamma_1,\gamma_2$ 为
+      对原向量 $\alpha_1,\alpha_2$，其正交基 $\beta_1,\beta_2$、规范正交基 $\gamma_1,\gamma_2$ 为
 
       $$
       \begin{align*}
@@ -215,10 +215,14 @@
   r(\alpha_1, \alpha_2, \cdots, \alpha_s)=r(\alpha_{i_1}, \alpha_{i_2}, \cdots, \alpha_{i_r})
   $$
 
-  **等价向量组秩相同(三秩相同)；但向量组秩相同未必等价( $r(\text{I}\,|\,\text{II})\xlongequal{?}r(\text{I})$ )**
+  **向量组等价则秩相同(三秩相同)；但向量组秩相同未必等价($r(\text{I})=r(\text{II})\not\Rightarrow\text{(I)}\cong\text{(II)}$，需要确认 $r(\text{I}\,|\,\text{II})\xlongequal{?}r(\text{I})$ )**
 
   秩有如下性质
-  * $矩阵A的秩=A的行向量组的秩=A的列向量组的秩$
+  * 矩阵 $A$ 的秩 $=A$ 的行向量组的秩 $=A$ 的列向量组的秩
+  * 若矩阵的 $r$ 阶子式不为零，则该 $r$ 阶子式的行(列)向量组线性无关
+  
+    > $r$ 阶子式不为零，则该子式满秩，则行(列)向量组也满秩，也就是线性无关
+
   * 若 $A\xrightarrow{初等行变换}B$，则
     * $A的行向量组 \cong B的行向量组$
     * $A,B$ 任何相应的列向量组具有相同的线性相关性

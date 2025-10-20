@@ -171,7 +171,8 @@ $$
 \begin{align*}
   \qquad\qquad\qquad\qquad\qquad&\qquad n元二次型f=x^T A x正定 \\
   \textcolor{cyan}{定义法}&\begin{cases}
-    \Leftrightarrow对任意x\neq 0均有x^T A x>0
+    \Leftrightarrow对任意x\neq 0均有x^T A x>0 \\
+    \Leftrightarrow A\simeq E
   \end{cases} \\
   \textcolor{cyan}{配方法}&\begin{cases}
     \Leftrightarrow f的正惯性指数p=n
