@@ -228,11 +228,17 @@
 
     D --> M[拼接物理地址 = 物理页框号 × 页面大小 + 页内偏移]
     G --> M
-    M --> N[访内存]
-  
+    M --> N{查询 Cache}
+    N -- Cache 命中 --> O[从 Cache 读取数据]
+    N -- Cache 未命中 --> Q[访问主存，同时将数据块载入 Cache，可能替换旧块]
+    O --> S[返回数据给 CPU]
+    Q --> S
+
     style A fill:#f9f,stroke:#333
-    style N fill:#cfc,stroke:#333
+    style S fill:#cfc,stroke:#333
   ```
+
+  详情见[虚拟页式管理和Cache机制的关系](../_extra/ep1_TLB_pagetable_Cache.md)
 
 * 页面置换算法
   * 最佳置换算法 $\text{OPT}$
@@ -271,6 +277,11 @@
 * 页框分配策略
 
   ![页框分配策略](../../resource/image/os/chapter2/virtual_memory_allocation.png "页框分配策略")
+
+  * 抖动根本原因是分配给进程的页数量不足，导致频繁换入换出
+    * 撤销部分进程：僧多肉少，杀几个进程缓一缓，这样需要分配的页就减少了，剩下的页框就能满足分配需求了
+    * ❌增加磁盘对换区容量：没用。因为是页框不够分配，加对换区只能加快换入换出速度，不能缓解抖动
+    * ❌提高用户进程优先级：治标不治本。用户进程的页框数增加，其他进程的页框数就减少。照样不能缓解整体的抖动
 
   ![分配置换策略](../../resource/image/os/chapter2/virtual_memory_allocation_replacement.png "分配置换策略")
   

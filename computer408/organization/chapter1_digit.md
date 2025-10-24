@@ -38,7 +38,7 @@
   ![逻辑运算优先级](../../resource/image/organization/chapter1/chapter1_digit_logical_priority.png "逻辑运算优先级")
 
   * 多个`bit`异或时，有奇数个`1`结果必定为1，有偶数个`1`结果必定为0
-* 加法器
+* ⚠️加法器
   * 加法器电路图
   
     ![加法器标志位](../../resource/image/organization/chapter1/chapter1_digit_plus_flag.png "加法器标志位")
@@ -58,7 +58,7 @@
     * 加法时 $C_\text{in}=0$，若最高进位 $C_{\text{out}}=1$ (即产生进位)则加法溢出；减法时 $C_\text{in}=1$，若最高进位 $C_{\text{out}}=0$ (即产生借位)则减法溢出。因此 $\text{CF}=C_\text{in}\oplus C_\text{out}=C_n\oplus \text{sub}$
     * **$\text{sub}$ 信号为 1 当且仅当 $\text{ALU}$ 需要对第二个操作数取反并加 1（即计算 `A - B`转化成计算`A + (-B)`），无论该操作数是正数还是负数；为 $0$ 则直接相加（`A + B`）。**
 
-  * ALU
+  * $\text{ALU}$
     * ALU是CPU中运算器的核心部件，加法器是ALU的核心。ALU可以进行算术运算、逻辑运算或其他操作(如求补码、直送等)
     * 如果ALU支持 $k$ 种功能，则信号控制位数 $m\geq\lceil\log_2{k}\rceil$
     * ALU的运算数、运算结果数位数与计算机的 **机器字长** 相等

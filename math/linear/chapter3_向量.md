@@ -81,6 +81,10 @@
       若不存在不全为 $0$ 的数 $k_1,k_2,\cdots,k_m$，使得 $k_1\alpha_1+k_2\alpha_2+\cdots+k_m\alpha_m=0$ 成立，则称向量组 $\alpha_1,\alpha_2,\cdots,\alpha_m$ 线性无关。**注意，向量组要么线性相关，要么线性无关**
 
   * 线性相关判别定理
+    * 定理 $0$
+
+      拥有多于 $n$ 个向量的 $n$ 维向量组必线性相关
+
     * 定理 $1$
 
       向量组 $\alpha_1,\alpha_2,\cdots,\alpha_n(n\geq 2)$ 线性相关 $\Leftrightarrow$ 向量组中至少有一个向量可以由其余 $n-1$ 个向量表示
@@ -241,7 +245,6 @@
   称有序向量组 $\xi_1, \xi_2, \cdots, \xi_n$ 是 $\mathbb{R}^n$ 的一个基，基向量的个数 $n$ 称为向量空间的维数，而 $[a_1, a_2, \cdots, a_n]([a_1, a_2, \cdots, a_n]^T)$ 称为向量 $\alpha$ 在基 $\xi_1, \xi_2, \cdots, \xi_n$ 下的坐标，或称为 $\alpha$ 的坐标行(列)向量
 
 * 定理
-
   * 定理 $8$
   
     若 $\eta_1, \eta_2, \cdots, \eta_n$ 和 $\xi_1, \xi_2, \cdots, \xi_n$ 是 $\mathbb{R}^n$ 中的两个基，且有关系
@@ -298,7 +301,76 @@
 
     当使用新的基时，向量在不同基下的坐标发生改变。$(**)$ 式称为**坐标变换公式**
 
-## 2 题目
+## 2 进阶
+
+### 2.1 向量组 $\textcolor{LightSkyBlue}{\text{O} (盯住目标)}$
+
+* 具体向量的关系 $\textcolor{Cyan}{\text{D}_\text{1} (常规操作) + \text{D}_\text{21} (观察研究对象)}$
+
+  * $\beta$ 与 $\alpha_1,\alpha_2,\cdots,\alpha_n$
+
+    若 $\beta$ 能被 $\alpha_1,\alpha_2,\cdots,\alpha_n$ 表示，则 $\beta=x_1\alpha_1+x_2\alpha_2+\cdots+x_n\alpha_n$，即
+  
+    $$
+    \underbrace{
+      \begin{bmatrix}
+        \alpha_1,\alpha_2,\cdots,\alpha_n
+      \end{bmatrix}
+      \begin{bmatrix}
+        x_1 \\
+        x_2 \\
+        \vdots \\
+        x_n
+      \end{bmatrix}
+      =\beta
+    }_{\textcolor{Cyan}{Ax=\beta}}
+    $$
+
+    这就是一个非齐次线性方程组，对 $[A\,\vdots\,\beta]$ 作初等行变换，讨论解的情况即可
+
+    $$
+    \begin{cases}
+      r(A)\neq r([A,b])&\Leftrightarrow无解\Leftrightarrow不能表示 \\
+      r(A)=r([A,b])=n&\Leftrightarrow唯一解\Leftrightarrow表示方法唯一 \\
+      r(A)=r([A,b])=r\leq n&\Leftrightarrow无穷多解\Leftrightarrow无穷多种表示方法
+    \end{cases}
+    $$
+
+    ⚠️**求 $\beta$ 用 $\alpha_1,\alpha_2,\cdots,\alpha_n$ 表示方法时，一定不要直接凑系数，而是要求方程组，因为可能存在无穷多种表示方法**
+
+  * $\alpha_1,\alpha_2,\cdots,\alpha_n$
+    * 若向量个数大于维数，则必然线性相关
+    * 若向量个数等于向量维数，可用行列式讨论。行列式为零则线性相关，不为零则为线性无关
+    * 若向量个数小于维数，化阶梯形看秩。满秩则线性无关，不满秩则线性相关。**若线性相关情况下问某一个向量与其他向量的表示关系，则回到 $\beta$ 与 $\alpha_1,\alpha_2,\cdots,\alpha_n$ 问题**
+
+  * ⚠️求极大线性无关组
+
+    给出 $\alpha_1,\alpha_2,\cdots,\alpha_n$，令 $A=[\alpha_1,\alpha_2,\cdots,\alpha_n]$，对 $A$ 做初等行变换化成阶梯形，找出一个秩为 $r$ 的子矩阵即可。**特别地，整个向量组的所有向量都可以由极大线性无关组表示，表示方法就是 $A$ 的行阶梯形矩阵**
+
+* 抽象向量的关系 $\textcolor{Cyan}{\text{D}_\text{1} (常规操作)}$
+  * 定义法
+
+    已知某些向量的关系，则写定义式 $k_1\alpha_1+k_2\alpha_2+\cdots+k_n\alpha_n=0$，研究系数的关系
+
+  * 综合问题
+
+    与方程组、特征值等结合考察
+
+* 向量组等价 $\textcolor{Cyan}{\text{D}_\text{1} (常规操作) + \text{D}_\text{22} (转换等价表述)}$
+
+  一般情况下等价就是三秩相等。但如果说只能由 $\alpha_1,\alpha_2,\cdots,\alpha_n$ 表示 $\beta_1,\beta_2,\cdots,\beta_n$，反过来 $\beta_1,\beta_2,\cdots,\beta_n$ 不能表示 $\alpha_1,\alpha_2,\cdots,\alpha_n$，则应是
+  
+  $$
+  r(\alpha_1,\alpha_2,\cdots,\alpha_n,\beta_1,\beta_2,\cdots,\beta_n)=r(\alpha_1,\alpha_2,\cdots,\alpha_n)>r(\beta_1,\beta_2,\cdots,\beta_n)
+  $$
+
+  另一种不能表示的情况同理
+
+* 向量空间 $\textcolor{Cyan}{\text{D}_\text{1} (常规操作) + \text{D}_\text{22} (转换等价表述)}$
+
+  熟记基变换公式、坐标变换公式，注意表述是哪个基到哪个基，别把过渡矩阵 $C$ 写错位置
+
+## 3 题目
 
 * 基础30讲
   * 例3.1(行阶梯形求秩、线性相关判别定理5、方程组求解)
@@ -318,6 +390,32 @@
   * ***3.8(定理2、由极大线性无关组表示的向量才是唯一解、求方程组)***
   * ⭐***3.9(极大线性无关组)***
   * 3.12(待定系数法解方程组)
-* 1000题
+* 1000题基础
   * 05(充分必要条件，左乘列满秩不改变秩)
   * ***10(施密特正交化)***
+* 强化36讲
+  * ⭐***例6.1($\beta$ 由 $\alpha_i$ 表示)***
+  * ***例6.2($\alpha_i$ 间的关系)***
+  * ⭐***例6.3(求极大线性无关组、用极大线性无关组表示向量组的其他向量)***
+  * ⭐***例6.4(证明线性无关、证明同解、用同解证明秩相等)***
+  
+    > 在题目条件涉及方程组时，可以用同解来证明秩相等
+
+  * ⭐***例6.5(抽象方程组凑系数求解)***
+  
+    > 先通过已知条件推要求的方程组的解的结构和数量，再根据已知条件凑系数解出结果
+
+  * ⭐***例6.6(三秩相同变形使用)***
+  * ⭐***例6.7(基变换公式、坐标变换公式)***
+* 1000题强化
+  * ***01(判断向量组相关)***
+  
+    > * 注意讨论极端情况特别是零矩阵 $O$
+    > * 向量组相关与否的问题也可以用矩阵的秩来讨论，本质都一样
+
+  * ⭐⭐⭐⭐⭐⭐***03(求线性表示)***
+  
+    > **求 $\beta$ 用向量组 $\alpha_1,\alpha_2,\cdots,\alpha_n$ 的表示时，就是求 $Ax=\beta$ 的解，千万不要直接找系数，除非是系数矩阵的秩等于增广矩阵的值时是唯一解可以这么干，反本质上都是求方程组的解，一定一定一定不要直接找系数，必须求方程组的解**
+
+  * ***04(方程组的秩、矩阵越拼秩越不小)***
+  * ⭐***05(由两个向量组表示的向量)***

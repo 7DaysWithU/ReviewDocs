@@ -45,7 +45,7 @@
       * 只有最下层可能不满
       * 右子树结点数 $-$ 左子树结点数 $=0$ 或 $1$
       * 有 $n$ 个成功结点，$n+1$ 个失败结点(正好使用了二叉树的 $n+1$ 个空指针)
-      * 树高(不包含失败结点)为 $\lceil\log_2{(n+1)}\rceil$
+      * 树高(不包含失败结点)为 $\lceil\log_2{(n+1)}\rceil$。**树高就是最大查找失败次数**
 
         ![二分判定树生成](../../resource/image/data_struct/chapter5_query_%E4%BA%8C%E5%88%86%E5%88%A4%E5%AE%9A%E6%A0%91%E7%94%9F%E6%88%90.png "二分判定树生成")
 
@@ -107,12 +107,12 @@
         ![RR型](../../resource/image/data_struct/chapter5_query_AVL_RR.jpeg "RR型")
       * $\text{LR}$ 型
 
-        以`B`为跟的子树先对`C`做`RR`调整，以`A`为跟的子树再对`C`做`LL`调整
+        以`B`为根的子树先对`C`做`RR`调整，以`A`为跟的子树再对`C`做`LL`调整
 
         ![LL型](../../resource/image/data_struct/chapter5_query_AVL_LR.jpeg "LR型")
       * $\text{RL}$ 型
 
-        以`B`为跟的子树先对`C`做`LL`调整，以`A`为跟的子树再对`C`做`RR`调整
+        以`B`为根的子树先对`C`做`LL`调整，以`A`为跟的子树再对`C`做`RR`调整
 
         ![LL型](../../resource/image/data_struct/chapter5_query_AVL_RL.jpeg "RL型")
     * 删除
@@ -162,7 +162,7 @@
     * 含有 $n$ 个关键字的 $m$ 阶 $\text{B}$ 树高度满足 $\log_m{(n+1)}\leq h\leq\log_{\lceil m/2\rceil}{\left(\dfrac{n+1}{2}\right)}+1$
       * 树最高时共有 $1\cdot1+\left(2\lceil m/2\rceil^0+2\lceil m/2\rceil^1+\cdots+2\lceil m/2\rceil^{h-2}\right)(\lceil m/2\rceil-1)=1+2(\lceil m/2\rceil^{h-1}-1)$ 个关键字
 
-        > 根结点的结点数为 $1$，最少可以包含 $1$ 个关键字；根节点最少有 $2$ 个孩子(第二层)；其他结点最少要有 $\lceil m/2\rceil$ 个结点；除了根节点外的所有结点最少有 $\lceil m/2\rceil-1$ 个关键字
+        > 根结点的结点数为 $1$，最少可以包含 $1$ 个关键字；根节点最少有 $2$ 个孩子(第二层)；其他结点最少要有 $\lceil m/2\rceil$ 个孩子；除了根节点外的所有结点最少有 $\lceil m/2\rceil-1$ 个关键字
 
       * 树最矮时共有 $(1+m+m^2+\cdots+m^{h-1})(m-1)=m^h-1$ 个关键字
     * 含有 $n$ 个关键字的 $m$ 阶 $\text{B}$ 树有 $n+1$ 个叶结点($n+1$ 种失败情况)。对应就是第 $h+1$ 层是失败结点，叶结点个数用高度计算就是 $2\lceil m/2\rceil^{h-1}$

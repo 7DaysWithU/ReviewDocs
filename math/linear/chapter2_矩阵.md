@@ -196,7 +196,7 @@
 
     设 $\alpha=[x_1,x_2,\cdots,x_n]^T,\,\alpha\neq 0$，则 $\alpha\alpha^T$ 必然是秩 $1$ 矩阵，因为 $\alpha\alpha^T$ 每列都是关于 $\alpha$ 的倍数，整个矩阵线性相关
 
-    秩 $1$ 矩阵 $A$ 的特征值为 $\begin{cases}\lambda_1=\lambda_2=\cdots=\lambda_{n-1}=0 \\ \lambda_n=\text{tr}(A)\end{cases}$
+    秩 $1$ 矩阵 $A$ 的特征值为 $\begin{cases}\lambda_1=\lambda_2=\cdots=\lambda_{n-1}=0 \\ \lambda_n=\text{tr}(A)\end{cases}$，且 $\lambda_i=0\,(i=1,2,\cdots,n-1)$ 对应的特征向量是线性无关的(带入 $\lambda_i=0$ 求特征向量即可证明)；只要 $\lambda_n=\mathrm{tr}(A)\neq 0$，则 $A\sim\Lambda$
 
     秩 $1$ 矩阵 $A$ 的 $k$ 次幂为 $A^n=\big[\mathrm{tr}(A)\big]^{n-1}A$
 

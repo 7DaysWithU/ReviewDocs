@@ -349,7 +349,7 @@
 
     ![peterson算法](../../resource/image/os/chapter1/synchronization_mutex_achieve_software_peterson.png "peterson算法")
 
-    * $\text{peterson}$ 算法不会导致饥饿现象，而是 $\text{FCFS}$
+    * **$\text{peterson}$ 算法不会导致饥饿现象，遵循先来先服务 $\text{FCFS}$ 原则**
 
   * 硬件实现
 
