@@ -17,7 +17,7 @@
 
 ![组帧](../../resource/image/network/chapter2/framing.png "组帧")
 
-* 帧首、尾主要是一些控制信息，如帧定界信息、校验码、倾类型(数据帧、确认帧等)、帧序号等
+* 帧首、尾主要是一些控制信息，如帧定界信息、校验码、帧类型(数据帧、确认帧等)、帧序号等
 
 ![字符计数法](../../resource/image/network/chapter2/framing_char_counting.png "字符计数法")
 
@@ -49,6 +49,10 @@
 * 海明码
 
   ![码距](../../resource/image/network/chapter2/error_hamming_code_distance.png "码距")
+
+  * 若编码集的码距为 $l$，则
+    * 为了检测 $d$ 个位错，必须满足 $l\geq d+1$。当不满足时，即 $l=d$，则发生 $d$ 个位错后原编码会变成另一个合法编码，无法发现出错
+    * 为了纠正 $c$ 个位错，必须满足 $l\geq 2c+1$。当不满足时，即 $l=2c$，则发生 $c$ 个位错后，错误的编码与原本的编码码距为 $c$，与其他合法编码码距也为 $c$，无法判断错误的编码离谁最近，也就无法纠正回去。当满足时，即 $l=2c+1$，则发生 $c$ 个位错后，错误的编码与原本的编码码距为 $c$，与其他合法编码码距为 $c+1$，可以通过判断错误的编码离谁最近将其纠正回去。
   
   ![海明码](../../resource/image/network/chapter2/error_hamming.png "海明码")
 
@@ -56,6 +60,7 @@
 
   ![海明码纠错](../../resource/image/network/chapter2/error_hamming_correct.png "海明码纠错")
 
+  * 海明码原理详见[海明码](../_extra/ep2_hamming_code.md)
   * 如果有 $2$ 位错了，则校验方程 $S$ 指出的出错位置是不正确的，因此添加全校验位区分是"错一位在多个方程里体现"还是"错多位"。全校验码就是对整体偶校验，能识别一位错误。如果全校验码错了说明是"错一位在多个方程里体现"，修改即可；反之是"错多位"，只能重传
 
 #### 1.2.3 流量控制与可靠传输
@@ -63,6 +68,17 @@
 ![流量控制欲可靠传输](../../resource/image/network/chapter2/flow_controll.png "流量控制与可靠传输")
 
 ![信道利用率](../../resource/image/network/chapter2/flow_controll_channel_usage.png "信道利用率")
+
+>
+> $$
+> \begin{align*}
+>   最大数据传输率&=\dfrac{N\cdot L}{T_D+RTT+T_A} \\\\
+>   最大有效数据传输率&=\dfrac{N\cdot L_\text{data}}{T_D+RTT+T_A} \\\\
+>   最大信道利用率&=\dfrac{N\cdot T_D}{T_D+RTT+T_A}=\dfrac{最大数据传输率}{信道带宽}
+> \end{align*}
+> $$
+>
+> 其中 $N$ 为发送窗口数量，$L$ 为数据帧总长，$L_\text{data}$ 为数据帧数据部分的长度(即去掉 $\text{MAC}$ 帧首部)，$T_D$ 为数据帧传输时延，$T_A$ 为确认帧帧传输时延，$RTT$ 为往返传播时延
 
 * 停止-等待协议 $\text{S-W}$
 
@@ -106,7 +122,7 @@
 
   * 数据帧丢失 / 错误
   
-    发送方每发出一个数据帧后，都启动对应帧的计时器。接收方会丢弃错误帧和超出当前接收窗口的帧，并发送当前已接收的最后一个帧的 $\text{ACK}_i$。当计时器超时或收到 $\text{ACK}_i$ 时，发送方将发送窗口的开始帧移动到第 $i+1$ 帧，**并重发从 $i+1$ 帧开始到发送窗口结束范围中已经发送的所有帧，发送窗口中之前未发送的帧不会重传**
+    发送方每发出一个数据帧后，都启动对应帧的计时器。接收方会丢弃错误帧和超出当前接收窗口的帧，并发送当前已接收的最后一个帧的 $\text{ACK}_i$。当计时器超时或未收到 $\text{ACK}_i$ 时，发送方将发送窗口的开始帧移动到第 $i+1$ 帧，**并重发从 $i+1$ 帧开始到发送窗口结束范围中已经发送的所有帧，发送窗口中之前未发送的帧不会重传**
   
   * 确认帧丢失
   
@@ -136,7 +152,7 @@
 
 ![信道划分](../../resource/image/network/chapter2/mac_split.png "信道划分")
 
-* 时分复用 $\text{TDM}$
+* 时分复用 $\text{TDMA}$
 
   ![时分复用](../../resource/image/network/chapter2/mac_split_TDM.png "时分复用")
 
@@ -145,23 +161,23 @@
     * 介质的带宽(所能传输信号的最高频率与最低频率之差)大于结合信号的带宽(所有信号经过调制后形成的复合信号的带宽)
   * $\text{TDM}$ 适合传输数字信号。所以在计算机网络中更常用
 
-* 统计时分复用 $\text{STDM}$
+* 统计时分复用 $\text{STDMA}$
 
   ![统计时分复用](../../resource/image/network/chapter2/mac_split_STDM.png "统计时分复用")
 
-* 频分复用 $\text{FDM}$
+* 频分复用 $\text{FDMA}$
 
   ![频分复用](../../resource/image/network/chapter2/mac_split_FDM.png "频分复用")
 
   * $\text{FDM}$ 适合传输模拟信号
 
-* 波分复用 $\text{WDM}$
+* 波分复用 $\text{WDMA}$
 
   ![波分复用](../../resource/image/network/chapter2/mac_split_WDM.png "波分复用")
 
   * 本质上也是频分复用，因为波长与频率是倒数关系，但光信号的带宽更大，能拆出更多子信道
 
-* 码分复用 $\text{CDM}$
+* 码分复用 $\text{CDMA}$
 
   ![码分复用](../../resource/image/network/chapter2/mac_split_CDM.png "码分复用")
 
@@ -242,19 +258,19 @@
 
   * $\text{NAV}$ 值
   
-    当 $A$ 站广播一个 $\text{RTS}$ 帧时,将占用信道的持续时间
+    当 $A$ 站广播一个 $\text{RTS}$ 帧时，占用信道的持续时间为
 
     $$
-    \text{SIFS+CTS+ SIFS+DATA+ SIFS+ACK}
+    \text{T}_1=\text{SIFS+CTS+ SIFS+DATA+ SIFS+ACK}
     $$
 
-    写入 $\text{RTS}$ 帧的首部；当 $\text{AP}$ 收到 $\text{RTS}$ 帧后,广播一个 $\text{CTS}$ 帧,将占用信道的持续时间
+    将 $\text{T}_1$ 写入 $\text{RTS}$ 帧的首部。当 $\text{AP}$ 收到 $\text{RTS}$ 帧后,广播一个 $\text{CTS}$ 帧,占用信道的持续时间为
 
     $$
-    \text{SIFS+DATA+SIFS+ACK}
+    \text{T}_2=\text{SIFS+DATA+SIFS+ACK}
     $$
 
-    写入 $\text{CTS}$ 帧的首部。之后传送的数据帧的首部也携带本次通信所需的持续时间。其他站收到 $\text{CTS}$ 帧后，根据帧中的持续时间设置自己的 $\text{NAV}$ 值，即 $\text{CTS}$ 帧中批准的时间即为其他站的 $\text{NAV}$ 值
+    将 $\text{T}_2$ 写入 $\text{CTS}$ 帧的首部。之后传送的数据帧的首部也携带本次通信所需的持续时间。其他站收到 $\text{CTS}$ 帧后，根据帧中的持续时间设置自己的 $\text{NAV}$ 值，即 $\text{CTS}$ 帧中批准的时间 $\text{T}_2$ 即为其他站的 $\text{NAV}$ 值
 
   * 返回的 $\text{CTS}$ 对预约者而言是同意预约，对其他站点而言是等待要求
   * 预约失败时，会随机退避一段时间，再尝试预约

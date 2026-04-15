@@ -45,9 +45,11 @@
   * 完全图
     * 无向图：任意两个顶点间都存在边。称为完全图
     * 有向图：任意两个顶点间都存在方向相反的两条弧。称为有向完全图
-    * ***连通图(强连通图)只要求连通(强连通)，即两个顶点间有路径能够达到，但不一定有直接的边(弧)相连。完全图则要求任意两个顶点间有直接边(弧)相连，条件比连通图(强连通图)更加严格***
+    * ***连通图(强连通图)只要求连通(强连通)，即两个顶点间有路径能够达到，但不一定有直接的边(弧)相连。完全图则要求任意两个顶点间有直接边(弧)相连，条件比连通图(强连通图)更强***
 * 存储
   * 邻接矩阵
+
+    ![邻接矩阵示意图](../../resource/image/data_struct/chapter4_graph_%E9%82%BB%E6%8E%A5%E7%9F%A9%E9%98%B5.jpeg "邻接矩阵示意图")
 
     使用 $n$ 阶方阵 $A$ 存储图，其中，$n$ 为顶点个数
 
@@ -59,14 +61,50 @@
     \end{cases}
     $$
 
-    $A^k[i][j]$ 表示从顶点 $i$ 到顶点 $j$ 之间长度为 $k$ 的路径的数量
+    **$A^k[i][j]$ 表示从顶点 $i$ 到顶点 $j$ 之间长度为 $k$ 的路径的数量**
 
-    ![邻接矩阵示意图](../../resource/image/data_struct/chapter4_graph_%E9%82%BB%E6%8E%A5%E7%9F%A9%E9%98%B5.jpeg "邻接矩阵示意图")
+    ```C
+    # define MaxVertexNum 100                    //顶点数目的最大值
+
+    typedef char VertexType;                     //顶点对应的数据类型
+    typedef int EdgeType;                        //边对应的数据类型
+
+    typedef struct {
+      VertexType vex[MaxVertexNum];              //顶点表
+      EdgeType edge[MaxVertexNum][MaxVertexNum]; //邻接矩阵，边表
+      int vexnum, arcnum;                        //图的当前顶点数和边数
+    } MGraph;
+    ```
+  
   * 邻接表
 
     对每个顶点建立一个单链表，存储该顶点的 ***出边***
 
     ![邻接表示意图](../../resource/image/data_struct/chapter4_graph_%E9%82%BB%E6%8E%A5%E8%A1%A8.jpeg "邻接表示意图")
+
+    ```C
+    # define MaxVertexNum 100                   //图中顶点数目的最大值
+
+    typedef char VertexType;                    //顶点对应的数据类型
+    typedef int InfoType;                       //网的边权值
+
+    typedef struct ArcNode{                     //边表结点
+        int adjvex;                             //该弧所指向的顶点的位置
+        struct ArcNode *nextarc;                //指向下一条弧的指针
+        //InfoType info;                        //网的边权值
+    }ArcNode;
+
+    typedef struct VNode{                       //顶点表结点
+        VertexType data;                        //顶点信息
+        ArcNode *firstarc;                      //指向第一条依附该顶点的弧的指针
+    }VNode, AdjList[MaxVertexNum];
+
+    typedef struct{
+        AdjList vertices;                       //邻接表
+        int vexnum, arcnum;                     //图的顶点数和弧数
+    }ALGraph;                                   //ALGraph 是以邻接表存储的图类型
+    ```
+
   * 十字链表
 
     ![十字链表示意图](../../resource/image/data_struct/chapter4_graph_%E5%8D%81%E5%AD%97%E9%93%BE%E8%A1%A8.jpeg "十字链表示意图")
@@ -252,7 +290,7 @@
       * 性质
         * 拓扑序列、逆拓扑序列可能不唯一
         * 即使拓扑序列唯一，仍然不能唯一确定一个图
-        * 必须是 $\text{DAG}$ 图才能进行拓扑排序，换句话说，有环的图不能进行拓扑排序。因此，拓扑排序可以检测图是否有环
+        * **必须是 $\text{DAG}$ 图才能进行拓扑排序。换句话说，有环的图不能进行拓扑排序。因此，拓扑排序可以检测图是否有环。非连通图只要是 $\text{DAG}$ 图也能进行拓扑排序**
         * 若使用邻接矩阵存储的图的拓扑排序序列有序，则邻接矩阵必为三角矩阵
     * 关键路径
       * 定义

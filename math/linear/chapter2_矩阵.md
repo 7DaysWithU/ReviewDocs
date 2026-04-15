@@ -240,7 +240,7 @@
 * 性质
   * $A^*=\begin{vmatrix}A\end{vmatrix}A^{-1}$，$A^{-1}=\dfrac{1}{\begin{vmatrix}A\end{vmatrix}}A^*$，$A=\begin{vmatrix}A\end{vmatrix}(A^*)^{-1}$
   * $(狗)(狗^*)=\begin{vmatrix}狗\end{vmatrix}E$
-  * $kA^{*}=k^{n-1}A^{*}$
+  * $(kA)^{*}=k^{n-1}A^{*}$
   * $\begin{vmatrix}A^*\end{vmatrix}=\begin{vmatrix}A\end{vmatrix}^{n-1}$，$(A^*)^*=\begin{vmatrix}A\end{vmatrix}^{n-2}A,\begin{vmatrix}(A^*)^{*}\end{vmatrix}=\begin{vmatrix}A\end{vmatrix}^{(n-1)^2}$
   * $(A^*)^{-1}=(A^{-1})^*$，$(A^T)^*=(A^*)^T$
   * $(ABC)^*=C^* B^* A^*$
@@ -413,7 +413,7 @@ $$
 * 性质
   * $0 \leq r(A_{m\times n}) \leq \min\{m, n\}$
   * $r(kA) = r(A) (k \neq 0)$
-  * $r(AB) \leq \min\{r(A), r(B)\}$
+  * $r(A)+r(B)-n\leq r(AB) \leq \min\{r(A), r(B)\}$
   * $r(A + B) \leq r([A,B]) \leq r(A) + r(B)$
   * $\lvert r(A)-r(B)\rvert\leq r(A-B)\leq r(A)+r(B)$
   * $r(AB)\geq r(A)+r(B)-n$
@@ -459,7 +459,23 @@ $$
 
   运算、逆、矩阵分解(详见 **强化36讲-线代-P32~P35**)
 
-  ***横拼左同多化零、竖拼右同多化零***
+  * ***横拼左同多化零***：即矩阵 $AB$ 的列可由 $A$ 的列线性表示，有
+  
+    $$
+    r([A|AB])
+    =r([\alpha_1,\alpha_2,\cdots,\alpha_n|\gamma_1,\gamma_2,\cdots,\gamma_n])
+    =r([\alpha_1,\alpha_2,\cdots,\alpha_n|0,0,\cdots,0])
+    =r(A)
+    $$
+
+  * ***竖拼右同多化零***：即矩阵 $BA$ 的行可由 $A$ 的行线性表示，有
+
+    $$
+    r(\begin{bmatrix}A \\ BA\end{bmatrix})
+    =r(\begin{bmatrix}\alpha_1 \\ \alpha_2 \\ \vdots \\ \alpha_n \\ \gamma_1 \\ \gamma_2 \\ \vdots \\ \gamma_n\end{bmatrix})
+    =r(\begin{bmatrix}\alpha_1 \\ \alpha_2 \\ \vdots \\ \alpha_n \\ 0 \\ 0 \\ \vdots \\ 0\end{bmatrix})
+    =r(A)
+    $$
 
 * ⚠️矩阵方程 $\textcolor{Cyan}{\text{D}_\text{1} (常规操作) + \text{D}_\text{2} (脱胎换骨)}$
   

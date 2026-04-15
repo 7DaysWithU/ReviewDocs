@@ -56,7 +56,7 @@
 
   > ***例 3：$\text{H1}$ 给互联网发送 $\text{IP}$ 数据报***
   >
-  > 源目的地址为 $\text{H1}$ 的 $\text{IP}$ 地址，目的地址为互联网中某台主机的 $\text{IP}$ 地址。所有路由器的转发表都无法匹配目的 $\text{IP}$ 地址，因此通过其他接口进行转发
+  > 源目的地址为 $\text{H1}$ 的 $\text{IP}$ 地址，目的地址为互联网中某台主机的 $\text{IP}$ 地址。所有路由器的转发表都无法匹配目的 $\text{IP}$ 地址，因此通过其他接口的默认路由`0.0.0.0/0`进行转发
 
   * 默认网关即默认使用发送 $\text{IP}$ 数据报的路由器，路由器接口的 $\text{IP}$ 地址应与接口所连接的网络是同一个网络
 
@@ -64,7 +64,7 @@
 
   ![IPv4子网划分](../../resource/image/network/chapter3/IPv4_subnet.png "IPv4子网划分")
 
-  * 默认路由 $\text{IP}$ 为`0.0.0.0`，子网掩码为`0.0.0.0`。当其他网络号无法匹配时，则通过默认路由转发出去
+  * 默认路由 $\text{IP}$ 为`0.0.0.0`，子网掩码为`0.0.0.0`，合并记作`0.0.0.0/0`。当其他网络号无法匹配时，则通过默认路由转发出去
   * 指定主机的 $\text{IP}$ 为其对应的 $\text{IP}$ 地址，子网掩码为`255.255.255.255`。一般情况下路由表项主要是关于"目的网络"的网络地址，但若要求增加指定主机的路由则按该规则填写(2009统考题47)
 
   ![IPv4子网划分发送过程](../../resource/image/network/chapter3/IPv4_subnet_send.png "IPv4子网划分发送过程")
@@ -149,7 +149,7 @@
 
   ![ICMP](../../resource/image/network/chapter3/IPv4_ICMP.png "ICMP")
 
-  * $\text{IP}$ 数据报首部检验和出错时，则该数据报被认为是不完整、不可信的，因此不会发丝 $\text{ICMP}$ 差错控制报文
+  * $\text{IP}$ 数据报首部检验和出错时，则该数据报被认为是不完整、不可信的，因此不会发送 $\text{ICMP}$ 差错控制报文
 
 ### 1.3 IPv6
 
@@ -230,9 +230,18 @@
 
   ![OSPF](../../resource/image/network/chapter3/route_protocol_OSPF.png "OSPF")
 
+  ![OSPF](../../resource/image/network/chapter3/route_protocol_OSPF_new_0.png "OSPF")
+
+  ![OSPF](../../resource/image/network/chapter3/route_protocol_OSPF_new_1.png "OSPF")
+
+  ![OSPF](../../resource/image/network/chapter3/route_protocol_OSPF_new_2.png "OSPF")
+
   * $\text{OSPF}$ 的 $\text{LSI}$ 中不写下一跳的 $\text{IP}$ 地址，而是写下一跳路由器的 $\text{Router ID}$
+  * 网络到直连的路由器距离为 $0$，路由器到直连的网络距离为 $1$
 
   ![OSPF分组](../../resource/image/network/chapter3/route_protocol_OSPF_classification.png "OSPF分组")
+
+  ![OSPF分组](../../resource/image/network/chapter3/route_protocol_OSPF_new_3.png "OSPF分组")
 
   ![OSPF工作流程](../../resource/image/network/chapter3/route_protocol_OSPF_flowchart.png "OSPF工作流程")
 

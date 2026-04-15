@@ -145,7 +145,7 @@
 ### 2.2 判定连续与间断 $\textcolor{LightSkyBlue}{\text{O}_\text{2} (盯住目标 \text{2})}$
 
 * 常见备选点判定 $\textcolor{Cyan}{\text{D}_\text{1} (常规操作)}$
-* 计算: ①$\lim_{x \to x_\text{0}^-} f(x)$; ②$\lim_{x \to x_\text{0}^+} f(x)$; ③$f(x_\text{0})$ $\textcolor{Cyan}{\text{D}_\text{1} (常规操作)}$
+* 计算: $①\lim_{x \to x_\text{0}^-} f(x)$; $②\lim_{x \to x_\text{0}^+} f(x)$; $③f(x_\text{0})$ $\textcolor{Cyan}{\text{D}_\text{1} (常规操作)}$
 * 按定义作出结论: ①跳跃间断点; ②可去间断点; ③无穷间断点; ④振荡间断点 $\textcolor{Cyan}{\text{D}_\text{22} (转换等价表述)}$
 
 ### 2.3 研究 $x \to \infty$ 时 $f(x)$ 的微观性态 $\textcolor{LightSkyBlue}{\text{O}_\text{3} (盯住目标 \text{3})}$

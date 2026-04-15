@@ -22,7 +22,7 @@
     曲线 $\begin{cases}x=x(t) \\ y=y(t)\end{cases},t\in[\alpha, \beta]$ 所围平面图形的面积为
 
     $$
-    S=\int^b_a{\Big\lvert y(t)\Big\rvert\mathrm{d}x}=\int^{\beta}_{\alpha}{\Big\lvert y(t)\cdot x^{'}(t)\Big\rvert\mathrm{d}t}
+    S=\int^b_a{\Big\lvert y(x)\Big\rvert\mathrm{d}x}=\int^{\beta}_{\alpha}{\Big\lvert y(t)\cdot x^{'}(t)\Big\rvert\mathrm{d}t}
     $$
 
     **注意 $\mathrm{d}x=x^{'}(t)\mathrm{d}t$ 后要同步更改上下限**
@@ -63,8 +63,8 @@
 
   $$
   \begin{align*}
-    \overline{f}&=\dfrac{1}{b-a}\int^b_a{f(x)}\\\\
-    \Rightarrow\overline{f}&=f(\xi),\xi\in[a,b]
+    \overline{f}&=\dfrac{1}{b-a}\int^b_a{f(x)\mathrm{d}x}\\\\
+    \Rightarrow\overline{f}&\xlongequal{积分中值定理}f(\xi),\xi\in[a,b]
   \end{align*}
   $$
 
@@ -234,7 +234,7 @@
   * ***13(定积分带值时如遇无定义点需要分区间用牛顿莱布尼茨公式，无定义点取极限)***
   * ⭐***14(平均值)***
   
-    > 若 $g(x)$ 的一个原函数是 $f(x)$，则 $f(x)=\displaystyle\int{g(x)\mathrm{d}x}=\displaystyle\int^x_a{g(x)\mathrm{d}x}$。若写作变限积分形式，则需要题目条件求出具体的 $a$
+    > 若 $g(x)$ 的一个原函数是 $f(x)$，则 $f(x)=\displaystyle\int{g(x)\mathrm{d}x}=\displaystyle\int^x_a{g(t)\mathrm{d}t}$。若写作变限积分形式，则需要题目条件求出具体的 $a$
     >
     > 求平均值的积分时，既可以用分部积分消项(有特殊值或特殊结构)，也可以积变限积分交换积分次序(题目不直接给出 $f(x)$，而是给出其原函数)
   

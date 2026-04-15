@@ -26,14 +26,15 @@
       | $\dfrac{1}{2}f^2(x)$ | $f(x)f^{'}(x)$ | $f(x)f^{'}(x)$ |
       | $f(x)f^{'}(x)$ | $(f^{'}(x))^2+f(x)f^{''}(x)$ | $(f^{'}(x))^2+f(x)f^{''}(x)$ |
       | $f(x)e^{\phi(x)}$ | $e^{\phi(x)}\Big(f(x)\phi^{'}(x)+f^{'}(x)\Big)$ | $k f(x)\pm f^{'}(x)$ |
-      | $\left[f(x)\cdot e^{\int^x_0{\left[f(t)\right]^{n-1}\mathrm{d}t}}\right]$ | $e^{\int^x_0{\left[f(t)\right]^{n-1}\mathrm{d}t}}\left[f^{'}(x)-[f(x)]^n\right]$ | $f^{'}(x)-[f(x)]^n$ |
+      | $\left[f(x)\cdot e^{\int^x_0{\left[f(t)\right]^{n-1}\mathrm{d}t}}\right]$ | $e^{\int^x_0{\left[f(t)\right]^{n-1}\mathrm{d}t}}\left[f^{'}(x)+[f(x)]^n\right]$ | $f^{'}(x)+[f(x)]^n$ |
       | $\left[f(x)e^x\right]^{'}$ | $e^x\left(f^{''}(x)+2f^{'}(x)+f(x)\right)$ | $f^{''}(x)+2f^{'}(x)+f(x)$ |
       | $\dfrac{f(x)}{x}$ | $\dfrac{f^{'}(x)x-f(x)}{x^2}$ | $f^{'}(x)x-f(x)，x\neq0$ |
       | $\dfrac{f^{'}(x)}{f(x)}$ | $\dfrac{f^{''}(x)f(x)-(f^{'}(x))^2}{f^2(x)}$ | $f^{''}(x)f(x)-(f^{'}(x))^2，f(x)\neq0$ |
       | $\ln{f(x)}$ | $\dfrac{f^{'}(x)}{f(x)}$ | $\dfrac{f^{'}(x)}{f(x)}，f(x)\neq0$ |
   
     * 高阶罗尔定理
-      * $\exist a<b<c$ 使得 $f(a)=f(b)=f(c)$ ，则 $\exist\xi_1\in(a,b)$ ，使得 $f^{'}(\xi_1)=0$ ； $\exist\xi_2\in(b,c)$ ，使得 $f^{'}(\xi_2)=0$ 。再使用一次罗尔定理，则 $\exist\xi\in(\xi_1，\xi_2)\subset(a,c)$ ，使得 $f^{''}(\xi)=0$ 。更高的阶数以此类推
+
+      若 $\exist a<b<c$ 使得 $f(a)=f(b)=f(c)$ ，则 $\exist\xi_1\in(a,b)$ ，使得 $f^{'}(\xi_1)=0$ ； $\exist\xi_2\in(b,c)$ ，使得 $f^{'}(\xi_2)=0$ 。再使用一次罗尔定理，则 $\exist\xi\in(\xi_1，\xi_2)\subset(a,c)$ ，使得 $f^{''}(\xi)=0$ 。更高的阶数以此类推
   * 拉格朗日中值定理：设 $f(x)$ 满足 $\begin{cases}在\big[a,b\big]上连续\\在(a,b)内可导\end{cases}$ ，则 $\exist\xi\in(a,b)$ ，使得
 
     $$
@@ -54,18 +55,18 @@
 
     * 非两个拉格朗日相除，因为 $\xi_1$ 与 $\xi_2$ 不一定相等
   * 泰勒公式
-    * 带拉格朗日余项的 $n+1$ 阶泰勒公式
+    * 带拉格朗日余项的 $n$ 阶泰勒公式
 
       $$
-      f(x)=f(x_0)+f^{'}(x-x_0)+\dfrac{f^{''}(x_0)}{2!}(x-x_0)^2+\cdots+\dfrac{f^{(n)}(x_0)}{n!}(x-x_0)^n\\+\dfrac{f^{(n+1)}(\xi)}{(n+1)!}(x-x_0)^{n+1}，\xi\in(x,x_0)
+      f(x)=f(x_0)+f^{'}(x_0)(x-x_0)+\dfrac{f^{''}(x_0)}{2!}(x-x_0)^2+\cdots+\dfrac{f^{(n)}(x_0)}{n!}(x-x_0)^n\\+\dfrac{f^{(n+1)}(\xi)}{(n+1)!}(x-x_0)^{n+1}，\xi\in(x,x_0)
       $$
 
-      拉格朗日展开式只能用在**区间**可 $n$ 阶导的情况。前 $n-1$ 阶用来写通式，第 $n$ 阶用来写拉格朗日余项
+      拉格朗日展开式只能用在**区间**可 $n$ 阶导的情况。前 $n$ 阶用来写通式，第 $n+1$ 阶用来写拉格朗日余项
 
     * 带佩亚诺余项的 $n$ 阶泰勒公式
 
       $$
-      f(x)=f(x_0)+f^{'}(x-x_0)+\dfrac{f^{''}(x_0)}{2!}(x-x_0)^2+\cdots+\dfrac{f^{(n)}(x_0)}{n!}(x-x_0)^n\\+o\big((x-x_0)^n\big)
+      f(x)=f(x_0)+f^{'}(x_0)(x-x_0)+\dfrac{f^{''}(x_0)}{2!}(x-x_0)^2+\cdots+\dfrac{f^{(n)}(x_0)}{n!}(x-x_0)^n\\+o\big((x-x_0)^n\big)
       $$
 
       佩亚诺展开式只能用在**单点**可 $n$ 阶导的情况。前 $n$ 阶用来写通式，最后写一个 $n$ 阶的无穷小

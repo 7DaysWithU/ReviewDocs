@@ -64,7 +64,7 @@
       |凹| $f(\lambda_1 x_1+\lambda_2 x_2)<\lambda_1 f(x_1)+\lambda_2 f(x_2)$ |
       |凸| $f(\lambda_1 x_1+\lambda_2 x_2)>\lambda_1 f(x_1)+\lambda_2 f(x_2)$ |
 
-      * $0<\lambda_1<1，0<\lambda_2<1，\lambda_1+\lambda_2=1$
+      * $0<\lambda_1,\lambda_2<1，\lambda_1+\lambda_2=1$
   * 定义2：切线与曲线
     * 设函数 $f(x)$ 在 $\big[a,b\big]$ 上连续，在 $(a,b)$ 内可导，对 $\forall x\in(a,b)$ 及 $\forall x_0\in(a,b),x\neq x_0$ ，均有
 
@@ -166,15 +166,17 @@
 * 曲率
   * 定义：若 $f(x)$ 二阶可导，则曲线 $y=f(x)$ 在 $(x_0,f(x_0))$ 处的曲率公式为
 
-  $$
-  k=\dfrac{\Big\lvert y^{''}|_{x=x_0}\Big\rvert}{\Big(1+\big(y^{'}|_{x=x_0}\big)  ^2\Big)^\frac{3}{2}}
-  $$
+    $$
+    k=\dfrac{\Big\lvert y^{''}|_{x=x_0}\Big\rvert}{\Big(1+\big(y^{'}|_{x=x_0}\big)  ^2\Big)^\frac{3}{2}}
+    $$
+
+    **曲率越大则曲线越弯曲**
 
   * 曲率半径为
 
-  $$
-  R=\dfrac{1}{k}，y^{''}|_{x=x_0}\neq0
-  $$
+    $$
+    R=\dfrac{1}{k}，y^{''}|_{x=x_0}\neq0
+    $$
 
 ## 2 进阶
 

@@ -131,6 +131,7 @@
   * $\text{POP3}$ 明文传递登录密码，不对密码进行加密。
   * $\text{POP3}$ 基于 $\text{ASCII}$ 码，如要传递非 $\text{ASCII}$ 码数据需要使用 $\text{MIME}$ 将数据转换成 $\text{ASCII}$ 码
   * $\text{POP3}$ 一个账号在服务器上只能有一个邮件接收目录
+  * $\text{POP3}$ 支持用一个 $\text{TCP}$ 连接去收取多封邮件，即可以在一个会话中通过一个 $\text{TCP}$ 连接获取用户邮箱中的多封邮件
 
 * 基于万维网的电子邮件
 
@@ -149,8 +150,8 @@
   ![非持续连接](../../resource/image/network/chapter5/WWW_connection_non_continue.png "非持续连接")
 
   * $\text{HTTP1.0}$ 默认采用非持续连接，$\text{HTTP1.1}$ 默认采用持续连接 </br> $\text{HTTP}$ 请求报文中 $\text{Connection: Close}$ 是非持续连接，$\text{Connection: keep-alive}$ 是持续连接
-  * 非持续连接(非并行)请求一个文档时，若文档内有 $n$ 个其他资源，则一共要建立 $n+1$ 次 $\text{TCP}$ 连接，$(n+2)\cdot\text{RTT}$，第一个 $\text{RTT}$ 用于建立连接，第二个则捎带请求信息
-  * 并行方式可以在 $2\cdot\text{RTT}$ 内并行地建立连接，再请求资源
+  * 非持续连接(非并行)请求一个文档时，若文档内有 $n$ 个其他资源，则从请求建立 $\text{TCP}$ 连接开始到获得全部资源结束共需要 $(2+2n)\cdot\text{RTT}$，第一个 $\text{RTT}$ 用于建立连接，第二个捎带 $\text{HTML}$ 请求信息，剩下共请求 $n$ 个资源，每个资源要先建立 $\text{TCP}$ 连接，再请求并获得该资源
+  * 并行方式从请求建立 $\text{TCP}$ 连接开始到获得全部资源结束共需要 $4\cdot\text{RTT}$。第一个 $\text{RTT}$ 用于建立连接，第二个捎带 $\text{HTML}$ 请求信息，剩下共请求 $n$ 个资源，可以在 $2\cdot\text{RTT}$ 内并行地建立连接，再请求资源
   * **挥手时间可以忽略，即刚开始挥手，就立即开始建立新的连接，则每请求一个资源只需要 $2\cdot\text{RTT}$，一个 $\text{RTT}$ 用来连接，一个 $\text{RTT}$ 用来请求资源**
 
   ![持续连接非流水线方式](../../resource/image/network/chapter5/WWW_connection_continue_non_pipeline.png "持续连接非流水线方式")

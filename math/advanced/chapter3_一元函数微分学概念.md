@@ -79,7 +79,7 @@
 * 函数在一点求导问题 $\textcolor{Cyan}{\text{D}_\text{1} (常规操作) + \text{D}_\text{22} (转换等价表述)}$
   * 绝对值求导
     * $\lvert f(x)\rvert=\sqrt{f^2(x)}$，使用求导公式求导
-    * $F(x)=f(x)g(x)$，若 $f(x)$ 在 $x_0$ 除连续但不可导，$g(x)$ 在 $x_0$ 处可导，则 $F(x)$ 在 $x_0$ 处可导的充要条件是 $g(x_0)=0$
+    * $F(x)=f(x)g(x)$，若 $f(x)$ 在 $x_0$ 处连续但不可导，$g(x)$ 在 $x_0$ 处可导，则 $F(x)$ 在 $x_0$ 处可导的充要条件是 $g(x_0)=0$
     * $(\,\lvert x\rvert\,)^{'}=\dfrac{\lvert x\rvert}{x},\,x\neq 0$
   * 分段函数
 

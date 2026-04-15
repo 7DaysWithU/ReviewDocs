@@ -26,7 +26,7 @@
   * 设 $y=f(x),f(x)>0$ ，则有 $\ln{y}=\ln{f(x)}$ ，根据隐函数求导法两边同时求导得 $\dfrac{1}{y}\cdot y^{'}=\dfrac{1}{f(x)}\cdot f^{'}(x)$ ，即 $y^{'}=\dfrac{y\cdot f^{'}(x)}{f(x)}$
 * 幂指函数求导
   * 对于 $f(x)=u(x)^{v(x)}$ ，通常用 $e$ 抬上去再求导
-  * $\bigg[u(x)^{v(x)}\bigg]^{'}=\bigg[e^{v(x)\ln{v(x)}}\bigg]^{'}=e^{v(x)\ln{v(x)}}\bigg[v^{'}(x)\ln{u(x)}+v(x)\cdot\dfrac{1}{u(x)}\cdot u^{'}(x)\bigg]=u(x)^{v(x)}\bigg[v^{'}(x)\ln{u(x)}+v(x)\cdot\dfrac{u^{'}(x)}{u(x)}\bigg]$
+  * $\bigg[u(x)^{v(x)}\bigg]^{'}=\bigg[e^{v(x)\ln{u(x)}}\bigg]^{'}=e^{v(x)\ln{u(x)}}\bigg[v^{'}(x)\ln{u(x)}+v(x)\cdot\dfrac{1}{u(x)}\cdot u^{'}(x)\bigg]=u(x)^{v(x)}\bigg[v^{'}(x)\ln{u(x)}+v(x)\cdot\dfrac{u^{'}(x)}{u(x)}\bigg]$
 * 高阶导数
   * 归纳法
     * 常用高阶导数

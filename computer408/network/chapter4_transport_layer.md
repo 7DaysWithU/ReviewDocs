@@ -93,7 +93,7 @@
   ![流量控制](../../resource/image/network/chapter4/TCP_flow_control.png "流量控制")
 
   * 发送窗口不能大于接受窗口，以免发太快导致接收缓冲区溢出，由此实现流量控制
-  * $\text{TCP}$ 为每个连接设有一个持续计时器，只要发送方收到对方的零窗口 $(\text{rwnd}=0)$ 通知，就启动**持续计时器**。若计时器超时，则发送一个零窗口探测报文段，而对方就在确认这个探测报文段时给出现在的窗口值。若窗口仍然为零，则发送方收到确认报文段后就重置持续计时器
+  * $\text{TCP}$ 为每个连接设有一个持续计时器，只要发送方收到对方的零窗口 $(\text{rwnd}=0)$ 通知，就启动**持续计时器**。若计时器超时，则发送一个**零窗口探测报文段**，而对方就在确认这个探测报文段时给出现在的窗口值。若窗口仍然为零，则发送方收到确认报文段后就重置持续计时器
 
   ![可靠传输与流量控制示例](../../resource/image/network/chapter4/TCP_reliable_transmission_eg_0.png "可靠传输与流量控制示例")
 
@@ -137,6 +137,7 @@
   * 遇到超时重传会重新慢开始，同时 $\text{ssthresh}=\text{cwnd}/2$，$\text{cwnd}=1$。但 $\text{ssthresh}$ 不能低于 $2$
   * 遇到超时重传会重新慢开始，遇到 $3\text{ACK}$ 则会快恢复。但超时与 $3\text{ACK}$ 都是网络拥塞
   * 若慢开始经过一个 $\text{RTT}$ 窗口翻倍后大于拥塞控制阈值，则只能增长到阈值。即慢开始算法中 $\text{cwnd}=\min{(2\cdot\text{cwnd},\,\text{ssthresh})}$
+  * 表格法分析窗口大小详见[TCP拥塞控制](../_extra/ep4_TCP_congestion_control.md)
 
   ![拥塞控制快重传与快恢复](../../resource/image/network/chapter4/TCP_congest_quick_restore.png)
 

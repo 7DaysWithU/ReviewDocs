@@ -330,9 +330,9 @@
 
     $$
     \begin{cases}
-      r(A)\neq r([A,b])&\Leftrightarrow无解\Leftrightarrow不能表示 \\
-      r(A)=r([A,b])=n&\Leftrightarrow唯一解\Leftrightarrow表示方法唯一 \\
-      r(A)=r([A,b])=r\leq n&\Leftrightarrow无穷多解\Leftrightarrow无穷多种表示方法
+      r(A)\neq r([A,\beta])&\Leftrightarrow无解\Leftrightarrow不能表示 \\
+      r(A)=r([A,\beta])=n&\Leftrightarrow唯一解\Leftrightarrow表示方法唯一 \\
+      r(A)=r([A,\beta])=r\leq n&\Leftrightarrow无穷多解\Leftrightarrow无穷多种表示方法
     \end{cases}
     $$
 

@@ -174,6 +174,20 @@
     \end{cases}
     $$
 
+    </br>
+
+    $$
+    \int^{+\infty}_a{\dfrac{1}{x^p\ln^q{x}}},\,(a>1)
+    \begin{cases}
+      p<1，发散\\
+      p=1\begin{cases}
+        q\leq1，发散\\
+        q>1，收敛
+      \end{cases}\\
+      1<p，收敛
+    \end{cases}
+    $$
+
     * ***凡是与 $x$ 趋 $0$ 速度相同(即与 $x$ 是同阶无穷小)的式子都可以带入上述公式中的 $x$***
     * **$\displaystyle\int^1_0{\dfrac{\ln{x}}{x^p}}$ 在 $p=0$ 时也收敛，因为此时不是反常积分了。根据题目是否说明为反常积分，注意该边界值的判断**
 

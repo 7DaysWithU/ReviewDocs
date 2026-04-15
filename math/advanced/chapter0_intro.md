@@ -57,7 +57,7 @@
     > 即：**调和平均 ≤ 几何平均 ≤ 算术平均 ≤ 平方平均**
 
   * 三角不等式： $\lvert \lvert a\rvert -\lvert b\rvert \rvert\leq\lvert a\pm b\rvert\leq\lvert a\rvert+\lvert b\rvert$
-  * 柯西不等式： $\displaystyle\sum_{i=1}^{n}{a_i^2} \sum_{i=1}^{n}{b_i^2}\geq(\sum_{i=1}^{n}{a_i b_i})^2$
+  * 柯西不等式： $\displaystyle\left(\sum_{i=1}^{n}{a_i^2}\right)\cdot\left(\sum_{i=1}^{n}{b_i^2}\right)\geq\left(\sum_{i=1}^{n}{a_i b_i}\right)^2$
 * 二次不等式区间根问题
 
 ### 1.4 函数

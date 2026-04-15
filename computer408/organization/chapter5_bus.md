@@ -66,11 +66,15 @@
 
     ![同步定时](../../resource/image/organization/chapter5/bus_time_synchronous_1.png "同步定时")
 
+    * 时钟频率不一定等于工作频率，因为一个操作可能跨越多个时钟周期
+
   * 异步定时
 
     ![异步定时](../../resource/image/organization/chapter5/bus_time_asynchronous_0.png "异步定时")
 
     ![异步定时](../../resource/image/organization/chapter5/bus_time_asynchronous_1.png "异步定时")
+
+    * 一次握手是将所有要传的数据传输完的过程，每次握手往往会传大量数据，而不是只传一位数据
 
   * 半同步定时
 
